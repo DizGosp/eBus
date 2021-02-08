@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eBus.Mobile.ViewModel"
+             x:Class="eBus.Mobile.View.LoginPage">
+
+    <ContentPage.BindingContext>
+        <ViewModel:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Prijava:"
+                  Padding="100"
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Korisničko ime:"
+                HorizontalOptions="FillAndExpand" />
+            <Entry Text="{Binding Username}"></Entry>
+            <Label Text="Prijava:"
+                HorizontalOptions="FillAndExpand" />
+            <Entry Text="{Binding Password}"></Entry>
+            <Button  Command="{Binding LoginCommand}" Text="Prijava"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
