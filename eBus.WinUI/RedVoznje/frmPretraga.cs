@@ -23,7 +23,8 @@ namespace eBus.WinUI.RedVoznje
         {
             InitializeComponent();
             _id = korisnikID;
-    }
+            dgrRedPretraga.AutoGenerateColumns = false;
+        }
 
         private async void frmPretraga_Load(object sender, EventArgs e)
         {

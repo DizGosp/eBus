@@ -31,6 +31,7 @@ namespace eBus.WinUI
                 await _serviceR.Get<dynamic>(null);
                 frmIndex frm = new frmIndex(APIService.Username);
                 frm.Show();
+               
             }
             catch (Exception ex)
             {

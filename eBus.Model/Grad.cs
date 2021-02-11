@@ -9,5 +9,11 @@ namespace eBus.Model
         public int GradId { get; set; }
         public string NazivGrada { get; set; }
         public int? DrzavaId { get; set; }
+        public virtual Drzava Drzava { get; set; }
+
+        public override string ToString()
+        {
+            return NazivGrada;
+        }
     }
 }

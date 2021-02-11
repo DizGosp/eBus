@@ -15,5 +15,12 @@ namespace eBus.Model
         public bool? Status { get; set; }
         public ICollection<KorisniciUloge>KorisniciUloges { get; set; }
 
+        public string OsobniPodaci { get { return $"{Ime} {Prezime}"; } }
+        public override string ToString()
+        {
+            return $"{Ime} {Prezime}";
+        }
     }
+
 }
+

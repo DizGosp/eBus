@@ -11,5 +11,11 @@ namespace eBus.Model
         public string NazivAutobusa { get; set; }
         public string Klasa { get; set; }
         public bool? Status { get; set; }
+
+        public override string ToString()
+        {
+            return NazivAutobusa;
+        }
+
     }
 }

@@ -9,5 +9,10 @@ namespace eBus.Model
         public int DrzavaId { get; set; }
         public string NazivDrzave { get; set; }
 
+        public override string ToString()
+        {
+            return NazivDrzave;
+        }
+
     }
 }

@@ -37,9 +37,12 @@
             this.redVožnjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unosRedaVožnjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kartaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.pregledSjedištaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +52,8 @@
             this.menuStrip.BackColor = System.Drawing.Color.RoyalBlue;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.korisniciToolStripMenuItem,
-            this.redVožnjeToolStripMenuItem});
+            this.redVožnjeToolStripMenuItem,
+            this.kartaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -109,6 +113,24 @@
             this.pretragaToolStripMenuItem1.Text = "Pretraga";
             this.pretragaToolStripMenuItem1.Click += new System.EventHandler(this.pretragaToolStripMenuItem1_Click);
             // 
+            // kartaToolStripMenuItem
+            // 
+            this.kartaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pregledToolStripMenuItem,
+            this.pregledSjedištaToolStripMenuItem});
+            this.kartaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kartaToolStripMenuItem.Name = "kartaToolStripMenuItem";
+            this.kartaToolStripMenuItem.Size = new System.Drawing.Size(89, 36);
+            this.kartaToolStripMenuItem.Text = "Karta";
+            // 
+            // pregledToolStripMenuItem
+            // 
+            this.pregledToolStripMenuItem.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pregledToolStripMenuItem.Name = "pregledToolStripMenuItem";
+            this.pregledToolStripMenuItem.Size = new System.Drawing.Size(271, 36);
+            this.pregledToolStripMenuItem.Text = "Pregled";
+            this.pregledToolStripMenuItem.Click += new System.EventHandler(this.pregledToolStripMenuItem_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -126,6 +148,14 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // pregledSjedištaToolStripMenuItem
+            // 
+            this.pregledSjedištaToolStripMenuItem.BackColor = System.Drawing.Color.RoyalBlue;
+            this.pregledSjedištaToolStripMenuItem.Name = "pregledSjedištaToolStripMenuItem";
+            this.pregledSjedištaToolStripMenuItem.Size = new System.Drawing.Size(271, 36);
+            this.pregledSjedištaToolStripMenuItem.Text = "Pregled sjedišta";
+            this.pregledSjedištaToolStripMenuItem.Click += new System.EventHandler(this.pregledSjedištaToolStripMenuItem_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -138,7 +168,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmIndex";
             this.Text = "Index";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -163,6 +193,9 @@
         private System.Windows.Forms.ToolStripMenuItem redVožnjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unosRedaVožnjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem kartaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledSjedištaToolStripMenuItem;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using eBus.Model.Request;
+using eBus.WinUI.Karta;
 using eBus.WinUI.Korisnici;
 using eBus.WinUI.RedVoznje;
 using System;
@@ -112,6 +113,21 @@ namespace eBus.WinUI
             }
         }
 
+        private async Task<int> getId(string user) 
+        {
+            KorisniciSearchRequest search = new KorisniciSearchRequest()
+            {
+                userName = _korIme
+            };
+            var kor = await _service.Get<List<Model.Korisnici>>(search);
+            int id = 0;
+            foreach (var item in kor)
+            {
+                id = item.KorisnikId;
+            }
+
+            return id;
+        }
         private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKorisnici frm = new frmKorisnici();
@@ -128,17 +144,8 @@ namespace eBus.WinUI
 
         private async void unosRedaVožnjeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            KorisniciSearchRequest search = new KorisniciSearchRequest()
-            {
-                userName = _korIme
-            };
-            var kor = await _service.Get<List<Model.Korisnici>>(search);
-            int id = 0;
-            foreach (var item in kor)
-            {
-                id = item.KorisnikId;
-            }
-           
+            int id = await getId(_korIme);
+
             frmRedVoznje frm = new frmRedVoznje(id);
             frm.MdiParent = this;     
             frm.Show();
@@ -146,22 +153,28 @@ namespace eBus.WinUI
 
         private async void pretragaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            KorisniciSearchRequest search = new KorisniciSearchRequest()
-            {
-                userName = _korIme
-            };
-            var kor = await _service.Get<List<Model.Korisnici>>(search);
-            int id = 0;
-            foreach (var item in kor)
-            {
-                id = item.KorisnikId;
-            }
+            int id = await getId(_korIme);
 
             frmPretraga frm = new frmPretraga(id);
             frm.MdiParent = this;       
             frm.Show();
         }
 
-     
+        private async void pregledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = await getId(_korIme);
+            frmKartaPregled frm = new frmKartaPregled(id);
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
+
+        private async void pregledSjedištaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int id = await getId(_korIme);
+            frmKartaPregled frm = new frmKartaPregled(id);
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

@@ -139,6 +139,18 @@
     <Compile Include="Gradovi\frmGradovi.Designer.cs">
       <DependentUpon>frmGradovi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Karta\frmKartaPregled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Karta\frmKartaPregled.Designer.cs">
+      <DependentUpon>frmKartaPregled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Karta\frmSjedistaPregled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Karta\frmSjedistaPregled.Designer.cs">
+      <DependentUpon>frmSjedistaPregled.cs</DependentUpon>
+    </Compile>
     <Compile Include="Korisnici\frmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +200,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gradovi\frmGradovi.resx">
       <DependentUpon>frmGradovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Karta\frmKartaPregled.resx">
+      <DependentUpon>frmKartaPregled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Karta\frmSjedistaPregled.resx">
+      <DependentUpon>frmSjedistaPregled.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>
@@ -249,5 +267,6 @@
       <Name>eBus.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

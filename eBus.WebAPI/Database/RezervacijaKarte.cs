@@ -14,7 +14,6 @@ namespace eBus.WebAPI.Database
         public string Qrcode { get; set; }
         public int? KartaId { get; set; }
         public int? PutnikId { get; set; }
-
         public virtual VrstaKarte Karta { get; set; }
         public virtual Putnik Putnik { get; set; }
     }
