@@ -47,11 +47,9 @@
             // grpKorisnici
             // 
             this.grpKorisnici.Controls.Add(this.dgvKorisnici);
-            this.grpKorisnici.Location = new System.Drawing.Point(1, 262);
-            this.grpKorisnici.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpKorisnici.Location = new System.Drawing.Point(1, 213);
             this.grpKorisnici.Name = "grpKorisnici";
-            this.grpKorisnici.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpKorisnici.Size = new System.Drawing.Size(920, 428);
+            this.grpKorisnici.Size = new System.Drawing.Size(690, 348);
             this.grpKorisnici.TabIndex = 0;
             this.grpKorisnici.TabStop = false;
             this.grpKorisnici.Text = "Korisnici";
@@ -64,12 +62,11 @@
             this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.KorisnikID});
             this.dgvKorisnici.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKorisnici.Location = new System.Drawing.Point(4, 19);
-            this.dgvKorisnici.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvKorisnici.Location = new System.Drawing.Point(3, 16);
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisnici.Size = new System.Drawing.Size(912, 405);
+            this.dgvKorisnici.Size = new System.Drawing.Size(684, 329);
             this.dgvKorisnici.TabIndex = 0;
             this.dgvKorisnici.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvKorisnici_MouseDoubleClick);
             // 
@@ -84,10 +81,9 @@
             // btnPrikazi
             // 
             this.btnPrikazi.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnPrikazi.Location = new System.Drawing.Point(504, 161);
-            this.btnPrikazi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrikazi.Location = new System.Drawing.Point(378, 131);
             this.btnPrikazi.Name = "btnPrikazi";
-            this.btnPrikazi.Size = new System.Drawing.Size(100, 28);
+            this.btnPrikazi.Size = new System.Drawing.Size(75, 23);
             this.btnPrikazi.TabIndex = 1;
             this.btnPrikazi.Text = "Prikaži";
             this.btnPrikazi.UseVisualStyleBackColor = false;
@@ -95,18 +91,16 @@
             // 
             // txtPretraga
             // 
-            this.txtPretraga.Location = new System.Drawing.Point(255, 114);
-            this.txtPretraga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPretraga.Location = new System.Drawing.Point(191, 93);
             this.txtPretraga.Name = "txtPretraga";
-            this.txtPretraga.Size = new System.Drawing.Size(233, 22);
+            this.txtPretraga.Size = new System.Drawing.Size(176, 20);
             this.txtPretraga.TabIndex = 2;
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(255, 167);
-            this.txtPrezime.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrezime.Location = new System.Drawing.Point(191, 136);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(233, 22);
+            this.txtPrezime.Size = new System.Drawing.Size(176, 20);
             this.txtPrezime.TabIndex = 3;
             // 
             // pictureBox1
@@ -114,27 +108,30 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(22, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 29);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 198);
+            this.pictureBox1.Size = new System.Drawing.Size(170, 162);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(255, 81);
+            this.label1.Location = new System.Drawing.Point(191, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 16);
+            this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Ime:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(255, 147);
+            this.label2.Location = new System.Drawing.Point(191, 119);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 16);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Prezime:";
             // 
@@ -143,7 +140,8 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label3.Location = new System.Drawing.Point(319, 36);
+            this.label3.Location = new System.Drawing.Point(239, 29);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(169, 25);
             this.label3.TabIndex = 7;
@@ -151,9 +149,9 @@
             // 
             // frmKorisnici
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 688);
+            this.ClientSize = new System.Drawing.Size(938, 559);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
@@ -163,7 +161,6 @@
             this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.grpKorisnici);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmKorisnici";
             this.Text = "Korisnici";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

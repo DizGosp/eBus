@@ -12,8 +12,10 @@ namespace eBus.WebAPI.Database
             Ocjenas = new HashSet<Ocjena>();
         }
 
-        public int? RedVoznjeId { get; set; }
+        public int RedVoznjeId { get; set; }
         public string Naziv { get; set; }
+        public string GradPolaska { get; set; }
+        public string GradDolaska { get; set; }
         public DateTime? DatumVrijemePolaska { get; set; }
         public DateTime? DatumVrijemeDolaska { get; set; }
         public decimal? Cijena { get; set; }

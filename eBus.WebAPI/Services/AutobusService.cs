@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class AutobusService:BaseCrudeService<Model.Autobus, Model.Autobus, Autobu, Model.Autobus, Model.Autobus>
+    public class AutobusService : BaseCrudeService<Model.Autobus, Model.Autobus, Autobu, Model.Autobus, Model.Autobus>
     {
         public AutobusService(eBusContext _db, IMapper mapper) : base(_db, mapper)
         {
@@ -20,11 +20,11 @@ namespace eBus.WebAPI.Services
                 .Include(x => x.Vozac)
                 .AsQueryable();
 
-            if (search.Status==false)
+            if (search.Status == false)
             {
                 query = query.Where(x => x.Status == search.Status);
             }
-            if (search.VozacId !=null )
+            if (search.VozacId != null)
             {
                 query = query.Where(x => x.VozacId == search.VozacId);
             }

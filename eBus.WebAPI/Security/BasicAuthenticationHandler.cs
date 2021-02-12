@@ -49,19 +49,19 @@ namespace eBus.WebAPI.Security
                 user = _userService.Authenticiraj(username, password);
                 if (user == null)
                 {
-                    putnik=_putnik.Authenticiraj(username, password);
+                    putnik = _putnik.Authenticiraj(username, password);
                     kupac = true;
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
 
-            if (user == null && putnik==null)
+            if (user == null && putnik == null)
                 return AuthenticateResult.Fail("Invalid Username or Password");
 
-            var claims = new List<Claim> {};
+            var claims = new List<Claim> { };
 
             if (!kupac)
             {
@@ -72,17 +72,17 @@ namespace eBus.WebAPI.Security
                     claims.Add(new Claim(ClaimTypes.Role, role.Uloga.Naziv));
                 }
             }
-            else 
+            else
             {
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, putnik.KorisnickoIme));
-                claims.Add( new Claim(ClaimTypes.Name, putnik.Ime));
+                claims.Add(new Claim(ClaimTypes.Name, putnik.Ime));
             }
 
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
-            return  AuthenticateResult.Success(ticket);
+            return AuthenticateResult.Success(ticket);
         }
     }
 }

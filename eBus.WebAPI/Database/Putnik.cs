@@ -23,6 +23,7 @@ namespace eBus.WebAPI.Database
         public string LozinkaSalt { get; set; }
         public DateTime? DatumRegistracije { get; set; }
         public DateTime? DatumRodjenja { get; set; }
+        public byte[] Slika { get; set; }
 
         public virtual ICollection<Ocjena> Ocjenas { get; set; }
         public virtual ICollection<PutnikNotifikacije> PutnikNotifikacijes { get; set; }

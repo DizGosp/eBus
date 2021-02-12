@@ -1,5 +1,5 @@
 ﻿using eBus.Model.Request;
-using eBus.WebAPI.Database;
+//using eBus.WebAPI.Database;
 using eBus.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisniciController : ControllerBase
@@ -22,7 +22,7 @@ namespace eBus.WebAPI.Controllers
             ksi = service;
         }
 
-       
+
         [HttpGet]
         public ActionResult<List<Model.Korisnici>> Get([FromQuery] KorisniciSearchRequest request)
         {
@@ -40,12 +40,12 @@ namespace eBus.WebAPI.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public Model.Korisnici Insert(KorisniciInsertRequest request) 
+        public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
             return ksi.Insert(request);
         }
         [HttpPut("{id}")]
-        public Model.Korisnici Update(int id, KorisniciInsertRequest request) 
+        public Model.Korisnici Update(int id, KorisniciInsertRequest request)
         {
             return ksi.Update(id, request);
         }

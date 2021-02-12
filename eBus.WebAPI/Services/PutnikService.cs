@@ -1,4 +1,4 @@
-﻿ using AutoMapper;
+﻿using AutoMapper;
 using eBus.Model.Request;
 using eBus.WebAPI.Database;
 using eBus.WebAPI.Exceptions;
@@ -36,7 +36,7 @@ namespace eBus.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-      
+
         public Model.Putnici Authenticiraj(string username, string pass)
         {
             var user = _db.Putniks.FirstOrDefault(x => x.KorisnickoIme == username);

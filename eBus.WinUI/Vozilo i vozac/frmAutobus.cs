@@ -43,7 +43,8 @@ namespace eBus.WinUI.Vozilo_i_vozac
             {
                 NazivAutobusa=txtVozilo.Text,
                 Klasa=txtKlasa.Text,
-                Status=cbStatus.Checked
+                Status=cbStatus.Checked,
+                BrojSjedista=int.Parse(txtBr.Text)
             };
             var idOD = cmbVoz.SelectedValue;
             if (int.TryParse(idOD.ToString(), out int id))

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class DrzavaService : BaseCrudeService<Model.Drzava, Model.Drzava, Drzava, Model.Drzava, Model.Drzava>
+    public class UlogeService : BaseCrudeService<Model.Uloge, Model.Uloge, Uloga, Model.Uloge, Model.Uloge>
     {
-        public DrzavaService(eBusContext _db, IMapper mapper) : base(_db, mapper)
+        public UlogeService(eBusContext _db, IMapper mapper) : base(_db, mapper)
         {
         }
+
     }
 }

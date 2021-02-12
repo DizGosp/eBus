@@ -41,26 +41,29 @@
             // 
             // txtVozKlasa
             // 
-            this.txtVozKlasa.Location = new System.Drawing.Point(141, 178);
+            this.txtVozKlasa.Location = new System.Drawing.Point(106, 145);
+            this.txtVozKlasa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtVozKlasa.Name = "txtVozKlasa";
-            this.txtVozKlasa.Size = new System.Drawing.Size(206, 22);
+            this.txtVozKlasa.Size = new System.Drawing.Size(156, 20);
             this.txtVozKlasa.TabIndex = 39;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 181);
+            this.label5.Location = new System.Drawing.Point(21, 147);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 16);
+            this.label5.Size = new System.Drawing.Size(80, 13);
             this.label5.TabIndex = 38;
             this.label5.Text = "Vozačka klasa:";
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Location = new System.Drawing.Point(272, 213);
+            this.btnSave.Location = new System.Drawing.Point(186, 189);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(76, 29);
             this.btnSave.TabIndex = 37;
             this.btnSave.Text = "Snimi";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -69,42 +72,47 @@
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
-            this.cbStatus.Location = new System.Drawing.Point(141, 216);
+            this.cbStatus.Location = new System.Drawing.Point(106, 196);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(67, 20);
+            this.cbStatus.Size = new System.Drawing.Size(59, 17);
             this.cbStatus.TabIndex = 36;
             this.cbStatus.Text = "Zauzet";
             this.cbStatus.UseVisualStyleBackColor = true;
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(141, 139);
+            this.txtPrezime.Location = new System.Drawing.Point(106, 113);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(206, 22);
+            this.txtPrezime.Size = new System.Drawing.Size(156, 20);
             this.txtPrezime.TabIndex = 32;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 142);
+            this.label3.Location = new System.Drawing.Point(21, 115);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 16);
+            this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 31;
             this.label3.Text = "Prezime:";
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(141, 101);
+            this.txtIme.Location = new System.Drawing.Point(106, 82);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(206, 22);
+            this.txtIme.Size = new System.Drawing.Size(156, 20);
             this.txtIme.TabIndex = 30;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 104);
+            this.label2.Location = new System.Drawing.Point(21, 84);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 16);
+            this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 29;
             this.label2.Text = "Ime:";
             // 
@@ -113,7 +121,8 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label1.Location = new System.Drawing.Point(114, 32);
+            this.label1.Location = new System.Drawing.Point(29, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(233, 37);
             this.label1.TabIndex = 28;
@@ -121,9 +130,9 @@
             // 
             // frmVozac
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 284);
+            this.ClientSize = new System.Drawing.Size(287, 243);
             this.Controls.Add(this.txtVozKlasa);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
@@ -133,6 +142,7 @@
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmVozac";
             this.Text = "frmVozac";
             this.ResumeLayout(false);

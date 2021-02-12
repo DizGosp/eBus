@@ -16,10 +16,10 @@ namespace eBus.WinUI.Korisnici
     public partial class frmKorisniciDetalji : Form
     {
         private readonly APIService _service = new APIService("Korisnici");
+        private readonly APIService _uloge = new APIService("Uloge");
         private int? _id = null;
-        private  byte[] CopyImageToByteArray = null;
         KorisniciInsertRequest request = new KorisniciInsertRequest();
-        public frmKorisniciDetalji(int? korisnikID=null)
+        public frmKorisniciDetalji(int? korisnikID = null)
         {
             InitializeComponent();
             _id = korisnikID;
@@ -33,61 +33,86 @@ namespace eBus.WinUI.Korisnici
                 return (Image.FromStream(ms));
             }
         }
-       
-        
+
+        public static byte[] GetByte(Image image)
+        {
+            MemoryStream ms = new MemoryStream();
+            image.Save(ms, ImageFormat.Png);
+
+            return ms.ToArray();
+        }
+
         private async void txtSnimiKor_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren())
-            {
-                request.Email = txtEmail.Text;
-                request.Ime = txtIme.Text;
-                request.Prezime = txtPrezime.Text;
-                request.KorisnickoIme = txtKorIme.Text;
-                request.pass = txtPass.Text;
-                request.confPass = txtConf.Text;
-                request.Status = cbAktivan.Checked;
-                if (CopyImageToByteArray != null)
-                {
-                    request.Slika = CopyImageToByteArray;
-                }
-                if (_id.HasValue)
-                {
-                    await _service.Update<Model.Korisnici>(_id, request);
-                }
-                else
-                {
-                    await _service.Insert<Model.Korisnici>(request);
-                }
-                MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
 
+            try
+            {
+                if (ValidateChildren())
+                {
+                    var roleList = cbKorisniciUloge.CheckedItems.Cast<Model.Uloge>().Select(x => x.UlogaId).ToList();
+
+                    request.Email = txtEmail.Text;
+                    request.Ime = txtIme.Text;
+                    request.Prezime = txtPrezime.Text;
+                    request.KorisnickoIme = txtKorIme.Text;
+                    request.pass = txtPass.Text;
+                    request.confPass = txtConf.Text;
+                    request.Status = cbAktivan.Checked;
+
+                    if (_id.HasValue)
+                    {
+                        request.Slika = GetByte(pbKorisnik.Image);
+                        await _service.Update<Model.Korisnici>(_id, request);
+                    }
+                    else
+                    {
+                        await _service.Insert<Model.Korisnici>(request);
+                    }
+                    MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private async void frmKorisniciDetalji_Load(object sender, EventArgs e)
         {
-            if (_id.HasValue) 
-            {
-                var korisnik = await _service.GetById<Model.Korisnici>(_id);
+            var lista = await _uloge.Get<List<Model.Uloge>>(null);
+            cbKorisniciUloge.DataSource = lista;
+            cbKorisniciUloge.DisplayMember = "Naziv";
 
-                txtEmail.Text = korisnik.Email;
-                txtIme.Text = korisnik.Ime;
-                txtPrezime.Text = korisnik.Prezime;
-                txtKorIme.Text = korisnik.KorisnickoIme;
-                CopyImageToByteArray = korisnik.Slika;
-                pbKorisnik.Image = GetImage(korisnik.Slika);
-                pbKorisnik.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (_id.HasValue)
+            {
+                try
+                {
+                    var korisnik = await _service.GetById<Model.Korisnici>(_id);
+                    txtEmail.Text = korisnik.Email;
+                    txtIme.Text = korisnik.Ime;
+                    txtPrezime.Text = korisnik.Prezime;
+                    txtKorIme.Text = korisnik.KorisnickoIme;
+                    txtImage.Text = "some data";
+                    pbKorisnik.Image = GetImage(korisnik.Slika);
+                    pbKorisnik.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Greska", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
         }
 
         private void txtIme_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtIme.Text)) 
+            if (string.IsNullOrWhiteSpace(txtIme.Text))
             {
                 errorProvider.SetError(txtIme, Properties.Resources.Validation_RequiredField);
                 e.Cancel = true;
             }
-            else 
+            else
             {
                 errorProvider.SetError(txtIme, null);
             }
@@ -100,7 +125,7 @@ namespace eBus.WinUI.Korisnici
                 errorProvider.SetError(txtEmail, "Obavezno polje!");
                 e.Cancel = true;
             }
-            
+
             else
             {
                 errorProvider.SetError(txtEmail, null);
@@ -120,21 +145,22 @@ namespace eBus.WinUI.Korisnici
             }
         }
 
-      
+
         private void btnAddImage_Click(object sender, EventArgs e)
         {
-            var result = openFileDialog1.ShowDialog();
+            var result = ofdKorisnikSlika.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                var fileName = openFileDialog1.FileName;
+                var fileName = ofdKorisnikSlika.FileName;
+
                 var file = File.ReadAllBytes(fileName);
+
                 request.Slika = file;
                 txtImage.Text = fileName;
 
-                Image img = Image.FromFile(fileName);
-                pbKorisnik.Image = img;
-                pbKorisnik.SizeMode = PictureBoxSizeMode.StretchImage;
+                Image image = Image.FromFile(fileName);
+                pbKorisnik.Image = image;
             }
         }
     }

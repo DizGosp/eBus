@@ -67,7 +67,7 @@ namespace eBus.WebAPI
                     }
                 });
             });
-            
+
             var connection = @"Server=.;Database=eBus;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<eBusContext>(options => options.UseSqlServer(connection));
 
@@ -77,18 +77,19 @@ namespace eBus.WebAPI
             services.AddAuthentication("BasicAuthentication")
                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
-            ////Methods and services
+            //Methods and services
             services.AddScoped<KorisniciServiceInterface, KorisniciService>();
             services.AddScoped<IPutnikService, PutnikService>();
             services.AddScoped<ICRUDService<Model.Autobus, Model.Autobus, Model.Autobus, Model.Autobus>, AutobusService>();
             services.AddScoped<ICRUDService<Model.Grad, Model.Grad, Model.Grad, Model.Grad>, GradService>();
             services.AddScoped<ICRUDService<Model.Drzava, Model.Drzava, Model.Drzava, Model.Drzava>, DrzavaService>();
-            services.AddScoped<ICRUDService<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest>,PutnikService>();
+            services.AddScoped<ICRUDService<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest>, PutnikService>();
             services.AddScoped<ICRUDService<Model.Vozaci, Model.Vozaci, Model.Vozaci, Model.Vozaci>, VozaciServis>();
             services.AddScoped<ICRUDService<Model.Karta, Model.Karta, Model.Karta, Model.Karta>, IKartaService>();
+            services.AddScoped<ICRUDService<Model.Uloge, Model.Uloge, Model.Uloge, Model.Uloge>, UlogeService>();
             services.AddScoped<ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista>, RezervacijaSjedistaService>();
             services.AddScoped<ICRUDService<Model.RedVoznje, RedVoznjeSearchRequest, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>, RedVoznjeService>();
-            
+
         } 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

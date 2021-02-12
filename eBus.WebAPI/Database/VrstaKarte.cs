@@ -9,12 +9,12 @@ namespace eBus.WebAPI.Database
     {
         public VrstaKarte()
         {
-            RezervacijaKartes = new HashSet<RezervacijaKarte>();
+            Karta = new HashSet<Kartum>();
         }
 
         public int VrstaKarteId { get; set; }
         public string VrstaKarte1 { get; set; }
 
-        public virtual ICollection<RezervacijaKarte> RezervacijaKartes { get; set; }
+        public virtual ICollection<Kartum> Karta { get; set; }
     }
 }

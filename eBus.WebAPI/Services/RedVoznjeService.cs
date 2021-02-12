@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class RedVoznjeService : BaseCrudeService<Model.RedVoznje,RedVoznjeSearchRequest, RedVoznje, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>
+    public class RedVoznjeService : BaseCrudeService<Model.RedVoznje, RedVoznjeSearchRequest, RedVoznje, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>
     {
-        public RedVoznjeService(eBusContext _db, IMapper mapper) : base(_db, mapper) 
+        public RedVoznjeService(eBusContext _db, IMapper mapper) : base(_db, mapper)
         {
         }
 
         public override List<Model.RedVoznje> Get(RedVoznjeSearchRequest search)
         {
             var query = _db.Set<RedVoznje>()
-                .Include(x=>x.Autobus)
-                .Include(x=>x.Korisnik)
-                .Include(x=>x.GradPolaskaNavigation)
+                .Include(x => x.Autobus)
+                .Include(x => x.Korisnik)
+                .Include(x => x.GradPolaskaNavigation)
                 .Include(x => x.GradDolaskaNavigation)
                 .AsQueryable();
 
-            if (search?.AutobusId.HasValue == true && search.AutobusId!=0) 
+            if (search?.AutobusId.HasValue == true && search.AutobusId != 0)
             {
                 query = query.Where(x => x.AutobusId == search.AutobusId);
             }
@@ -43,7 +43,7 @@ namespace eBus.WebAPI.Services
 
                 query = query.Where(e => e.DatumVrijemePolaska.Value.Date >= startdate && e.DatumVrijemeDolaska.Value.Date <= enddate);
             }
-      
+
 
             var list = query.ToList();
             return _mapper.Map<List<Model.RedVoznje>>(list);

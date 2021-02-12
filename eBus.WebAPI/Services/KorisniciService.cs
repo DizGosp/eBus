@@ -16,7 +16,7 @@ namespace eBus.WebAPI.Services
     {
         private readonly eBusContext _db;
         private readonly IMapper _mapper;
-        public KorisniciService (eBusContext c, IMapper m) { _db = c; _mapper = m; }
+        public KorisniciService(eBusContext c, IMapper m) { _db = c; _mapper = m; }
 
         public static string GenerateSalt()
         {
@@ -42,14 +42,14 @@ namespace eBus.WebAPI.Services
         public List<Model.Korisnici> Get()
         {
             var list = _db.Korisnicis.ToList();
-            return  _mapper.Map< List<Model.Korisnici>>(list);
+            return _mapper.Map<List<Model.Korisnici>>(list);
         }
 
         public List<Model.Korisnici> Get(KorisniciSearchRequest request)
         {
             var query = _db.Korisnicis.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(request?.ime)) 
+            if (!string.IsNullOrWhiteSpace(request?.ime))
             {
                 query = query.Where(x => x.Ime.StartsWith(request.ime));
             }
@@ -78,7 +78,7 @@ namespace eBus.WebAPI.Services
         {
             var entity = _mapper.Map<Database.Korisnici>(request);
 
-            if(request.pass != request.confPass) 
+            if (request.pass != request.confPass)
             {
                 throw new UserException("Pasvordi se ne poklapaju!");
             }
@@ -90,6 +90,17 @@ namespace eBus.WebAPI.Services
             _db.Korisnicis.Add(entity);
             _db.SaveChanges();
 
+            foreach (var item in request.Uloge)
+            {
+                var korisniciUloga = new Database.KorisniciUloge();
+                korisniciUloga.DatumIzmjene = DateTime.Now;
+                korisniciUloga.KorisnikId = entity.KorisnikId;
+                korisniciUloga.UlogaId = item;
+                _db.KorisniciUloges.Add(korisniciUloga);
+            }
+
+            _db.SaveChanges();
+
             return _mapper.Map<Model.Korisnici>(entity);
         }
 
@@ -99,9 +110,9 @@ namespace eBus.WebAPI.Services
             _mapper.Map(request, kor);
             _db.SaveChanges();
 
-            if (!string.IsNullOrWhiteSpace(request.pass)) 
+            if (!string.IsNullOrWhiteSpace(request.pass))
             {
-                if (request.pass != request.confPass) 
+                if (request.pass != request.confPass)
                 {
                     throw new UserException("Šifre se ne slažu!");
                 }
@@ -116,10 +127,10 @@ namespace eBus.WebAPI.Services
 
         public Model.Korisnici Authenticiraj(string username, string pass)
         {
-            var user = _db.Korisnicis.Include(x=>x.KorisniciUloges).ThenInclude(x=>x.Uloga).FirstOrDefault(x => x.KorisnickoIme == username);
+            var user = _db.Korisnicis.Include(x => x.KorisniciUloges).ThenInclude(x => x.Uloga).FirstOrDefault(x => x.KorisnickoIme == username);
 
-            
-            if(user != null) 
+
+            if (user != null)
             {
                 var Hesh = GenerateHash(user.LozinkaSalt, pass);
 

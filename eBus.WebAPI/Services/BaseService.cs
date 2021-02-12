@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch> where TDatabase:class
+    public class BaseService<TModel, TSearch, TDatabase> : IService<TModel, TSearch> where TDatabase : class
     {
         protected readonly eBusContext _db;
         protected readonly IMapper _mapper;

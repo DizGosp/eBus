@@ -20,7 +20,5 @@ namespace eBus.WebAPI.Database
 
         public virtual Autobu Autobus { get; set; }
         public virtual ICollection<Kartum> Karta { get; set; }
-
-
     }
 }

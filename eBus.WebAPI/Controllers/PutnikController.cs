@@ -13,13 +13,13 @@ namespace eBus.WebAPI.Controllers
     public class PutnikController : BaseCRUDController<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest>
     {
         private readonly IPutnikService _putnikSer;
-        public PutnikController(ICRUDService<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest> service,IPutnikService putnik) : base(service)
+        public PutnikController(ICRUDService<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest> service, IPutnikService putnik) : base(service)
         {
             _putnikSer = putnik;
         }
-        [HttpPost ("Registracija")]
+        [HttpPost("Registracija")]
         [AllowAnonymous]
-        public Model.Putnici Registracija(PutnikInsertRequest request) 
+        public Model.Putnici Registracija(PutnikInsertRequest request)
         {
             return _putnikSer.Registracija(request);
         }

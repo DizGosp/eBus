@@ -13,7 +13,7 @@ namespace eBus.WebAPI.Services
         List<Model.Korisnici> Get();
 
         Model.Korisnici Insert(KorisniciInsertRequest request);
-        Model.Korisnici Update(int id,KorisniciInsertRequest request);
+        Model.Korisnici Update(int id, KorisniciInsertRequest request);
 
         Model.Korisnici GetById(int id);
 

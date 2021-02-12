@@ -17,6 +17,7 @@ namespace eBus.WebAPI.Database
         public int? VozacId { get; set; }
         public string NazivAutobusa { get; set; }
         public string Klasa { get; set; }
+        public int BrojSjedista { get; set; }
         public bool? Status { get; set; }
 
         public virtual Vozac Vozac { get; set; }

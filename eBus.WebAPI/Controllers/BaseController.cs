@@ -9,20 +9,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eBus.WebAPI.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class BaseController<T,TSearh> : ControllerBase
+    public class BaseController<T, TSearh> : ControllerBase
     {
-        private readonly IService<T,TSearh> _service;
-        public BaseController(IService<T,TSearh> service)
+        private readonly IService<T, TSearh> _service;
+        public BaseController(IService<T, TSearh> service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public List<T> Get([FromQuery]TSearh request)
+        public List<T> Get([FromQuery] TSearh request)
         {
             return _service.Get(request);
         }

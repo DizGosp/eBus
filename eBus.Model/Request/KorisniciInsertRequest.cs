@@ -27,6 +27,6 @@ namespace eBus.Model.Request
         public string confPass { get; set; }
         public bool? Status { get; set; }
         public byte[] Slika { get; set; }
-
+        public List<int> Uloge { get; set; } = new List<int>();
     }
 }

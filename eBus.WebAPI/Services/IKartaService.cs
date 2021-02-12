@@ -17,7 +17,7 @@ namespace eBus.WebAPI.Services
             var query = _db.Set<Kartum>()
                 .AsQueryable();
 
-            if (search.DatumIzdavanja.HasValue==true)
+            if (search.DatumIzdavanja.HasValue == true)
             {
                 query = query.Where(x => x.DatumIzdavanja == search.DatumIzdavanja);
             }
