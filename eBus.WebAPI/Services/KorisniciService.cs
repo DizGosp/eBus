@@ -72,8 +72,6 @@ namespace eBus.WebAPI.Services
             return _mapper.Map<Model.Korisnici>(_db.Korisnicis.Find(id));
         }
 
-
-
         public Model.Korisnici Insert(KorisniciInsertRequest request)
         {
             var entity = _mapper.Map<Database.Korisnici>(request);

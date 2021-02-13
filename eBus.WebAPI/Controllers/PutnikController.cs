@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eBus.WebAPI.Controllers
 {
+    
     public class PutnikController : BaseCRUDController<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest>
     {
         private readonly IPutnikService _putnikSer;
@@ -17,8 +18,8 @@ namespace eBus.WebAPI.Controllers
         {
             _putnikSer = putnik;
         }
-        [HttpPost("Registracija")]
         [AllowAnonymous]
+        [HttpPost("Registracija")]
         public Model.Putnici Registracija(PutnikInsertRequest request)
         {
             return _putnikSer.Registracija(request);

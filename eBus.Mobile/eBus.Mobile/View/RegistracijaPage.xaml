@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:eBus.Mobile.Converter" xmlns:vm="clr-namespace:eBus.Mobile.ViewModel"
+             x:Class="eBus.Mobile.View.RegistracijaPage">
+
+
+    <ContentPage.BindingContext>
+        <vm:RegistracijaViewModel></vm:RegistracijaViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="Firebrick" >
+                <Label Text="Registrirajte se za usluge eBus-a!"
+                HorizontalOptions="CenterAndExpand" FontSize="18" 
+                       TextColor="White"/>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="CenterAndExpand" Padding="10">
+                <ScrollView VerticalScrollBarVisibility="Default">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Text="Ime" VerticalOptions="Center" FontSize="18"></Label>
+                        <Entry x:Name="Ime" Text="{Binding Ime}" Grid.Column="1"></Entry>
+
+                        <Label  Text="Prezime" Grid.Row="1" VerticalOptions="Center" FontSize="18"></Label>
+                        <Entry x:Name="Prezime" Text="{Binding Prezime}" Grid.Row="1" Grid.Column="1"></Entry>
+
+                        <Label  Text="Datum rodjenja" Grid.Row="2" VerticalOptions="Center" FontSize="18"></Label>
+                        <DatePicker x:Name="DatumRodjenja" Grid.Row="2" Grid.Column="1" Date="{Binding DatumRodjenja}"></DatePicker>
+
+                        <Label  Text="Email" Grid.Row="3" VerticalOptions="Center" FontSize="18"></Label>
+                        <Entry x:Name="Email" Text="{Binding Email}" Grid.Row="3" Grid.Column="1" ></Entry>
+
+                        <Label  Text="Slika" Grid.Row="4" VerticalOptions=" Center" FontSize="18"></Label>
+                        <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Vertical">
+                            <Image WidthRequest="100"  Source="{Binding Slika,Converter={StaticResource imgConv}}"></Image>
+                            <Button  Text="Upload sliku"
+                            Clicked="Button_Clicked"></Button>
+                        </StackLayout>
+
+
+                        <Label  Text="Korisničko ime" Grid.Row="5" VerticalOptions="Center" FontSize="18"></Label>
+                        <Entry x:Name="KorinsickoIme" Text="{Binding KorisnickoIme}" Grid.Row="5" Grid.Column="1"></Entry>
+
+                        <Label  Text="Lozinka" Grid.Row="6" VerticalOptions="Center" FontSize="18"></Label>
+                        <Entry x:Name="Lozinka" Text="{Binding Lozinka}" Grid.Row="6" Grid.Column="1" IsPassword="true"></Entry>
+
+                        <Label  Text="Potvrdi lozinku" Grid.Row="7" VerticalOptions="Center" FontSize="18"></Label>
+                        <Entry x:Name="PotvrdiLozinku" Text="{Binding PotvrdiLozinku}" Grid.Row="7" Grid.Column="1" IsPassword="true"></Entry>
+
+                        <Button Text="Registriraj" Grid.ColumnSpan="2" Grid.Row="8" Clicked="Button_Registrujse" ></Button>
+                        <Button Text="Nazad" Grid.Row="9" Clicked="Button_Clicked_1"></Button>
+                    </Grid>
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+
+</ContentPage>

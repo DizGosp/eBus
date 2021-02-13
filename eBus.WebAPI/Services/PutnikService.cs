@@ -36,7 +36,6 @@ namespace eBus.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-
         public Model.Putnici Authenticiraj(string username, string pass)
         {
             var user = _db.Putniks.FirstOrDefault(x => x.KorisnickoIme == username);
@@ -59,14 +58,14 @@ namespace eBus.WebAPI.Services
         {
             var entity = _mapper.Map<Database.Putnik>(request);
 
-            if (request.Pass != request.confPass)
+            if (request.Lozinka != request.PotvrdiLozinku)
             {
                 throw new UserException("Pasvordi se ne poklapaju!");
             }
 
 
             entity.LozinkaSalt = GenerateSalt();
-            entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Pass);
+            entity.LozinkaHash = GenerateHash(entity.LozinkaSalt, request.Lozinka);
 
             _db.Putniks.Add(entity);
             _db.SaveChanges();

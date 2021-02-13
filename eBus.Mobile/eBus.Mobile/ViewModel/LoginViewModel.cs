@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eBus.Mobile.View;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,12 @@ namespace eBus.Mobile.ViewModel
         public LoginViewModel() 
         {
             LoginCommand = new Command(async ()=>await Login());
-           
+            RegistracijaCommand = new Command(Registracija);
+        }
+
+        async void Registracija()
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new RegistracijaPage());
         }
 
         string _username = string.Empty;
@@ -29,7 +35,7 @@ namespace eBus.Mobile.ViewModel
             get { return _pass; }
             set { SetProperty(ref _pass, value); }
         }
-
+        public ICommand RegistracijaCommand { get; set; }
         public ICommand LoginCommand { get; set; }
 
         async Task Login() 

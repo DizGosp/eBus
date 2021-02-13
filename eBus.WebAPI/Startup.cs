@@ -100,7 +100,7 @@ namespace eBus.WebAPI
                 app.UseDeveloperExceptionPage();
             }
            
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
@@ -120,15 +120,6 @@ namespace eBus.WebAPI
             {
                 endpoints.MapControllers();
             });
-
-           
-            
-
-           
-           
-            //
-           
-            
 
         }
     }

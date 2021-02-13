@@ -17,9 +17,12 @@ namespace eBus.Model.Request
         [Required]
         [MinLength(4)]
         public string KorisnickoIme { get; set; }
-        //public byte[] Slika { get; set; }
+        
+        public DateTime DatumRodjenja { get; set; }
+        public DateTime DatumRegistracije { get; set; }
+        public byte[] Slika { get; set; }
 
-        public string Pass { get; set; }
-        public string confPass { get; set; }
+        public string Lozinka { get; set; }
+        public string PotvrdiLozinku { get; set; }
     }
 }

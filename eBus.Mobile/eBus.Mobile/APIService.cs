@@ -16,7 +16,7 @@ namespace eBus.Mobile
         private readonly string _route;
 
 #if DEBUG
-        string _apiUrl = "https://localhost:44329/api";
+        string _apiUrl = "http://localhost:44331/api";
 #endif
 #if RELEASE
 string _apiUrl = "https://WebSite/api";
@@ -103,6 +103,31 @@ string _apiUrl = "https://WebSite/api";
             }
            
         }
+
+        public async Task<T> Registracija<T>(object input)
+        {
+            try
+            {
+                var r = "Registracija";
+                var url = $"{_apiUrl}/{_route}/{r}/";
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(input).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+                var stringBuilder = new StringBuilder();
+                foreach (var er in errors)
+                {
+                    stringBuilder.AppendLine($"{er.Key},{string.Join(",", er.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Greška", stringBuilder.ToString(), "OK");
+                throw;
+            }
+
+        }
+
+
 
     }
 }

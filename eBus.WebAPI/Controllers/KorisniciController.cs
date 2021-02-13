@@ -1,5 +1,5 @@
 ﻿using eBus.Model.Request;
-//using eBus.WebAPI.Database;
+using eBus.WebAPI.Database;
 using eBus.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class KorisniciController : ControllerBase
@@ -44,6 +44,8 @@ namespace eBus.WebAPI.Controllers
         {
             return ksi.Insert(request);
         }
+
+
         [HttpPut("{id}")]
         public Model.Korisnici Update(int id, KorisniciInsertRequest request)
         {

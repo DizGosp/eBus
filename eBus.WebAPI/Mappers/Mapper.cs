@@ -29,6 +29,7 @@ namespace eBus.WebAPI.Mappers
             CreateMap<Database.Putnik, Model.Korisnici>().ReverseMap();
             CreateMap<Database.Putnik, Model.Putnici>().ReverseMap();
             CreateMap<Database.Putnik, Model.Request.PutnikInsertRequest>().ReverseMap();
+            CreateMap<Database.Putnik, Model.Request.PutnikUpsertRequest>().ReverseMap();
             CreateMap<Model.Putnici, Model.Request.PutnikInsertRequest>().ReverseMap(); //Putnik
 
             CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();  //Drava

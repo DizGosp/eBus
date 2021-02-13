@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eBus.Mobile.ViewModel"
+             x:Class="eBus.Mobile.View.RedVoznjePage">
+
+    <ContentPage.BindingContext>
+        <ViewModel:RedVoznjeModel></ViewModel:RedVoznjeModel>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Redovi voznje:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <ListView ItemsSource="{Binding RedVoznjeList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Naziv}"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemTextstyle}"
+                                       FontSize="16"/>
+
+                                <Label Text="{Binding Cijena}"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemTextstyle}"
+                                       FontSize="16"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
