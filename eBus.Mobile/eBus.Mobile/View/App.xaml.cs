@@ -1,23 +1,17 @@
-﻿using eBus.Mobile.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using eBus.Mobile.View;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+using eBus.Mobile.Service;
+using eBus.Mobile;
 
-namespace eBus.Mobile
+namespace eBus.Mobile.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
-            MainPage =new LoginPage();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

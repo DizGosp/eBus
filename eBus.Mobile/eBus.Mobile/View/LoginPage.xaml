@@ -18,7 +18,12 @@
             <Label Text="Prijava:"
                 HorizontalOptions="FillAndExpand" />
             <Entry Text="{Binding Password}"></Entry>
-            <Button  Command="{Binding LoginCommand}" Text="Prijava"></Button>
+            <Label Text="Prijavite se na svoj račun ->"></Label>
+            <Label Text="Login" TextColor="Blue" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer  Command="{Binding LoginCommand}"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Nemate svoj račun ->"></Label>
                 <Label Text="Registracija" TextColor="Blue" >

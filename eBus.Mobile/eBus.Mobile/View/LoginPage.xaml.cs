@@ -15,6 +15,18 @@ namespace eBus.Mobile.View
         public LoginPage()
         {
             InitializeComponent();
+            
+        }
+
+        private void Entry_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
     }
 }

@@ -9,14 +9,7 @@ namespace eBus.Mobile.Model
 
         Browse,
         About,
-        Profil,
-        Novosti,
-        Ocjena,
-        Notifikacija,
-        Linija,
-        Rezervacija,
-        Preporuke,
-        Odjava
+        RedVoznje
     }
     public class HomeMenuItem
     {

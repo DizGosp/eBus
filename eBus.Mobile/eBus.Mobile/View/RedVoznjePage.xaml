@@ -13,26 +13,48 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <ListView ItemsSource="{Binding RedVoznjeList}">
+            <Label Text="Grad polaska::"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradPolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
+
+            <Label Text="Destinacija:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradDolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
+            <ListView ItemsSource="{Binding RedVoznjeList}"  VerticalScrollBarVisibility="Always">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Naziv}"
-                                       LineBreakMode="NoWrap"
-                                       Style="{DynamicResource ListItemTextstyle}"
-                                       FontSize="16"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                
+                                
+                                <Label Text="{Binding Naziv}" Grid.Column="0"></Label>
+                                <Label Text="{Binding Autobus}" Grid.Column="1"></Label>
+                                <Label Text="{Binding GradPolaskaNavigation}" Grid.Column="2"></Label>
+                                <Label Text="{Binding GradDolaskaNavigation}" Grid.Column="3"></Label>
+                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Column="4"></Label>
 
-                                <Label Text="{Binding Cijena}"
-                                       LineBreakMode="NoWrap"
-                                       Style="{DynamicResource ListItemTextstyle}"
-                                       FontSize="16"/>
-                            </StackLayout>
+                            </Grid>
                         </ViewCell>
+
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using eBus.Mobile.View;
+﻿
+using eBus.Mobile.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,6 +39,7 @@ namespace eBus.Mobile.ViewModel
         public ICommand RegistracijaCommand { get; set; }
         public ICommand LoginCommand { get; set; }
 
+        [Obsolete]
         async Task Login() 
         {
             IsBusy = true;
@@ -47,11 +49,11 @@ namespace eBus.Mobile.ViewModel
             try
             {
                 await _ser.Get<dynamic>(null);
-                Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new eBus.Mobile.View.MainPage();
             }
             catch (Exception ex)
             {
-                
+                await Application.Current.MainPage.DisplayAlert(" ", "Korisničko ime ili lozinka pogrešni", "OK");
                 throw;
             }
 
