@@ -7,10 +7,12 @@ namespace eBus.WebAPI.Database
 {
     public partial class Autobu
     {
+   
         public Autobu()
         {
             RedVoznjes = new HashSet<RedVoznje>();
             RezervacijaSjedista = new HashSet<RezervacijaSjedistum>();
+            Ocjenas = new HashSet<Ocjena>();
         }
 
         public int AutobusId { get; set; }
@@ -23,5 +25,6 @@ namespace eBus.WebAPI.Database
         public virtual Vozac Vozac { get; set; }
         public virtual ICollection<RedVoznje> RedVoznjes { get; set; }
         public virtual ICollection<RezervacijaSjedistum> RezervacijaSjedista { get; set; }
+        public virtual ICollection<Ocjena> Ocjenas { get; set; }
     }
 }

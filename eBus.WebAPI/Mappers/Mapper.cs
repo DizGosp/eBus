@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eBus.Model;
 using eBus.Model.Request;
 using System;
 using System.Collections.Generic;
@@ -26,19 +27,38 @@ namespace eBus.WebAPI.Mappers
 
             CreateMap<Database.Gradovi, Model.Grad>().ReverseMap();  //Grad
 
-            CreateMap<Database.Putnik, Model.Korisnici>().ReverseMap();
             CreateMap<Database.Putnik, Model.Putnici>().ReverseMap();
-            CreateMap<Database.Putnik, Model.Request.PutnikInsertRequest>().ReverseMap();
-            CreateMap<Database.Putnik, Model.Request.PutnikUpsertRequest>().ReverseMap();
-            CreateMap<Model.Putnici, Model.Request.PutnikInsertRequest>().ReverseMap(); //Putnik
+            CreateMap<Model.Putnici, Model.Request.PutnikSearchRequest>().ReverseMap();
+            CreateMap<Model.Putnici, Model.Request.PutnikInsertRequest>().ReverseMap();
+            CreateMap<Model.Putnici, Model.Request.PutnikUpsertRequest>().ReverseMap();//Putnik
 
             CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();  //Drava
 
             CreateMap<Database.Vozac, Model.Vozaci>().ReverseMap(); //Vozac
 
-            CreateMap<Database.Kartum, Model.Karta>().ReverseMap(); //Karta
+            CreateMap<Database.Kartum, Model.Karta>().ReverseMap();
+            CreateMap<Model.Karta, Model.Request.KartaInsertRequest>().ReverseMap();
+            CreateMap<Database.Kartum, Model.Request.KartaInsertRequest>().ReverseMap(); //Karta
+
+            CreateMap<Database.VrstaKarte, Model.VrstaKarte>().ReverseMap(); //VrstaKarte
 
             CreateMap<Database.RezervacijaSjedistum, Model.RezervacijaSjedista>().ReverseMap(); //RezervacijaSjedista
+
+            CreateMap<Database.RezervacijaKarte, Model.RezervacijaKarte>().ReverseMap();
+            CreateMap<Database.RezervacijaKarte, Model.Request.RezervacijaInsertRequest>().ReverseMap();
+            CreateMap<Model.RezervacijaKarte, Model.Request.RezervacijaInsertRequest>().ReverseMap();//RezervacijaKarte
+
+            CreateMap<Database.Notifikacije, Model.Notifikacije>();
+            CreateMap<NotifikacijeUpsertRequest, Database.Notifikacije>(); //Notifikacije
+
+            CreateMap<Database.Novosti, Model.Novosti>();
+            CreateMap<NovostiUpsertRequset, Database.Novosti>(); //Novosti
+
+            CreateMap<Database.PutnikNotifikacije, Model.PutnikNotifikacije>();
+            CreateMap<PutnikNotifikacijeUpsertRequest, Database.PutnikNotifikacije>(); //PutnikNotifikacije
+
+            CreateMap<Database.Ocjena, Model.Ocjena>();
+            CreateMap<OcjenaInsertRequest, Database.Ocjena>(); //Novosti
 
 
         }

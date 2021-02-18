@@ -10,9 +10,14 @@ namespace eBus.Model
         public int? RezervacijaSjedistaId { get; set; }
         public DateTime? DatumIzdavanja { get; set; }
         public string BrojKarte { get; set; }
-        public DateTime? VrijemePolaska { get; set; }
-        public DateTime? VrijemeDolaska { get; set; }
+        public int? VrstaKarteId { get; set; }
 
-        //public virtual RezervacijaSjedistum RezervacijaSjedista { get; set; }
+
+        public override string ToString()
+        {
+            return "Datum izdavanja: "+DatumIzdavanja.Value.ToString() +" - broj karte: "+BrojKarte;
+        }
+
+        public virtual RezervacijaSjedista RezervacijaSjedista { get; set; }
     }
 }

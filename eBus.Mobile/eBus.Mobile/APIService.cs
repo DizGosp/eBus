@@ -127,7 +127,33 @@ string _apiUrl = "https://WebSite/api";
 
         }
 
+        public async Task<T> GetUser<T>(object search)
+        {
 
+            try
+            {
+                var r = "GetUser";
+                var url = $"{_apiUrl}/{_route}/{r}";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
+
+                var result = await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+                return result;
+            }
+            catch (FlurlHttpException ex)
+            {
+                if (ex.StatusCode == (int)System.Net.HttpStatusCode.Unauthorized)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste authentificirani", "OK");
+                }
+                throw;
+            }
+
+        }
 
     }
 }

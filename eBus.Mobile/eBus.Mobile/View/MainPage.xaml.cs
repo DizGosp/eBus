@@ -24,8 +24,8 @@ namespace eBus.Mobile.View
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
-            //MenuPages.Add((int)MenuItemType.Notifikacija, (NavigationPage)Detail);
+            //MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Notifikacija, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -34,15 +34,20 @@ namespace eBus.Mobile.View
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.RedVoznje:
                         MenuPages.Add(id, new NavigationPage(new RedVoznjePage()));
                         break;
+                    case (int)MenuItemType.Karte:
+                        MenuPages.Add(id, new NavigationPage(new KartePage()));
+                        break;
+                    case (int)MenuItemType.Novosti:
+                        MenuPages.Add(id, new NavigationPage(new NovostiPage()));
+                        break;
+
+
                 }
 
                 var newPage = MenuPages[id];

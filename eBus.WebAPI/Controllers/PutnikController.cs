@@ -18,12 +18,21 @@ namespace eBus.WebAPI.Controllers
         {
             _putnikSer = putnik;
         }
+
+        [HttpGet("GetUser")]
+        public Model.Putnici GetUser([FromQuery] PutnikSearchRequest request)
+        {
+            return _putnikSer.GetUser(request);
+        }
+        
         [AllowAnonymous]
         [HttpPost("Registracija")]
         public Model.Putnici Registracija(PutnikInsertRequest request)
         {
             return _putnikSer.Registracija(request);
         }
+
+
 
     }
 }

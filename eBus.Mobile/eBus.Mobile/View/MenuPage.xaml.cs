@@ -1,6 +1,7 @@
 ﻿using eBus.Mobile.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace eBus.Mobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
+    [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
       
@@ -25,11 +26,12 @@ namespace eBus.Mobile.View
 
             menuItems = new List<HomeMenuItem>
             {
-                //new HomeMenuItem {Id = MenuItemType.Notifikacija, Title="Notifikacije" },
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+                new HomeMenuItem {Id = MenuItemType.Notifikacija, Title="Notifikacije" },
+                new HomeMenuItem {Id = MenuItemType.Novosti, Title="Novosti" },
+                //new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.RedVoznje, Title="RedVoznje" }
-                //new HomeMenuItem {Id = MenuItemType.Linija, Title="Linije" },
+                new HomeMenuItem {Id = MenuItemType.RedVoznje, Title="Red voznje" },
+                new HomeMenuItem {Id = MenuItemType.Karte, Title="Karte" },
                 //new HomeMenuItem {Id = MenuItemType.Rezervacija, Title="Rezervacije" },
                 //new HomeMenuItem {Id = MenuItemType.Ocjena, Title="Ocjena" },
                 //new HomeMenuItem {Id = MenuItemType.Profil, Title="Profil" },

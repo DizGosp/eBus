@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eBus.WebAPI.Controllers
 {
-    public class KartaController : BaseCRUDController<Model.Karta, Model.Karta, Model.Karta, Model.Karta>
+    public class KartaController : BaseCRUDController<Model.Karta, Model.Request.KartaSearchRequest, Model.Request.KartaInsertRequest, Model.Karta>
     {
-        public KartaController(ICRUDService<Model.Karta, Model.Karta, Model.Karta, Model.Karta> service) : base(service)
+        public KartaController(ICRUDService<Model.Karta, Model.Request.KartaSearchRequest, Model.Request.KartaInsertRequest, Model.Karta> service) : base(service)
         {
         }
     }

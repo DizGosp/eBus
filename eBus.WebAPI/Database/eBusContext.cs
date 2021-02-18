@@ -216,17 +216,17 @@ namespace eBus.WebAPI.Database
 
                 entity.Property(e => e.PutnikId).HasColumnName("PutnikID");
 
-                entity.Property(e => e.RedVoznjeId).HasColumnName("RedVoznjeID");
+                entity.Property(e => e.AutobusID).HasColumnName("RedVoznjeID");
 
                 entity.HasOne(d => d.Putnik)
                     .WithMany(p => p.Ocjenas)
                     .HasForeignKey(d => d.PutnikId)
                     .HasConstraintName("FK_Putnik3ID");
 
-                entity.HasOne(d => d.RedVoznje)
+                entity.HasOne(d => d.Autobus)
                     .WithMany(p => p.Ocjenas)
-                    .HasForeignKey(d => d.RedVoznjeId)
-                    .HasConstraintName("FK_RedVoznje1ID");
+                    .HasForeignKey(d => d.AutobusID)
+                    .HasConstraintName("FK_VoziloID");
             });
 
             modelBuilder.Entity<Putnik>(entity =>

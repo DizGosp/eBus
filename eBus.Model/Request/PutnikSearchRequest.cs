@@ -8,5 +8,7 @@ namespace eBus.Model.Request
     {
         public string ime { get; set; }
         public string prezime { get; set; }
+
+        public string userName { get; set; }
     }
 }

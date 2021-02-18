@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eBus.Mobile.ViewModel"
+             x:Class="eBus.Mobile.View.KartePage">
+
+    <ContentPage.BindingContext>
+        <ViewModel:KarteViewModel></ViewModel:KarteViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="WRezervacije: "
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+
+            <ListView ItemsSource="{Binding Rezervacije}"  VerticalScrollBarVisibility="Always">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Podaci:" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                    <Label Text="{Binding Karta}"
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                    <Label Text="{Binding Putnici}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    <Label Text="{Binding DatumKreiranja}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    <Label Text="{Binding DatumIsteka}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    <Label Text="{Binding Otkazana}" 
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="13" />
+                                    <Label Text="Unesite ocjenu:"
+                HorizontalOptions="FillAndExpand" />
+                                    <Entry Text="{Binding Ocjena}"></Entry>
+                                    <Label Text="Unesite komentar:"
+                HorizontalOptions="FillAndExpand" />
+                                    <Entry Text="{Binding Komentar}"></Entry>
+                                    <Button Text="Ocijeni" Clicked="Button_Clicked" CommandParameter="{Binding Karta.RezervacijaSjedista.Autobus.AutobusId }" ></Button>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

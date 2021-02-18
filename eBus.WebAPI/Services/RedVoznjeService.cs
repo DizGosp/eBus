@@ -44,6 +44,13 @@ namespace eBus.WebAPI.Services
                 query = query.Where(e => e.DatumVrijemePolaska.Value.Date >= startdate && e.DatumVrijemeDolaska.Value.Date <= enddate);
             }
 
+            if (search.DatumVrijemePolaska != null && search.DatumVrijemeDolaska == null) 
+            {
+                var date = search.DatumVrijemePolaska.Value.Date;
+
+                query = query.Where(e => e.DatumVrijemeDolaska.Value.Date.Year == date.Year && e.DatumVrijemeDolaska.Value.Date.Month == date.Month && e.DatumVrijemeDolaska.Value.Date.Day == date.Day);
+            }
+
 
             var list = query.ToList();
             return _mapper.Map<List<Model.RedVoznje>>(list);

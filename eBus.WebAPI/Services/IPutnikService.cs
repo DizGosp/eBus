@@ -10,5 +10,7 @@ namespace eBus.WebAPI.Services
     {
         Model.Putnici Authenticiraj(string username, string pass);
         Model.Putnici Registracija(PutnikInsertRequest request);
+        Model.Putnici GetUser(PutnikSearchRequest request);
+
     }
 }

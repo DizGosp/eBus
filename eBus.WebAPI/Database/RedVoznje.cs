@@ -7,10 +7,6 @@ namespace eBus.WebAPI.Database
 {
     public partial class RedVoznje
     {
-        public RedVoznje()
-        {
-            Ocjenas = new HashSet<Ocjena>();
-        }
 
         public int RedVoznjeId { get; set; }
         public string Naziv { get; set; }
@@ -28,6 +24,5 @@ namespace eBus.WebAPI.Database
         public virtual Gradovi GradDolaskaNavigation { get; set; }
         public virtual Gradovi GradPolaskaNavigation { get; set; }
         public virtual Korisnici Korisnik { get; set; }
-        public virtual ICollection<Ocjena> Ocjenas { get; set; }
     }
 }

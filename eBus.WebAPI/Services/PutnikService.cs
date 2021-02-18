@@ -2,6 +2,7 @@
 using eBus.Model.Request;
 using eBus.WebAPI.Database;
 using eBus.WebAPI.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,46 @@ namespace eBus.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
+        public  List<Model.Korisnici> Get(KorisniciSearchRequest request)
+        {
+            var query = _db.Korisnicis.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.ime))
+            {
+                query = query.Where(x => x.Ime.StartsWith(request.ime));
+            }
+            if (!string.IsNullOrWhiteSpace(request?.prezime))
+            {
+                query = query.Where(x => x.Prezime.StartsWith(request.prezime));
+            }
+            if (!string.IsNullOrWhiteSpace(request?.userName))
+            {
+                query = query.Where(x => x.KorisnickoIme.StartsWith(request.userName));
+            }
+
+            var list = query.ToList();
+
+            return _mapper.Map<List<Model.Korisnici>>(list);
+        }
+        public  Model.Putnici GetUser(PutnikSearchRequest search)
+        {
+            var query = _db.Set<Putnik>().AsQueryable();
+
+            if (search?.ime != null)
+            {
+                query = query.Where(x => x.Ime == search.ime);
+            }
+            if (search?.prezime != null)
+            {
+                query = query.Where(x => x.Prezime == search.prezime);
+            }
+            if (search?.userName != null)
+            {
+                query = query.Where(x => x.KorisnickoIme == search.userName);
+            }
+            var list = query.ToList();
+            return _mapper.Map<Model.Putnici>(list);
+        }
         public Model.Putnici Authenticiraj(string username, string pass)
         {
             var user = _db.Putniks.FirstOrDefault(x => x.KorisnickoIme == username);

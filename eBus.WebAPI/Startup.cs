@@ -85,9 +85,15 @@ namespace eBus.WebAPI
             services.AddScoped<ICRUDService<Model.Drzava, Model.Drzava, Model.Drzava, Model.Drzava>, DrzavaService>();
             services.AddScoped<ICRUDService<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest>, PutnikService>();
             services.AddScoped<ICRUDService<Model.Vozaci, Model.Vozaci, Model.Vozaci, Model.Vozaci>, VozaciServis>();
-            services.AddScoped<ICRUDService<Model.Karta, Model.Karta, Model.Karta, Model.Karta>, IKartaService>();
+            services.AddScoped<ICRUDService<Model.Karta, Model.Request.KartaSearchRequest, Model.Request.KartaInsertRequest, Model.Karta>, IKartaService>();
+            services.AddScoped<ICRUDService<Model.VrstaKarte, Model.VrstaKarte, Model.VrstaKarte, Model.VrstaKarte>, VrstaKarteService>();
             services.AddScoped<ICRUDService<Model.Uloge, Model.Uloge, Model.Uloge, Model.Uloge>, UlogeService>();
+            services.AddScoped<ICRUDService<Model.Ocjena, Model.Request.OcjenaSearchRequest, Model.Request.OcjenaInsertRequest, Model.Ocjena>, OcjenaService>();
+            services.AddScoped<ICRUDService<Model.Novosti, Model.Request.NovostiSearchRequest, Model.Request.NovostiUpsertRequset, Model.Request.NovostiUpsertRequset>, NovostiService>();
+            services.AddScoped<ICRUDService<Model.Notifikacije, Model.Request.NotifikacijeSearchRequest, Model.Request.NotifikacijeUpsertRequest, Model.Request.NotifikacijeUpsertRequest>, NotifikacijaService>();
+            services.AddScoped<ICRUDService<Model.PutnikNotifikacije, Model.Request.PutnikNotifikacijeSearchRequest, Model.Request.PutnikNotifikacijeUpsertRequest, Model.Request.PutnikNotifikacijeUpsertRequest>, PutnikNotifikacijeService>();
             services.AddScoped<ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista>, RezervacijaSjedistaService>();
+            services.AddScoped<ICRUDService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, Model.Request.RezervacijaInsertRequest, Model.RezervacijaKarte>, RezervacijaKarteService>();
             services.AddScoped<ICRUDService<Model.RedVoznje, RedVoznjeSearchRequest, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>, RedVoznjeService>();
 
         } 
