@@ -9,10 +9,9 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="WRezervacije: "
+            <Label Text="Rezervacije: "
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-
 
             <ListView ItemsSource="{Binding Rezervacije}"  VerticalScrollBarVisibility="Always">
                 <ListView.ItemTemplate>
@@ -44,12 +43,6 @@
                                            LineBreakMode="NoWrap"
                                            Style="{DynamicResource ListItemDetailTextStyle}"
                                            FontSize="13" />
-                                    <Label Text="Unesite ocjenu:"
-                HorizontalOptions="FillAndExpand" />
-                                    <Entry Text="{Binding Ocjena}"></Entry>
-                                    <Label Text="Unesite komentar:"
-                HorizontalOptions="FillAndExpand" />
-                                    <Entry Text="{Binding Komentar}"></Entry>
                                     <Button Text="Ocijeni" Clicked="Button_Clicked" CommandParameter="{Binding Karta.RezervacijaSjedista.Autobus.AutobusId }" ></Button>
                                 </StackLayout>
                             </StackLayout>
@@ -57,7 +50,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </StackLayout>
         
     </ContentPage.Content>

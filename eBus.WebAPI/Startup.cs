@@ -95,6 +95,7 @@ namespace eBus.WebAPI
             services.AddScoped<ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista>, RezervacijaSjedistaService>();
             services.AddScoped<ICRUDService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, Model.Request.RezervacijaInsertRequest, Model.RezervacijaKarte>, RezervacijaKarteService>();
             services.AddScoped<ICRUDService<Model.RedVoznje, RedVoznjeSearchRequest, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>, RedVoznjeService>();
+            services.AddScoped<ISistemPreporuke, SistemPreporukeService>();
 
         } 
 

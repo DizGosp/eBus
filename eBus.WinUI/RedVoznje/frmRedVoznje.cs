@@ -105,21 +105,18 @@ namespace eBus.WinUI.RedVoznje
         {
             frmGradovi frm = new frmGradovi(_korId);
             frm.Show();
-            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             frmGradovi frm = new frmGradovi(_korId);
-            frm.Show();
-            this.Close();
+            frm.Show();  
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             frmAutobus frm = new frmAutobus(_korId);
             frm.Show();
-            this.Close();
         }
     }
 }

@@ -48,6 +48,7 @@ namespace eBus.Mobile.View
                         break;
 
 
+
                 }
 
                 var newPage = MenuPages[id];

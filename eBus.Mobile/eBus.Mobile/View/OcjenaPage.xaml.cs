@@ -11,14 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace eBus.Mobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class KartePage : ContentPage
+    public partial class Ocjena : ContentPage
     {
-        private KarteViewModel model = null;
-        public KartePage()
+        private OcjenaViewModel model = null;
+        public Ocjena(int id)
         {
             InitializeComponent();
-            BindingContext = model = new KarteViewModel();
-            
+            BindingContext = model = new OcjenaViewModel(id);
         }
 
         protected async override void OnAppearing()
@@ -27,15 +26,9 @@ namespace eBus.Mobile.View
             await model.Init();
         }
 
-        private async void  Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
-
-
-            Button button = (Button)sender;
-            int id = int.Parse(button.CommandParameter.ToString());
-
-            await Navigation.PushAsync(new NavigationPage(new Ocjena(id)));
-
+            await model.ButtonInit();
         }
     }
 }

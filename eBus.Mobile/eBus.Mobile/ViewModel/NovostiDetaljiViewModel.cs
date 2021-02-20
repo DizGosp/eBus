@@ -10,7 +10,7 @@ namespace eBus.Mobile.ViewModel
 {
     public class NovostiDetaljiViewModel:BaseViewModel
     {
-        private APIService _notifikacijePutnikService = new APIService("PutnikNotifikacije");
+        private APIService _notifikacijePutnikService = new APIService("PutnikNotifikacija");
         private APIService _notifikacijeService = new APIService("Notifikacije");
         private APIService _putnikService = new APIService("Putnik");
 
@@ -40,14 +40,14 @@ namespace eBus.Mobile.ViewModel
             var search = new PutnikNotifikacijeSearchRequest()
             {
                 PutnikId = putnik.PutnikId,
-                NotifikacijaId = notif[0].Id
+                NotifikacijaId = notif[0].NotifikacijeId
             };
 
             var lista = await _notifikacijePutnikService.Get<List<PutnikNotifikacije>>(search);
 
             var request = new PutnikNotifikacijeUpsertRequest();
 
-            request.NotifikacijaId = notif[0].Id;
+            request.NotifikacijaId = notif[0].NotifikacijeId;
             request.Pregledana = true;
             request.PutnikId = putnik.PutnikId;
 
@@ -57,7 +57,7 @@ namespace eBus.Mobile.ViewModel
             {
                 if (lista[0].Pregledana == false)
                 {
-                    await _notifikacijePutnikService.Update<PutnikNotifikacije>(lista[0].Id, request);
+                    await _notifikacijePutnikService.Update<PutnikNotifikacije>(lista[0].NotifikacijeId, request);
                 }
             }
             else

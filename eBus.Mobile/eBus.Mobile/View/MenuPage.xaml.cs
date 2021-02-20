@@ -27,15 +27,11 @@ namespace eBus.Mobile.View
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Notifikacija, Title="Notifikacije" },
-                new HomeMenuItem {Id = MenuItemType.Novosti, Title="Novosti" },
-                //new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
                 new HomeMenuItem {Id = MenuItemType.RedVoznje, Title="Red voznje" },
                 new HomeMenuItem {Id = MenuItemType.Karte, Title="Karte" },
-                //new HomeMenuItem {Id = MenuItemType.Rezervacija, Title="Rezervacije" },
-                //new HomeMenuItem {Id = MenuItemType.Ocjena, Title="Ocjena" },
-                //new HomeMenuItem {Id = MenuItemType.Profil, Title="Profil" },
-                //new HomeMenuItem {Id = MenuItemType.Odjava, Title="Odjava" },
+                new HomeMenuItem {Id = MenuItemType.Novosti, Title="Novosti" }
+                //new HomeMenuItem {Id = MenuItemType.Odjava, Title="Odjava" }
 
 
             };

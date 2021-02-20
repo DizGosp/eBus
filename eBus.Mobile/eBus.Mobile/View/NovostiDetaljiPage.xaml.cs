@@ -24,7 +24,7 @@ namespace eBus.Mobile.View
             {
                 Novost = n
             };
-            _id = n.Id;
+            _id = n.NovostiId;
         }
 
         protected async override void OnAppearing()

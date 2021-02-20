@@ -21,7 +21,7 @@ namespace eBus.Mobile.ViewModel
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "eBus";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

@@ -19,11 +19,13 @@ namespace eBus.Mobile.ViewModel
         private readonly APIService _vKarte = new APIService("VrstaKarte");
         private readonly APIService _Karta = new APIService("Karta");
         private readonly APIService _Rezervacija = new APIService("RezervacijaKarte");
+        private readonly APIService _preporuka = new APIService("SistemPreporuke");
 
         private decimal? popust = 0;
         public RedVoznjeModel() 
         {
             InitCommand = new Command(async () => await Init());
+            InitPreporukaCommand = new Command(async () => await InitPreporuka());
             ButtonCommand = new Command(async () => await ButtonInit(0));
         }
 
@@ -39,6 +41,7 @@ namespace eBus.Mobile.ViewModel
         public ObservableCollection<RedVoznje> RedVoznjeList { get; set; } = new ObservableCollection<RedVoznje>();
         public ObservableCollection<Grad> GradoviList { get; set; } = new ObservableCollection<Grad>();
         public ObservableCollection<VrstaKarte> VrstaKarteList { get; set; } = new ObservableCollection<VrstaKarte>();
+
 
         Grad _selectedGradPolaska = null;
         public Grad SelectedGradPolaska 
@@ -124,7 +127,9 @@ namespace eBus.Mobile.ViewModel
 
 
         public ICommand InitCommand { get; set; }
+        public ICommand InitPreporukaCommand { get; set; }
         public ICommand ButtonCommand { get; set; }
+      
         public async Task Init() 
         {
 
@@ -235,6 +240,59 @@ namespace eBus.Mobile.ViewModel
                     }
                 }
             }
+
+
+        }
+
+        public async Task InitPreporuka()
+        {
+            Putnici p = await GetPutnik();
+
+            SistemPreporukeRequest searchS = new SistemPreporukeRequest()
+            {
+                PutnikId = p.PutnikId
+            };
+            var preporuka =await _preporuka.Get<SistemPreporuke>(searchS);
+
+            if (VrstaKarteList.Count == 0)
+            {
+                var listVrsteKarti = await _vKarte.Get<List<VrstaKarte>>(null);
+                foreach (var x in listVrsteKarti)
+                {
+                    VrstaKarteList.Add(x);
+                }
+            }
+
+                if (SelectedVrstaKarte == null || SelectedVrstaKarte.VrstaKarteId == 1)
+                {
+                   RedVoznjeList.Clear();
+                foreach (var item in preporuka.listaPreporuka)
+                {
+                    RedVoznjeList.Add(item);
+                }
+                }
+                else if (SelectedVrstaKarte.VrstaKarteId == 2)
+                {
+                    popust = (decimal?)0.15;
+
+                RedVoznjeList.Clear();
+                foreach (var item in preporuka.listaPreporuka)
+                {
+                    item.Cijena = item.Cijena - (item.Cijena * popust);
+                    RedVoznjeList.Add(item);
+                }
+            }
+                else if (SelectedVrstaKarte.VrstaKarteId == 3)
+                {
+                    popust = (decimal?)0.10;
+                RedVoznjeList.Clear();
+                foreach (var item in preporuka.listaPreporuka)
+                {
+                    item.Cijena = item.Cijena - (item.Cijena * popust);
+                    RedVoznjeList.Add(item);
+                }
+            }
+            
 
 
         }

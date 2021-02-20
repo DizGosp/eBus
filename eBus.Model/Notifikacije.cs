@@ -6,7 +6,7 @@ namespace eBus.Model
 {
     public class Notifikacije
     {
-        public int Id { get; set; }
+        public int NotifikacijeId { get; set; }
         public string Naslov { get; set; }
         public DateTime? DatumSlanja { get; set; }
         public int? NovostId { get; set; }

@@ -119,6 +119,7 @@
             // BrojKarte
             // 
             this.BrojKarte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.BrojKarte.DataPropertyName = "BrojKarte";
             this.BrojKarte.HeaderText = "Broj karte";
             this.BrojKarte.Name = "BrojKarte";
             this.BrojKarte.ReadOnly = true;
@@ -126,6 +127,7 @@
             // DatumIzdavanja
             // 
             this.DatumIzdavanja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DatumIzdavanja.DataPropertyName = "DatumIzdavanja";
             this.DatumIzdavanja.HeaderText = "Datum izdavanja";
             this.DatumIzdavanja.Name = "DatumIzdavanja";
             this.DatumIzdavanja.ReadOnly = true;

@@ -27,7 +27,6 @@ namespace eBus.Mobile.View
             base.OnAppearing();
             await model.Init();
         }
-
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             try

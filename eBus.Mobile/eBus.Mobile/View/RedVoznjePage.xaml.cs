@@ -36,5 +36,21 @@ namespace eBus.Mobile.View
 
             await model.ButtonInit(id);
         }
+
+     
+
+        private async void Ingredients_Clicked(object sender, EventArgs e)
+        {
+            await model.InitPreporuka();
+            directionsButton.IsEnabled = false;
+            ingredientsButton.IsEnabled = true;
+        }
+
+        private async void Directions_Clicked(object sender, EventArgs e)
+        {
+            await model.Init();
+            directionsButton.IsEnabled = true;
+            ingredientsButton.IsEnabled = false;
+        }
     }
 }

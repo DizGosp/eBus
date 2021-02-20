@@ -171,8 +171,7 @@ namespace eBus.WinUI
 
         private async void pregledSjedištaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int id = await getId(_korIme);
-            frmKartaPregled frm = new frmKartaPregled(id);
+            frmSjedistaPregled frm = new frmSjedistaPregled();
             frm.MdiParent = this;
             frm.Show();
         }

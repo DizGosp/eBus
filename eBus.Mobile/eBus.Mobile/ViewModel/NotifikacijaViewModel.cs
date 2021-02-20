@@ -12,9 +12,26 @@ namespace eBus.Mobile.ViewModel
     public class NotifikacijaViewModel:BaseViewModel
     {
         private readonly APIService _notifikacijeService = new APIService("Notifikacije");
-        private readonly APIService _putnikNotifikacijeService = new APIService("PutnikNotifikacije");
+        private readonly APIService _putnikNotifikacijeService = new APIService("PutnikNotifikacija");
         private readonly APIService _putnikService = new APIService("Putnik");
 
+        public async Task<Putnici> GetPutnik()
+        {
+            PutnikSearchRequest searchP = new PutnikSearchRequest()
+            {
+                userName = APIService.Username
+            };
+            List<Putnici> p = await _putnikService.Get<List<eBus.Model.Putnici>>(searchP);
+            Putnici putn = new Putnici();
+            foreach (var item in p)
+            {
+                if (item.KorisnickoIme == APIService.Username)
+                {
+                    putn = item;
+                }
+            }
+            return putn;
+        }
         public NotifikacijaViewModel()
         {
             Title = "Notifikacija";
@@ -25,22 +42,7 @@ namespace eBus.Mobile.ViewModel
         {
             var lista = await _notifikacijeService.Get<List<Notifikacije>>(null);
 
-            var searchPutnik = new PutnikSearchRequest()
-            {
-                userName = APIService.Username
-            };
-
-            var listaPutnika = await _putnikService.Get<List<Putnici>>(searchPutnik);
-
-            Putnici putnik = null;
-            foreach (var item in listaPutnika)
-            {
-                if (item.KorisnickoIme == APIService.Username)
-                {
-                    putnik = item;
-                    break;
-                }
-            }
+            Putnici putnik = await GetPutnik();
 
             var searchPN = new PutnikNotifikacijeSearchRequest()
             {
@@ -56,7 +58,7 @@ namespace eBus.Mobile.ViewModel
 
                 foreach (var item2 in listaPN)
                 {
-                    if (item.Id == item2.NotifikacijaId && !item2.Pregledana)
+                    if (item.NotifikacijeId == item2.NotifikacijeId && !item2.Pregledana)
                     {
                         NotifikacijeList.Add(item);
                     }
@@ -99,7 +101,7 @@ namespace eBus.Mobile.ViewModel
                 PutnikNotifikacije pn = null;
                 foreach (var item in listaPN)
                 {
-                    if (item.NotifikacijaId == n.Id && item.PutnikId == putnik.PutnikId)
+                    if (item.NotifikacijeId == n.NotifikacijeId && item.PutnikId == putnik.PutnikId)
                     {
                         pn = item;
                         break;
@@ -110,12 +112,12 @@ namespace eBus.Mobile.ViewModel
                 {
                     var request = new PutnikNotifikacijeUpsertRequest()
                     {
-                        NotifikacijaId = n.Id,
+                        NotifikacijaId = n.NotifikacijeId,
                         PutnikId = putnik.PutnikId,
                         Pregledana = true
                     };
 
-                    await _putnikNotifikacijeService.Update<PutnikNotifikacije>(pn.Id, request);
+                    await _putnikNotifikacijeService.Update<PutnikNotifikacije>(pn.NotifikacijeId, request);
 
                     if (n != null)
                     {

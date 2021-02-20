@@ -216,7 +216,7 @@ namespace eBus.WebAPI.Database
 
                 entity.Property(e => e.PutnikId).HasColumnName("PutnikID");
 
-                entity.Property(e => e.AutobusID).HasColumnName("RedVoznjeID");
+                entity.Property(e => e.AutobusId).HasColumnName("AutobusId");
 
                 entity.HasOne(d => d.Putnik)
                     .WithMany(p => p.Ocjenas)
@@ -225,8 +225,9 @@ namespace eBus.WebAPI.Database
 
                 entity.HasOne(d => d.Autobus)
                     .WithMany(p => p.Ocjenas)
-                    .HasForeignKey(d => d.AutobusID)
+                    .HasForeignKey(d => d.AutobusId)
                     .HasConstraintName("FK_VoziloID");
+
             });
 
             modelBuilder.Entity<Putnik>(entity =>

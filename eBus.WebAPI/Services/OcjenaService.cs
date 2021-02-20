@@ -25,9 +25,9 @@ namespace eBus.WebAPI.Services
             {
                 query = query.Where(x => x.PutnikId == search.PutnikId);
             }
-            if (search.RedVoznjeId != null)
+            if (search.AutobusId != null)
             {
-                query = query.Where(x => x.AutobusID == search.RedVoznjeId);
+                query = query.Where(x => x.AutobusId == search.AutobusId);
             }
             
 

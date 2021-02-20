@@ -9,10 +9,12 @@
     
     <ContentPage.Content>
         <StackLayout>
+            <Button x:Name="ingredientsButton"  Text="Preporuka" Clicked="Ingredients_Clicked" />
+            <Button x:Name="directionsButton"  Text="Redovi vožnji" Clicked="Directions_Clicked" />
+            
             <Label Text="Redovi voznje:"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-
             <Label Text="Vrsta karte:"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
@@ -26,14 +28,16 @@
             <Label Text="Destinacija:"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradDolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
+            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradDolaska}" ItemDisplayBinding="{Binding ocjenaNaziv}"></Picker>
             
             
             <Label Text="Datum"   VerticalTextAlignment="Center"></Label>
             <DatePicker 
              Date="{Binding Datum}" />
+
+
           
-            
+
             <ListView ItemsSource="{Binding RedVoznjeList}"  VerticalScrollBarVisibility="Always">
                 <ListView.ItemTemplate>
                     <DataTemplate>
