@@ -15,8 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.475" />
     <PackageReference Include="Flurl" Version="3.0.1" />
     <PackageReference Include="Flurl.Http" Version="3.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="16.7.30329.38" />
+    <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
+    <PackageReference Include="Stripe.net" Version="39.37.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
@@ -64,11 +68,17 @@
     <EmbeddedResource Update="View\OcjenaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="View\PlacanjeView\StripePaymentGatwayPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="View\RedVoznjePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\RegistracijaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\StripePaymentGatwayPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

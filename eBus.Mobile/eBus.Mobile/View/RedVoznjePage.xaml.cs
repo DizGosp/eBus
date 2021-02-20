@@ -1,10 +1,10 @@
 ﻿using eBus.Mobile.ViewModel;
+using eBus.Mobile.ViewModel.Placanje;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,11 +16,14 @@ namespace eBus.Mobile.View
 
         private RedVoznjeModel model = null;
 
-        public RedVoznjePage()
+        public RedVoznjePage(int? id)
         {
             InitializeComponent();
             BindingContext = model = new RedVoznjeModel();
-
+            if (id != null) 
+            {
+                model.ButtonInit((int)id);
+            }
         }
 
         protected async override void OnAppearing() 
@@ -34,7 +37,7 @@ namespace eBus.Mobile.View
             Button button = (Button)sender;
             int id = int.Parse(button.CommandParameter.ToString());
 
-            await model.ButtonInit(id);
+            await Navigation.PushAsync(new StripePaymentGatwayPage(id));
         }
 
      

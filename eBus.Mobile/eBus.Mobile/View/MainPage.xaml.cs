@@ -38,7 +38,7 @@ namespace eBus.Mobile.View
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.RedVoznje:
-                        MenuPages.Add(id, new NavigationPage(new RedVoznjePage()));
+                        MenuPages.Add(id, new NavigationPage(new RedVoznjePage(null)));
                         break;
                     case (int)MenuItemType.Karte:
                         MenuPages.Add(id, new NavigationPage(new KartePage()));

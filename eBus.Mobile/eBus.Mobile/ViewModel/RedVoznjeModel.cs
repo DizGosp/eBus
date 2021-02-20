@@ -3,6 +3,7 @@ using eBus.Model.Request;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -29,14 +30,13 @@ namespace eBus.Mobile.ViewModel
             ButtonCommand = new Command(async () => await ButtonInit(0));
         }
 
-
         public string getBrojKarte() 
         {
             Random random = new Random();
-
-            return Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65))).ToString();
-           
-        }
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, 10)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+         }
 
         public ObservableCollection<RedVoznje> RedVoznjeList { get; set; } = new ObservableCollection<RedVoznje>();
         public ObservableCollection<Grad> GradoviList { get; set; } = new ObservableCollection<Grad>();
@@ -129,7 +129,7 @@ namespace eBus.Mobile.ViewModel
         public ICommand InitCommand { get; set; }
         public ICommand InitPreporukaCommand { get; set; }
         public ICommand ButtonCommand { get; set; }
-      
+
         public async Task Init() 
         {
 
@@ -301,17 +301,22 @@ namespace eBus.Mobile.ViewModel
 
             Putnici p = await GetPutnik();
 
-            if (SelectedVrstaKarte != null) 
-            {
-                SelectedVrstaKarte.VrstaKarteId = 1;
-            }
+           
             KartaInsertRequest kInsert = new KartaInsertRequest()
             {
-                VrstaKarteId = SelectedVrstaKarte.VrstaKarteId,
                 DatumIzdavanja = DateTime.Now,
                 RezervacijaSjedistaId = 1,
                 BrojKarte = getBrojKarte()
             };
+
+            if (SelectedVrstaKarte == null)
+            {
+                kInsert.VrstaKarteId = 1;
+            }
+            else 
+            {
+                kInsert.VrstaKarteId = SelectedVrstaKarte.VrstaKarteId;
+            }
 
             await _Karta.Insert<Karta>(kInsert);
 
@@ -334,6 +339,5 @@ namespace eBus.Mobile.ViewModel
             await Application.Current.MainPage.DisplayAlert(" ", "Uspješno ste rezervisali vašu kartu!", "OK");
 
         }
-
     }
 }
