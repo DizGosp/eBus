@@ -22,6 +22,8 @@ namespace eBus.Model
         public virtual Grad GradPolaskaNavigation { get; set; }
         public virtual Korisnici Korisnik { get; set; }
 
+        public string VrijemePolaska { get { return $"{DatumVrijemeDolaska.ToShortTimeString()}"; } }
+
         public override string ToString()
         {
             return GradPolaskaNavigation + "-" + GradDolaskaNavigation + "/ Datum polaska:" + DatumVrijemePolaska.Date.ToString("dd.MM.yyyy")+"Vrijeme polaska: "+ DatumVrijemePolaska.TimeOfDay.ToString("dd.MM.yyyy")+ "/ Očekivani datum dolaska:" + DatumVrijemeDolaska.Date.ToString("dd.MM.yyyy") + "Vrijeme dolaska: " + DatumVrijemePolaska.TimeOfDay.ToString("dd.MM.yyyy");

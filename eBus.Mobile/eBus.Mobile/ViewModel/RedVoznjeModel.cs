@@ -178,7 +178,10 @@ namespace eBus.Mobile.ViewModel
                     RedVoznjeList.Clear();
                     foreach (var item in list)
                     {
-                        RedVoznjeList.Add(item);
+                        if (item.DatumVrijemePolaska > DateTime.Now)
+                        {
+                            RedVoznjeList.Add(item);
+                        }
                     }
                 }
                 else if (SelectedVrstaKarte.VrstaKarteId == 2) 
@@ -189,7 +192,10 @@ namespace eBus.Mobile.ViewModel
                     foreach (var item in list)
                     {
                         item.Cijena = item.Cijena-(item.Cijena*popust);
-                        RedVoznjeList.Add(item);
+                        if (item.DatumVrijemePolaska > DateTime.Now)
+                        {
+                            RedVoznjeList.Add(item);
+                        }
                     }
                 }
                 else if (SelectedVrstaKarte.VrstaKarteId == 3)
@@ -200,7 +206,10 @@ namespace eBus.Mobile.ViewModel
                     foreach (var item in list)
                     {
                         item.Cijena = item.Cijena - (item.Cijena * popust);
-                        RedVoznjeList.Add(item);
+                        if (item.DatumVrijemePolaska > DateTime.Now)
+                        {
+                            RedVoznjeList.Add(item);
+                        }
                     }
                 }
 
@@ -214,7 +223,11 @@ namespace eBus.Mobile.ViewModel
                     RedVoznjeList.Clear();
                     foreach (var item in list)
                     {
-                        RedVoznjeList.Add(item);
+                        if (item.DatumVrijemePolaska > DateTime.Now) 
+                        {
+                            RedVoznjeList.Add(item);
+                        }
+                     
                     }
                 }
                 else if (SelectedVrstaKarte.VrstaKarteId == 2)
@@ -225,7 +238,10 @@ namespace eBus.Mobile.ViewModel
                     foreach (var item in list)
                     {
                         item.Cijena = item.Cijena - (item.Cijena * popust);
-                        RedVoznjeList.Add(item);
+                        if (item.DatumVrijemePolaska > DateTime.Now)
+                        {
+                            RedVoznjeList.Add(item);
+                        }
                     }
                 }
                 else if (SelectedVrstaKarte.VrstaKarteId == 3)
@@ -236,7 +252,10 @@ namespace eBus.Mobile.ViewModel
                     foreach (var item in list)
                     {
                         item.Cijena = item.Cijena - (item.Cijena * popust);
-                        RedVoznjeList.Add(item);
+                        if (item.DatumVrijemePolaska > DateTime.Now)
+                        {
+                            RedVoznjeList.Add(item);
+                        }
                     }
                 }
             }
@@ -265,10 +284,14 @@ namespace eBus.Mobile.ViewModel
 
                 if (SelectedVrstaKarte == null || SelectedVrstaKarte.VrstaKarteId == 1)
                 {
+
                    RedVoznjeList.Clear();
                 foreach (var item in preporuka.listaPreporuka)
                 {
-                    RedVoznjeList.Add(item);
+                    if (item.DatumVrijemePolaska > DateTime.Now)
+                    {
+                        RedVoznjeList.Add(item);
+                    }
                 }
                 }
                 else if (SelectedVrstaKarte.VrstaKarteId == 2)
@@ -279,7 +302,10 @@ namespace eBus.Mobile.ViewModel
                 foreach (var item in preporuka.listaPreporuka)
                 {
                     item.Cijena = item.Cijena - (item.Cijena * popust);
-                    RedVoznjeList.Add(item);
+                    if (item.DatumVrijemePolaska > DateTime.Now)
+                    {
+                        RedVoznjeList.Add(item);
+                    }
                 }
             }
                 else if (SelectedVrstaKarte.VrstaKarteId == 3)
@@ -289,7 +315,10 @@ namespace eBus.Mobile.ViewModel
                 foreach (var item in preporuka.listaPreporuka)
                 {
                     item.Cijena = item.Cijena - (item.Cijena * popust);
-                    RedVoznjeList.Add(item);
+                    if (item.DatumVrijemePolaska > DateTime.Now)
+                    {
+                        RedVoznjeList.Add(item);
+                    }
                 }
             }
             

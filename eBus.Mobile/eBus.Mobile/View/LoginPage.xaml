@@ -1,32 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eBus.Mobile.ViewModel"
-             x:Class="eBus.Mobile.View.LoginPage">
-
+             x:Class="eBus.Mobile.View.LoginPage"
+             BackgroundColor="RoyalBlue">
+    
     <ContentPage.BindingContext>
         <ViewModel:LoginViewModel/>
     </ContentPage.BindingContext>
     
-    <ContentPage.Content>
+    <ContentPage.Content color="RoyalBlue">
         <StackLayout>
             <Label Text="Prijava:"
+                 TextColor="White"
+                   FontSize="Title"
                   Padding="100"
                 HorizontalOptions="CenterAndExpand" />
             <Label Text="Korisničko ime:"
+                    TextColor="White"
+                   FontSize="Large"
                 HorizontalOptions="FillAndExpand" />
             <Entry Text="{Binding Username}"></Entry>
             <Label Text="Prijava:"
+                   TextColor="White"
+                   FontSize="Large"
                 HorizontalOptions="FillAndExpand" />
             <Entry Text="{Binding Password}"></Entry>
-            <Label Text="Prijavite se na svoj račun ->"></Label>
-            <Label Text="Login" TextColor="Blue" >
+            <Label Text="Login" FontSize="Large" HorizontalOptions="Center" TextColor="Green"  >
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer  Command="{Binding LoginCommand}"></TapGestureRecognizer>
                 </Label.GestureRecognizers>
             </Label>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Nemate svoj račun ->"></Label>
-                <Label Text="Registracija" TextColor="Blue" >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
+                <Label Text="Nemate svoj račun ->" TextColor="White"></Label>
+                <Label Text="Registracija" TextColor="DarkRed" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding RegistracijaCommand}"></TapGestureRecognizer>
                     </Label.GestureRecognizers>

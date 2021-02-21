@@ -45,15 +45,15 @@ namespace eBus.Mobile.View
         private async void Ingredients_Clicked(object sender, EventArgs e)
         {
             await model.InitPreporuka();
-            directionsButton.IsEnabled = false;
-            ingredientsButton.IsEnabled = true;
+            directionsButton.IsEnabled = true;
+            ingredientsButton.IsEnabled = false;
         }
 
         private async void Directions_Clicked(object sender, EventArgs e)
         {
             await model.Init();
-            directionsButton.IsEnabled = true;
-            ingredientsButton.IsEnabled = false;
+            directionsButton.IsEnabled = false;
+            ingredientsButton.IsEnabled = true;
         }
     }
 }

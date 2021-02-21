@@ -1,39 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eBus.Mobile.ViewModel"
-             x:Class="eBus.Mobile.View.RedVoznjePage">
+             x:Class="eBus.Mobile.View.RedVoznjePage"
+             BackgroundColor="RoyalBlue">
 
     <ContentPage.BindingContext>
         <ViewModel:RedVoznjeModel></ViewModel:RedVoznjeModel>
     </ContentPage.BindingContext>
-    
+
+
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="ingredientsButton"  Text="Preporuka" Clicked="Ingredients_Clicked" />
-            <Button x:Name="directionsButton"  Text="Redovi vožnji" Clicked="Directions_Clicked" />
+            <StackLayout BackgroundColor="LightGray" HeightRequest="40" Padding="10">
+                <Label Text="Redovi vožnje:"
+                   TextColor="Black"
+                   FontSize="Title"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
             
-            <Label Text="Redovi voznje:"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="Vrsta karte:"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Picker ItemsSource="{Binding VrstaKarteList}" SelectedItem="{Binding SelectedVrstaKarte}" ItemDisplayBinding="{Binding VrstaKarte1}"></Picker>
+            <StackLayout Orientation="Horizontal" HeightRequest="40" Padding="5">
+                <Button x:Name="ingredientsButton"  Text="Preporuka" Clicked="Ingredients_Clicked" BackgroundColor="Aqua"   HorizontalOptions="Start"/>
+                <Button x:Name="directionsButton"  Text="Redovi vožnji" Clicked="Directions_Clicked" BackgroundColor="DarkCyan" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            
 
-            <Label Text="Grad polaska::"
+            <Label Text="Vrsta karte:"
+                   TextColor="White"
+                   FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradPolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
+            <Picker BackgroundColor="Gray"  ItemsSource="{Binding VrstaKarteList}" SelectedItem="{Binding SelectedVrstaKarte}" ItemDisplayBinding="{Binding VrstaKarte1}" ></Picker>
+
+            <Label Text="Grad polaska:"
+                   TextColor="White"
+                   FontSize="Medium"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker BackgroundColor="Gray" ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradPolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
 
             <Label Text="Destinacija:"
+                    TextColor="White"
+                   FontSize="Medium"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Picker ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradDolaska}" ItemDisplayBinding="{Binding ocjenaNaziv}"></Picker>
+            <Picker BackgroundColor="Gray" TextColor="Black" ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradDolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
             
             
-            <Label Text="Datum"   VerticalTextAlignment="Center"></Label>
-            <DatePicker 
-             Date="{Binding Datum}" />
+            <Label Text="Datum"   
+                    TextColor="White"
+                   FontSize="Medium"
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   VerticalTextAlignment="Center"></Label>
+            <DatePicker
+                BackgroundColor="Gray"
+             Date="{Binding Datum}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand" 
+                TextColor="White"
+                />
 
 
           
@@ -42,12 +68,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid BackgroundColor="Gray" Padding="5">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto" ></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition  Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -55,13 +81,12 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 
-                                
-                                <Label Text="{Binding Autobus}" Grid.Column="0"></Label>
-                                <Label Text="{Binding DatumVrijemePolaska}" Grid.Column="1"></Label>
-                                <Label Text="{Binding GradPolaskaNavigation}" Grid.Column="2"></Label>
-                                <Label Text="{Binding GradDolaskaNavigation}" Grid.Column="3"></Label>
-                                <Label Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Column="4"></Label>
-                                <Button Text="Rezerviši" Grid.Column="5" Clicked="Button_Clicked" CommandParameter="{Binding RedVoznjeId}"  ></Button>
+                                <Label TextColor="White" FontSize="Micro" Text="{Binding Autobus}" Grid.Column="0"></Label>
+                                <Label TextColor="White" FontSize="Micro"  Text="{Binding VrijemePolaska}" Grid.Column="1"></Label>
+                                <Label TextColor="White" FontSize="Micro"  Text="{Binding GradPolaskaNavigation}" Grid.Column="2"></Label>
+                                <Label TextColor="White" FontSize="Micro"  Text="{Binding GradDolaskaNavigation}" Grid.Column="3"></Label>
+                                <Label TextColor="White" FontSize="Micro"  Text="{Binding Cijena,StringFormat='{0:F2} KM'}" Grid.Column="4"></Label>
+                                <Button Text="Rezerviši" Grid.Column="5" Clicked="Button_Clicked" CommandParameter="{Binding RedVoznjeId}" BackgroundColor="Green" TextColor="White" ></Button>
                              
                             </Grid>
                         </ViewCell>

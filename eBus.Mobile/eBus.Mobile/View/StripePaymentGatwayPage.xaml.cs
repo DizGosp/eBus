@@ -16,6 +16,7 @@ namespace eBus.Mobile.View
     public partial class StripePaymentGatwayPage : ContentPage
     {
         private int? redVoznjeID = null;
+        private bool _placeno = false;
         PaymentGatwayPageViewModel model = null;
         public StripePaymentGatwayPage(int id)
         {
@@ -165,15 +166,22 @@ namespace eBus.Mobile.View
             return text;
         }
 
-        private void Home_Clicked(object sender, EventArgs e)
+        private async void Home_Clicked(object sender, EventArgs e)
         {
-            
+            if (_placeno == true) 
+            {
+                await Navigation.PushAsync(new RedVoznjePage(redVoznjeID));
+            }
+            else 
+            {
+                await Application.Current.MainPage.DisplayAlert(" ", "Molimo Vas da prvo izvršite uplatu!", "OK");
+            }
         }
 
-        private async void Submit_Button_Clicked(object sender, EventArgs e)
+        private  void Submit_Button_Clicked(object sender, EventArgs e)
         {
-            Submit_Button.IsVisible = false;
-            await Navigation.PushAsync(new RedVoznjePage(redVoznjeID));
+            _placeno = true;
+            Submit_Button.IsVisible = false; 
         }
 
 
