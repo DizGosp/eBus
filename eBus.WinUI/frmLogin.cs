@@ -26,12 +26,11 @@ namespace eBus.WinUI
             APIService.Username = txtUser.Text;
             APIService.Password = txtPass.Text;
             try
-            {
-                
+            {          
                 await _serviceR.Get<dynamic>(null);
                 frmIndex frm = new frmIndex(APIService.Username);
                 frm.Show();
-               
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -39,5 +38,7 @@ namespace eBus.WinUI
                 MessageBox.Show(ex.Message, "Korisničko ime ili šifra nisu ispravni!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+      
     }
 }

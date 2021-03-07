@@ -27,20 +27,20 @@ namespace eBus.Mobile.View
             base.OnAppearing();
             await model.Init();
         }
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            try
-            {
-                var novost = e.SelectedItem as Novosti;
+        //private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        var novost = e.SelectedItem as Novosti;
 
-                Navigation.PushAsync(new NovostiDetaljiPage(novost));
-            }
-            catch (Exception)
-            {
+        //        Navigation.PushAsync(new NovostiDetaljiPage(novost));
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
+        //        throw;
+        //    }
 
-        }
+        //}
     }
 }

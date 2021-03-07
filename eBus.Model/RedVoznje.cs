@@ -16,7 +16,6 @@ namespace eBus.Model
         public int? GradPolaskaId { get; set; }
         public int? GradDolaskaId { get; set; }
         public int? KorisnikId { get; set; }
-
         public virtual Autobus Autobus { get; set; }
         public virtual Grad GradDolaskaNavigation { get; set; }
         public virtual Grad GradPolaskaNavigation { get; set; }

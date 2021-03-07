@@ -360,7 +360,8 @@ namespace eBus.Mobile.ViewModel
                 Otkazana=false,
                 Qrcode=getBrojKarte(),
                 PutnikId=p.PutnikId,
-                KartaId=kGet.KartaId
+                KartaId=kGet.KartaId,
+                RedVoznjeId=id            
             };
 
             await _Rezervacija.Insert<RezervacijaKarte>(rezInsert);

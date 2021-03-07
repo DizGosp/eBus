@@ -15,7 +15,10 @@ namespace eBus.WebAPI.Database
         public int? KartaId { get; set; }
         public int? PutnikId { get; set; }
 
+        public int? RedVoznjeId { get; set; }
+
         public virtual Kartum Karta { get; set; }
+        public virtual RedVoznje RedVoznje { get; set; }
         public virtual Putnik Putnik { get; set; }
     }
 }

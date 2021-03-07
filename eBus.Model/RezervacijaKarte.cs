@@ -13,7 +13,7 @@ namespace eBus.Model
         public string Qrcode { get; set; }
         public int? KartaId { get; set; }
         public int? PutnikId { get; set; }
-
+        public int? RedVoznjeId { get; set; }
         public virtual Karta Karta { get; set; }
         public virtual Putnici Putnik { get; set; }
 

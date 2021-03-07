@@ -18,7 +18,7 @@ services:
     build:
       context: .
     environment:
-      - ConnectionStrings:eBus=Server=ebus-sql,1433;Database=eBus;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+      - ConnectionStrings:eBus=Server=ebus-sql,1433;Database=eBusDocker;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
       - 5000:5050
     networks:

@@ -13,5 +13,6 @@ namespace eBus.Model.Request
         public string Qrcode { get; set; }
         public int? KartaId { get; set; }
         public int? PutnikId { get; set; }
+        public int? RedVoznjeId { get; set; }
     }
 }

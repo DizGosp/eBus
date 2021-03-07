@@ -197,6 +197,9 @@
     <Compile Include="Vozilo i vozac\frmVozac.Designer.cs">
       <DependentUpon>frmVozac.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </EmbeddedResource>

@@ -334,6 +334,7 @@ namespace eBus.WebAPI.Database
                 entity.Property(e => e.KartaId).HasColumnName("KartaID");
 
                 entity.Property(e => e.PutnikId).HasColumnName("PutnikID");
+                entity.Property(e => e.RedVoznjeId).HasColumnName("RedVoznjeID");
 
                 entity.Property(e => e.Qrcode).HasMaxLength(50);
 
@@ -346,6 +347,11 @@ namespace eBus.WebAPI.Database
                     .WithMany(p => p.RezervacijaKartes)
                     .HasForeignKey(d => d.PutnikId)
                     .HasConstraintName("FK_Putnik1ID");
+
+                entity.HasOne(d => d.RedVoznje)
+                   .WithMany(p => p.RezervacijaKartes)
+                   .HasForeignKey(d => d.RedVoznjeId)
+                   .HasConstraintName("FK_RedVoznje2ID");
             });
 
             modelBuilder.Entity<RezervacijaSjedistum>(entity =>
