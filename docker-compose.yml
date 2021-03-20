@@ -1,7 +1,7 @@
 version: '3'
+
 services:
-#mssql docker
-  ebus-sql:
+  sql:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     restart: unless-stopped
     environment:
@@ -9,25 +9,21 @@ services:
       - SA_PASSWORD=QWElkj132!
       - MSSQL_PID=Developer
     ports:
-      - 1401:1433
+      - 1433:1433
     networks:
-      - ebusnet
+      - appnet
 
-  ebus-api:
+    
+  api:
     restart: unless-stopped
-    build:
-      context: .
+    build: .
     environment:
-      - ConnectionStrings:eBus=Server=ebus-sql,1433;Database=eBusDocker;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+      - ConnectionStrings:Default=Server=sql,1433;Database=eBus;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
-      - 5000:5050
+      - 64236:80
     networks:
-      - ebusnet
-    links:
-      - ebus-sql
-    depends_on:
-      - ebus-sql
+      - appnet
       
 networks:
-  ebusnet:
-    driver: bridge      
+  appnet:
+    driver: bridge
