@@ -16,14 +16,11 @@ namespace eBus.Mobile.View
 
         private RedVoznjeModel model = null;
 
-        public RedVoznjePage(int? id)
+        public RedVoznjePage()
         {
             InitializeComponent();
             BindingContext = model = new RedVoznjeModel();
-            if (id != null) 
-            {
-                model.ButtonInit((int)id);
-            }
+     
         }
 
         protected async override void OnAppearing() 
@@ -36,11 +33,11 @@ namespace eBus.Mobile.View
         {
             Button button = (Button)sender;
             int id = int.Parse(button.CommandParameter.ToString());
+            await model.ButtonInit(id);
 
-            await Navigation.PushAsync(new StripePaymentGatwayPage(id));
         }
 
-     
+    
 
         private async void Ingredients_Clicked(object sender, EventArgs e)
         {

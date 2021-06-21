@@ -45,8 +45,9 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Picker BackgroundColor="Gray" TextColor="Black" ItemsSource="{Binding GradoviList}" SelectedItem="{Binding SelectedGradDolaska}" ItemDisplayBinding="{Binding NazivGrada}"></Picker>
-            
-            
+
+           
+
             <Label Text="Datum"   
                     TextColor="White"
                    FontSize="Medium"

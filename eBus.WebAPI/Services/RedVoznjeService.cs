@@ -44,7 +44,7 @@ namespace eBus.WebAPI.Services
                 query = query.Where(e => e.DatumVrijemePolaska.Value.Date >= startdate && e.DatumVrijemeDolaska.Value.Date <= enddate);
             }
 
-            if (search.DatumVrijemePolaska != null && search.DatumVrijemeDolaska == null) 
+            if (search.DatumVrijemePolaska != null && search.DatumVrijemeDolaska == null)
             {
                 var date = search.DatumVrijemePolaska.Value.Date;
 

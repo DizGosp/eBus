@@ -8,5 +8,8 @@ namespace eBus.Model.Request
     {
         public int? PutnikId { get; set; }
         public int? RezervacijaId { get; set; }
+
+        public bool? Platio { get; set; }
+
     }
 }

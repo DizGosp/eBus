@@ -21,11 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eBus.Mobile.iOS", "eBus.Mob
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eBus.Mobile", "eBus.Mobile\eBus.Mobile\eBus.Mobile.csproj", "{CC71C58A-909E-464F-A994-81823F8BB48F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{4BB88EFF-5A2B-4DF0-92BE-D8D23C4BF8CE}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\Rs2 seminarski\eBus = ..\..\..\Desktop\Rs2 seminarski\eBus
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

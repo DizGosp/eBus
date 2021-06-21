@@ -46,5 +46,11 @@ namespace eBus.WebAPI.Services
             return _mapper.Map<List<Model.Autobus>>(list);
         }
 
+        public List<Model.Autobus> GetAll()
+        {
+            var list = _db.Autobus.ToList();
+            return _mapper.Map<List<Model.Autobus>>(list);
+        }
+
     }
 }

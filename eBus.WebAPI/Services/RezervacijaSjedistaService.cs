@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eBus.Model;
 using eBus.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,27 +9,28 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class RezervacijaSjedistaService : BaseCrudeService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, RezervacijaSjedistum, Model.RezervacijaSjedista, Model.RezervacijaSjedista>
+    public class RezervacijaSjedistaService : BaseCrudeService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, RezervacijaSjedistum, Model.Request.SjedisteInsertRequest, Model.RezervacijaSjedista>
     {
         public RezervacijaSjedistaService(eBusContext _db, IMapper mapper) : base(_db, mapper)
         {
         }
-
-        public override List<Model.RezervacijaSjedista> Get(Model.RezervacijaSjedista search)
+        public override List<Model.RezervacijaSjedista> Get(RezervacijaSjedista search)
         {
-            var query = _db.RezervacijaSjedista.Include(x => x.Autobus).AsQueryable();
+            var query = _db.Set<RezervacijaSjedistum>()
+                .Include(x => x.Autobus)
+                .AsQueryable();
 
-            if (search != null)
+            if (search?.AutobusId != null && search.AutobusId != 0)
             {
-                if (search.AutobusId.HasValue)
-                {
-                    query = query.Where(x => x.AutobusId == search.AutobusId.Value);
-                }
+                query = query.Where(x => x.AutobusId == search.AutobusId);
+            }
+            if (search?.Status.HasValue == true )
+            {
+                query = query.Where(x => x.Status == search.Status);
             }
 
-            var lista = query.ToList();
-
-            return _mapper.Map<List<Model.RezervacijaSjedista>>(lista);
+            var list = query.ToList();
+            return _mapper.Map<List<Model.RezervacijaSjedista>>(list);
         }
 
     }

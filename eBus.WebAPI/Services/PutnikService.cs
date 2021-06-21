@@ -37,7 +37,7 @@ namespace eBus.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public  List<Model.Korisnici> Get(KorisniciSearchRequest request)
+        public List<Model.Korisnici> Get(KorisniciSearchRequest request)
         {
             var query = _db.Korisnicis.AsQueryable();
 
@@ -58,7 +58,7 @@ namespace eBus.WebAPI.Services
 
             return _mapper.Map<List<Model.Korisnici>>(list);
         }
-        public  Model.Putnici GetUser(PutnikSearchRequest search)
+        public Model.Putnici GetUser(PutnikSearchRequest search)
         {
             var query = _db.Set<Putnik>().AsQueryable();
 

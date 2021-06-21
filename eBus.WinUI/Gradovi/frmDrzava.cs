@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eBus.Model.Request;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,14 @@ namespace eBus.WinUI.Gradovi
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            Model.Drzava d = new Model.Drzava()
+            DrzInsRequst d = new DrzInsRequst()
             {
                 NazivDrzave = txtNaziv.Text
             };
 
-            await _drzava.Insert<Model.Drzava>(d);
+            await _drzava.Insert<DrzInsRequst>(d);
+
+
             MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmGradovi frm = new frmGradovi(_korId);
             frm.Show();

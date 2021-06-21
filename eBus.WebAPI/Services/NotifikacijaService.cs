@@ -12,7 +12,7 @@ namespace eBus.WebAPI.Services
     public class NotifikacijaService : BaseCrudeService<Model.Notifikacije, NotifikacijeSearchRequest, Notifikacije, NotifikacijeUpsertRequest, NotifikacijeUpsertRequest>
     {
         public NotifikacijaService(eBusContext _db, IMapper _mapper) : base(_db, _mapper) { }
-       
+
 
         public override List<Model.Notifikacije> Get(NotifikacijeSearchRequest search)
         {

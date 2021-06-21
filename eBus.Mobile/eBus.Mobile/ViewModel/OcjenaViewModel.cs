@@ -116,7 +116,7 @@ namespace eBus.Mobile.ViewModel
             {
                 OcjenaInsertRequest o = new OcjenaInsertRequest()
                 {
-                    AutobusId = id,
+                    RedVoznjeId = id,
                     PutnikId = p.PutnikId,
                     Ocjena1 = _selectedOcjena.ocjena,
                     Komentar = _komentar

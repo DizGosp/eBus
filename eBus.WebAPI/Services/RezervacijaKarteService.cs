@@ -16,10 +16,10 @@ namespace eBus.WebAPI.Services
         public override List<Model.RezervacijaKarte> Get(Model.Request.RezervacijaSearchRequest search)
         {
             var query = _db.Set<RezervacijaKarte>()
-                .Include(x=>x.Putnik)
+                .Include(x => x.Putnik)
+                .Include(x => x.RedVoznje)
+                  .Include(x => x.RedVoznje.Autobus)
                 .Include(x => x.Karta)
-                .Include(x => x.Karta.RezervacijaSjedista)
-                .Include(x => x.Karta.RezervacijaSjedista.Autobus)
                 .AsQueryable();
 
             if (search.PutnikId != null)
@@ -29,6 +29,10 @@ namespace eBus.WebAPI.Services
             if (search.RezervacijaId != null)
             {
                 query = query.Where(x => x.RezervacijaKarteId == search.RezervacijaId);
+            }
+            if (search.Platio != null)
+            {
+                query = query.Where(x => x.Placeno == search.Platio);
             }
             var list = query.ToList();
 

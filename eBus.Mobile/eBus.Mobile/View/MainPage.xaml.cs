@@ -38,7 +38,10 @@ namespace eBus.Mobile.View
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.RedVoznje:
-                        MenuPages.Add(id, new NavigationPage(new RedVoznjePage(null)));
+                        MenuPages.Add(id, new NavigationPage(new RedVoznjePage()));
+                        break;
+                    case (int)MenuItemType.Rezervacije:
+                        MenuPages.Add(id, new NavigationPage(new RezervacijePage()));
                         break;
                     case (int)MenuItemType.Karte:
                         MenuPages.Add(id, new NavigationPage(new KartePage()));

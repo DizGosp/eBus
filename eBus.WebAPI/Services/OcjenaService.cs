@@ -17,19 +17,19 @@ namespace eBus.WebAPI.Services
         public override List<Model.Ocjena> Get(Model.Request.OcjenaSearchRequest search)
         {
             var query = _db.Set<Ocjena>()
-                .Include(x => x.Autobus)
+                .Include(x => x.RedVoznje)
                 .AsQueryable();
 
-            
+
             if (search.PutnikId != null)
             {
                 query = query.Where(x => x.PutnikId == search.PutnikId);
             }
-            if (search.AutobusId != null)
+            if (search.RedVoznjeId != null)
             {
-                query = query.Where(x => x.AutobusId == search.AutobusId);
+                query = query.Where(x => x.RedVoznjeId == search.RedVoznjeId);
             }
-            
+
 
             var list = query.ToList();
 

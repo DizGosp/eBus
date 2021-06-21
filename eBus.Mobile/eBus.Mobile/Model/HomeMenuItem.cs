@@ -10,6 +10,7 @@ namespace eBus.Mobile.Model
         Notifikacija,
         About,
         RedVoznje,
+        Rezervacije,
         Karte,
         Novosti
     }

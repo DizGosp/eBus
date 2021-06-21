@@ -10,6 +10,7 @@ namespace eBus.Model
         public DateTime? DatumKreiranja { get; set; }
         public DateTime? DatumIsteka { get; set; }
         public bool? Otkazana { get; set; }
+        public bool? Placeno { get; set; }
         public string Qrcode { get; set; }
         public int? KartaId { get; set; }
         public int? PutnikId { get; set; }
@@ -17,6 +18,6 @@ namespace eBus.Model
         public virtual Karta Karta { get; set; }
         public virtual Putnici Putnik { get; set; }
 
-
+        public virtual RedVoznje RedVoznje { get; set; }
     }
 }

@@ -12,8 +12,7 @@
                    FontSize="22"
                 HorizontalOptions="CenterAndExpand" />
             <StackLayout>
-                <ListView  ItemsSource="{Binding NovostiList}"
-                           ItemSelected="ListView_ItemSelected">
+                <ListView  ItemsSource="{Binding NovostiList}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

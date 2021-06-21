@@ -14,5 +14,6 @@ namespace eBus.Model.Request
         public int? KartaId { get; set; }
         public int? PutnikId { get; set; }
         public int? RedVoznjeId { get; set; }
+        public bool Placeno { get; set; }
     }
 }

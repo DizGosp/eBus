@@ -40,7 +40,7 @@ namespace eBus.WebAPI.Database
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=eBus;Trusted_Connection=true;");
+                optionsBuilder.UseSqlServer("Server=.;Database=eBus;Trusted_Connection=True;");
             }
         }
 
@@ -71,10 +71,13 @@ namespace eBus.WebAPI.Database
 
             modelBuilder.Entity<Drzava>(entity =>
             {
+
                 entity.ToTable("Drzava");
 
+                entity.HasKey(e => e.DrzavaId)
+                 .HasName("PK_DrzavaID");
+
                 entity.Property(e => e.DrzavaId)
-                    .ValueGeneratedNever()
                     .HasColumnName("DrzavaID");
 
                 entity.Property(e => e.NazivDrzave).HasMaxLength(30);
@@ -88,7 +91,6 @@ namespace eBus.WebAPI.Database
                 entity.ToTable("Gradovi");
 
                 entity.Property(e => e.GradId)
-                    .ValueGeneratedNever()
                     .HasColumnName("GradID");
 
                 entity.Property(e => e.DrzavaId).HasColumnName("DrzavaID");
@@ -216,18 +218,17 @@ namespace eBus.WebAPI.Database
 
                 entity.Property(e => e.PutnikId).HasColumnName("PutnikID");
 
-                entity.Property(e => e.AutobusId).HasColumnName("AutobusId");
+                entity.Property(e => e.RedVoznjeId).HasColumnName("RedVoznjeID");
 
                 entity.HasOne(d => d.Putnik)
                     .WithMany(p => p.Ocjenas)
                     .HasForeignKey(d => d.PutnikId)
                     .HasConstraintName("FK_Putnik3ID");
 
-                entity.HasOne(d => d.Autobus)
+                entity.HasOne(d => d.RedVoznje)
                     .WithMany(p => p.Ocjenas)
-                    .HasForeignKey(d => d.AutobusId)
-                    .HasConstraintName("FK_VoziloID");
-
+                    .HasForeignKey(d => d.RedVoznjeId)
+                    .HasConstraintName("FK_RedVoznje2ID");
             });
 
             modelBuilder.Entity<Putnik>(entity =>
@@ -334,9 +335,14 @@ namespace eBus.WebAPI.Database
                 entity.Property(e => e.KartaId).HasColumnName("KartaID");
 
                 entity.Property(e => e.PutnikId).HasColumnName("PutnikID");
-                entity.Property(e => e.RedVoznjeId).HasColumnName("RedVoznjeID");
 
                 entity.Property(e => e.Qrcode).HasMaxLength(50);
+
+                entity.Property(e => e.RedVoznjeId).HasColumnName("RedVoznjeID");
+
+                entity.Property(e => e.Otkazana).HasColumnName("Otkazana");
+
+                entity.Property(e => e.Placeno).HasColumnName("Placeno");
 
                 entity.HasOne(d => d.Karta)
                     .WithMany(p => p.RezervacijaKartes)
@@ -349,9 +355,9 @@ namespace eBus.WebAPI.Database
                     .HasConstraintName("FK_Putnik1ID");
 
                 entity.HasOne(d => d.RedVoznje)
-                   .WithMany(p => p.RezervacijaKartes)
-                   .HasForeignKey(d => d.RedVoznjeId)
-                   .HasConstraintName("FK_RedVoznje2ID");
+                    .WithMany(p => p.RezervacijaKartes)
+                    .HasForeignKey(d => d.RedVoznjeId)
+                    .HasConstraintName("FK_RedVoznje1ID");
             });
 
             modelBuilder.Entity<RezervacijaSjedistum>(entity =>

@@ -12,7 +12,7 @@ namespace eBus.WebAPI.Services
         public VrstaKarteService(eBusContext _db, IMapper mapper) : base(_db, mapper)
         {
         }
-        public  List<Model.VrstaKarte> GetVrsta(Model.VrstaKarte search)
+        public List<Model.VrstaKarte> GetVrsta(Model.VrstaKarte search)
         {
             var query = _db.Set<VrstaKarte>().AsQueryable();
 
@@ -20,7 +20,7 @@ namespace eBus.WebAPI.Services
             {
                 query = query.Where(x => x.VrstaKarteId == search.VrstaKarteId);
             }
-            if (search?.VrstaKarte1!= null)
+            if (search?.VrstaKarte1 != null)
             {
                 query = query.Where(x => x.VrstaKarte1 == search.VrstaKarte1);
             }

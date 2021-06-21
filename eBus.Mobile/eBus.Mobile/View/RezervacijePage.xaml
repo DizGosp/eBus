@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eBus.Mobile.ViewModel"
-             x:Class="eBus.Mobile.View.KartePage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ViewModels="clr-namespace:eBus.Mobile.ViewModel"
+             x:Class="eBus.Mobile.View.RezervacijePage">
 
     <ContentPage.BindingContext>
-        <ViewModel:KarteViewModel></ViewModel:KarteViewModel>
+        <ViewModels:RezervacijeViewModel></ViewModels:RezervacijeViewModel>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Rezervacije: "
+            <Label Text="Registracije!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-
-
 
             <Grid BackgroundColor="Gray" Padding="5">
                 <Grid.RowDefinitions>
@@ -35,9 +34,8 @@
                 <Label TextColor="White" FontSize="Micro" Text="Datum i vrijeme Dolaska" Grid.Column="5"></Label>
                 <Label TextColor="White" FontSize="Micro"  Text="Broj autobusa" Grid.Column="6"></Label>
                 <Label TextColor="White" FontSize="Micro"  Text="      " Grid.Column="7"></Label>
-
+              
             </Grid>
-
 
             <ListView ItemsSource="{Binding Rezervacije}"  VerticalScrollBarVisibility="Always">
                 <ListView.ItemTemplate>
@@ -55,7 +53,6 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding Karta.BrojKarte}" Grid.Column="0"></Label>
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding Qrcode}" Grid.Column="1"></Label>
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding DatumKreiranja}" Grid.Column="2"></Label>
@@ -63,19 +60,13 @@
                                 <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.DatumVrijemePolaska}" Grid.Column="4"></Label>
                                 <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.DatumVrijemeDolaska}" Grid.Column="5"></Label>
                                 <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.Autobus.NazivAutobusa}" Grid.Column="6"></Label>
-                                <Button Text="Rezerviši" Grid.Column="5" Clicked="Button_Clicked" CommandParameter="{Binding RedVoznjeId}" BackgroundColor="Green" TextColor="White" ></Button>
-
+                                <Button Text="Plati" Grid.Column="5" Clicked="Button_Clicked" CommandParameter="{Binding RezervacijaKarteId}" BackgroundColor="Green" TextColor="White" ></Button>
                             </Grid>
                         </ViewCell>
-
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-
-
-
         </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>

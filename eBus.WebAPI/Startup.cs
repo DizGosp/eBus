@@ -82,7 +82,8 @@ namespace eBus.WebAPI
             services.AddScoped<IPutnikService, PutnikService>();
             services.AddScoped<ICRUDService<Model.Autobus, Model.Autobus, Model.Autobus, Model.Autobus>, AutobusService>();
             services.AddScoped<ICRUDService<Model.Grad, Model.Grad, Model.Grad, Model.Grad>, GradService>();
-            services.AddScoped<ICRUDService<Model.Drzava, Model.Drzava, Model.Drzava, Model.Drzava>, DrzavaService>();
+            services.AddScoped<ICRUDService<Model.Drzava, Model.Drzava, DrzInsRequst, Model.Drzava>, DrzavaService>();
+   
             services.AddScoped<ICRUDService<Model.Putnici, PutnikSearchRequest, PutnikUpsertRequest, PutnikUpsertRequest>, PutnikService>();
             services.AddScoped<ICRUDService<Model.Vozaci, Model.Vozaci, Model.Vozaci, Model.Vozaci>, VozaciServis>();
             services.AddScoped<ICRUDService<Model.Karta, Model.Request.KartaSearchRequest, Model.Request.KartaInsertRequest, Model.Karta>, IKartaService>();
@@ -92,12 +93,12 @@ namespace eBus.WebAPI
             services.AddScoped<ICRUDService<Model.Novosti, Model.Request.NovostiSearchRequest, Model.Request.NovostiUpsertRequset, Model.Request.NovostiUpsertRequset>, NovostiService>();
             services.AddScoped<ICRUDService<Model.Notifikacije, Model.Request.NotifikacijeSearchRequest, Model.Request.NotifikacijeUpsertRequest, Model.Request.NotifikacijeUpsertRequest>, NotifikacijaService>();
             services.AddScoped<ICRUDService<Model.PutnikNotifikacije, Model.Request.PutnikNotifikacijeSearchRequest, Model.Request.PutnikNotifikacijeUpsertRequest, Model.Request.PutnikNotifikacijeUpsertRequest>, PutnikNotifikacijeService>();
-            services.AddScoped<ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista>, RezervacijaSjedistaService>();
+            services.AddScoped<ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.Request.SjedisteInsertRequest, Model.RezervacijaSjedista>, RezervacijaSjedistaService>();
             services.AddScoped<ICRUDService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, Model.Request.RezervacijaInsertRequest, Model.RezervacijaKarte>, RezervacijaKarteService>();
             services.AddScoped<ICRUDService<Model.RedVoznje, RedVoznjeSearchRequest, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>, RedVoznjeService>();
             services.AddScoped<ISistemPreporuke, SistemPreporukeService>();
 
-        } 
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -106,7 +107,7 @@ namespace eBus.WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-           
+
             //app.UseHttpsRedirection();
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -122,7 +123,7 @@ namespace eBus.WebAPI
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-           
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

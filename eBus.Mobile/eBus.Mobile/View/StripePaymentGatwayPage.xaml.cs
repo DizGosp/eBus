@@ -170,7 +170,7 @@ namespace eBus.Mobile.View
         {
             if (_placeno == true) 
             {
-                await Navigation.PushAsync(new RedVoznjePage(redVoznjeID));
+                await Navigation.PushAsync(new RedVoznjePage());
             }
             else 
             {

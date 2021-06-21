@@ -32,9 +32,14 @@ namespace eBus.WebAPI.Mappers
             CreateMap<Model.Putnici, Model.Request.PutnikInsertRequest>().ReverseMap();
             CreateMap<Model.Putnici, Model.Request.PutnikUpsertRequest>().ReverseMap();//Putnik
 
-            CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();  //Drava
+            CreateMap<Database.Drzava, Model.Drzava>().ReverseMap();
+            CreateMap<Database.Drzava, DrzInsRequst>().ReverseMap();//Drzava
 
             CreateMap<Database.Vozac, Model.Vozaci>().ReverseMap(); //Vozac
+
+
+            CreateMap<Database.RezervacijaSjedistum, Model.Request.SjedisteInsertRequest>().ReverseMap(); 
+            CreateMap<Database.RezervacijaSjedistum, Model.RezervacijaSjedista>().ReverseMap(); //Sjedište
 
             CreateMap<Database.Kartum, Model.Karta>().ReverseMap();
             CreateMap<Model.Karta, Model.Request.KartaInsertRequest>().ReverseMap();

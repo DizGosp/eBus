@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eBus.WebAPI.Controllers
 {
-    public class RezervacijaSjedistaController : BaseCRUDController<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista>
+    public class RezervacijaSjedistaController : BaseCRUDController<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.Request.SjedisteInsertRequest, Model.RezervacijaSjedista>
     {
-        public RezervacijaSjedistaController(ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.RezervacijaSjedista> service) : base(service)
+        public RezervacijaSjedistaController(ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.Request.SjedisteInsertRequest, Model.RezervacijaSjedista> service) : base(service)
         {
         }
     }

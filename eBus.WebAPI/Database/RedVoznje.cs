@@ -7,9 +7,9 @@ namespace eBus.WebAPI.Database
 {
     public partial class RedVoznje
     {
-
         public RedVoznje()
         {
+            Ocjenas = new HashSet<Ocjena>();
             RezervacijaKartes = new HashSet<RezervacijaKarte>();
         }
 
@@ -29,6 +29,7 @@ namespace eBus.WebAPI.Database
         public virtual Gradovi GradDolaskaNavigation { get; set; }
         public virtual Gradovi GradPolaskaNavigation { get; set; }
         public virtual Korisnici Korisnik { get; set; }
+        public virtual ICollection<Ocjena> Ocjenas { get; set; }
         public virtual ICollection<RezervacijaKarte> RezervacijaKartes { get; set; }
     }
 }

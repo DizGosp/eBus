@@ -1,4 +1,5 @@
-﻿using eBus.WinUI.RedVoznje;
+﻿using eBus.Model.Request;
+using eBus.WinUI.RedVoznje;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace eBus.WinUI.Vozilo_i_vozac
     {
         private readonly APIService _vozac = new APIService("Vozac");
         private readonly APIService _autobus = new APIService("Autobus");
+        private readonly APIService _sjediste = new APIService("RezervacijaSjedista");
         private int? _id = null;
         public frmAutobus(int? _korId)
         {
@@ -53,12 +55,45 @@ namespace eBus.WinUI.Vozilo_i_vozac
             }
 
             Model.Vozaci v = await _vozac.GetById<Model.Vozaci>(a.VozacId);
+
             v.Status = true;
             await _vozac.Update<Model.Vozaci>(a.VozacId,v);
 
 
 
             await _autobus.Insert<Model.Autobus>(a);
+
+            List<Model.Autobus> bus = await _autobus.Get<List<Model.Autobus>>(null); 
+
+            for (int i = 1; i <= ((a.BrojSjedista - 5) / 2) + 1; i++)
+            {
+                if (i < 25)
+                {
+                    for (int j = 1; j <= 4; j++)
+                    {
+                        SjedisteInsertRequest s = new SjedisteInsertRequest();
+                        s.Red = i;
+                        s.Kolona = j;
+                        s.AutobusId = bus.Count;
+                        s.Status = false;
+                        await _sjediste.Insert<SjedisteInsertRequest>(s);
+                    }
+                }
+                else if (i == 26) 
+                {
+                    for (int j = 1; j <= 5; j++)
+                    {
+                        SjedisteInsertRequest s = new SjedisteInsertRequest();
+                        s.Red = i;
+                        s.Kolona = j;
+                        s.AutobusId = bus.Count;
+                        s.Status = false;
+                        await _sjediste.Insert<SjedisteInsertRequest>(s);
+                    }
+                }
+            }
+
+
             MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             frmRedVoznje frm = new frmRedVoznje(_id);
             frm.Show();

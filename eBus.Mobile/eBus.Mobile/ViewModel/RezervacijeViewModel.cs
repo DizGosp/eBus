@@ -10,10 +10,20 @@ using Xamarin.Forms;
 
 namespace eBus.Mobile.ViewModel
 {
-    public class KarteViewModel : BaseViewModel
+    public class RezervacijeViewModel : BaseViewModel
     {
+
+        private readonly APIService _rezervacija = new APIService("RezervacijaKarte");
         private readonly APIService _putnik = new APIService("Putnik");
-        private readonly APIService _Rezervacija = new APIService("RezervacijaKarte");
+        public RezervacijeViewModel() 
+        {
+            InitCommand = new Command(async () => await Init());
+        }
+
+       
+        public ObservableCollection<RezervacijaKarte> Rezervacije { get; set; } = new ObservableCollection<RezervacijaKarte>();
+        public ICommand InitCommand { get; set; }
+
 
         public async Task<Putnici> GetPutnik()
         {
@@ -32,28 +42,26 @@ namespace eBus.Mobile.ViewModel
             }
             return putn;
         }
-        public KarteViewModel()
-        {
-            InitCommand = new Command(async () => await Init());
-        }
 
-        public ObservableCollection<RezervacijaKarte> Rezervacije { get; set; } = new ObservableCollection<RezervacijaKarte>();
 
-        public ICommand InitCommand { get; set; }
-        public async Task Init()
+        public async Task Init() 
         {
+
+
 
             Putnici p = await GetPutnik();
 
             RezervacijaSearchRequest searchRez = new RezervacijaSearchRequest()
             {
-                PutnikId = p.PutnikId
+                PutnikId = p.PutnikId,
+                Platio=false
             };
-            var list = await _Rezervacija.Get<List<RezervacijaKarte>>(searchRez);
+            var list = await _rezervacija.Get<List<RezervacijaKarte>>(searchRez);
+
             Rezervacije.Clear();
             foreach (var item in list)
             {
-                if (item.Placeno == true && item.RedVoznje.DatumVrijemeDolaska < DateTime.Now)
+                if (item.RedVoznje.DatumVrijemeDolaska > DateTime.Now)
                 {
                     Rezervacije.Add(item);
                 }

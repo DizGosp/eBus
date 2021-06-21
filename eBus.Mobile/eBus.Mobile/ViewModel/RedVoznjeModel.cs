@@ -21,6 +21,7 @@ namespace eBus.Mobile.ViewModel
         private readonly APIService _Karta = new APIService("Karta");
         private readonly APIService _Rezervacija = new APIService("RezervacijaKarte");
         private readonly APIService _preporuka = new APIService("SistemPreporuke");
+        private readonly APIService _sjediste = new APIService("RezervacijaSjedista");
 
         private decimal? popust = 0;
         public RedVoznjeModel() 
@@ -37,10 +38,71 @@ namespace eBus.Mobile.ViewModel
             return new string(Enumerable.Repeat(chars, 10)
               .Select(s => s[random.Next(s.Length)]).ToArray());
          }
+        public async Task<Putnici> GetPutnik()
+        {
+            PutnikSearchRequest searchP = new PutnikSearchRequest()
+            {
+                userName = APIService.Username
+            };
+            List<Putnici> p = await _putnik.Get<List<eBus.Model.Putnici>>(searchP);
+            Putnici putn = new Putnici();
+            foreach (var item in p)
+            {
+                if (item.KorisnickoIme == APIService.Username)
+                {
+                    putn = item;
+                }
+            }
+            return putn;
+        }
+        public async Task<RedVoznje> GetRed(int id)
+        {
+            RedVoznjeSearchRequest searchP = new RedVoznjeSearchRequest()
+            {
+                AutobusId = id
+            };
+            RedVoznje red = await _RedVoznje.GetById<eBus.Model.RedVoznje>(id);
+
+            return red;
+        }
+
+        public async Task<Karta> GetKarta(KartaSearchRequest search)
+        {
+
+            List<Karta> p = await _Karta.Get<List<eBus.Model.Karta>>(null);
+            Karta karta = new Karta();
+            foreach (var item in p)
+            {
+                if (item.BrojKarte == search.BrojKarte)
+                {
+                    karta = item;
+                }
+            }
+            return karta;
+        }
+
+        public async Task<RezervacijaSjedista> GetSjediste(int? id)
+        {
+            RezervacijaSjedista search = new RezervacijaSjedista { 
+            AutobusId=id
+            };
+            List<RezervacijaSjedista> p = await _sjediste.Get<List<eBus.Model.RezervacijaSjedista>>(search);
+            RezervacijaSjedista rez = new RezervacijaSjedista();
+            foreach (var item in p)
+            {
+                if (item.Status == true)
+                {
+                     rez=item;
+                    return rez;
+                }
+            }
+            return rez;
+        }
 
         public ObservableCollection<RedVoznje> RedVoznjeList { get; set; } = new ObservableCollection<RedVoznje>();
         public ObservableCollection<Grad> GradoviList { get; set; } = new ObservableCollection<Grad>();
         public ObservableCollection<VrstaKarte> VrstaKarteList { get; set; } = new ObservableCollection<VrstaKarte>();
+
 
 
         Grad _selectedGradPolaska = null;
@@ -92,39 +154,6 @@ namespace eBus.Mobile.ViewModel
             }
         }
 
-        public async Task<Putnici> GetPutnik()
-        {
-            PutnikSearchRequest searchP = new PutnikSearchRequest()
-            {
-                userName = APIService.Username
-            };
-            List<Putnici> p = await _putnik.Get<List<eBus.Model.Putnici>>(searchP);
-            Putnici putn = new Putnici();
-            foreach (var item in p)
-            {
-                if (item.KorisnickoIme == APIService.Username)
-                {
-                    putn = item;
-                }
-            }
-            return putn;
-        }
-
-        public async Task<Karta> GetKarta(KartaSearchRequest search)
-        {
-           
-            List<Karta> p = await _Karta.Get<List<eBus.Model.Karta>>(null);
-            Karta karta = new Karta();
-            foreach (var item in p)
-            {
-                if (item.BrojKarte == search.BrojKarte)
-                {
-                    karta = item;
-                }
-            }
-            return karta;
-        }
-
 
         public ICommand InitCommand { get; set; }
         public ICommand InitPreporukaCommand { get; set; }
@@ -167,100 +196,45 @@ namespace eBus.Mobile.ViewModel
             {
                 search.DatumVrijemePolaska = Datum;
             }
+            if (VrstaKarteList.Count == 0)
+            {
+                var listVrsteKarti = await _vKarte.Get<List<VrstaKarte>>(null);
 
+                foreach (var x in listVrsteKarti)
+                {
+                    VrstaKarteList.Add(x);
+                }
+
+            }
 
 
             if (search == null)
             {
-                if (SelectedVrstaKarte == null || SelectedVrstaKarte.VrstaKarteId == 1)
+
+                var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(null);
+                RedVoznjeList.Clear();
+                foreach (var item in list)
                 {
-                    var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(null);
-                    RedVoznjeList.Clear();
-                    foreach (var item in list)
+                    if (item.DatumVrijemePolaska > DateTime.Now)
                     {
-                        if (item.DatumVrijemePolaska > DateTime.Now)
-                        {
-                            RedVoznjeList.Add(item);
-                        }
-                    }
-                }
-                else if (SelectedVrstaKarte.VrstaKarteId == 2) 
-                {
-                    popust = (decimal?)0.15;
-                    var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(null);
-                    RedVoznjeList.Clear();
-                    foreach (var item in list)
-                    {
-                        item.Cijena = item.Cijena-(item.Cijena*popust);
-                        if (item.DatumVrijemePolaska > DateTime.Now)
-                        {
-                            RedVoznjeList.Add(item);
-                        }
-                    }
-                }
-                else if (SelectedVrstaKarte.VrstaKarteId == 3)
-                {
-                    popust = (decimal?)0.10;
-                    var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(null);
-                    RedVoznjeList.Clear();
-                    foreach (var item in list)
-                    {
-                        item.Cijena = item.Cijena - (item.Cijena * popust);
-                        if (item.DatumVrijemePolaska > DateTime.Now)
-                        {
-                            RedVoznjeList.Add(item);
-                        }
+                        RedVoznjeList.Add(item);
                     }
                 }
 
             }
-            else 
+            else
             {
-                if (SelectedVrstaKarte == null || SelectedVrstaKarte.VrstaKarteId == 1)
+                var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(search);
+                RedVoznjeList.Clear();
+                foreach (var item in list)
                 {
-                   
-                    var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(search);
-                    RedVoznjeList.Clear();
-                    foreach (var item in list)
+                    if (item.DatumVrijemePolaska > DateTime.Now)
                     {
-                        if (item.DatumVrijemePolaska > DateTime.Now) 
-                        {
-                            RedVoznjeList.Add(item);
-                        }
-                     
+                        RedVoznjeList.Add(item);
                     }
-                }
-                else if (SelectedVrstaKarte.VrstaKarteId == 2)
-                {
-                    popust = (decimal?)0.15;
-                    var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(search);
-                    RedVoznjeList.Clear();
-                    foreach (var item in list)
-                    {
-                        item.Cijena = item.Cijena - (item.Cijena * popust);
-                        if (item.DatumVrijemePolaska > DateTime.Now)
-                        {
-                            RedVoznjeList.Add(item);
-                        }
-                    }
-                }
-                else if (SelectedVrstaKarte.VrstaKarteId == 3)
-                {
-                    popust = (decimal?)0.10;
-                    var list = await _RedVoznje.Get<IEnumerable<RedVoznje>>(search);
-                    RedVoznjeList.Clear();
-                    foreach (var item in list)
-                    {
-                        item.Cijena = item.Cijena - (item.Cijena * popust);
-                        if (item.DatumVrijemePolaska > DateTime.Now)
-                        {
-                            RedVoznjeList.Add(item);
-                        }
-                    }
+
                 }
             }
-
-
         }
 
         public async Task InitPreporuka()
@@ -334,9 +308,31 @@ namespace eBus.Mobile.ViewModel
             KartaInsertRequest kInsert = new KartaInsertRequest()
             {
                 DatumIzdavanja = DateTime.Now,
-                RezervacijaSjedistaId = 1,
                 BrojKarte = getBrojKarte()
             };
+
+            RedVoznje red = await GetRed(id);
+
+            RezervacijaSjedista rs = await GetSjediste(red.AutobusId);
+
+
+            if (SelectedVrstaKarte == null) 
+            {
+                kInsert.VrstaKarteId = 1;
+            }
+            else 
+            {
+                kInsert.VrstaKarteId = SelectedVrstaKarte.VrstaKarteId;
+            }
+
+            if (rs.RezervacijaSjedistaId != 0)
+            {
+                kInsert.RezervacijaSjedistaId = rs.RezervacijaSjedistaId;
+            }
+            else 
+            {
+                kInsert.RezervacijaSjedistaId = 1;
+            }
 
             if (SelectedVrstaKarte == null)
             {
@@ -353,16 +349,21 @@ namespace eBus.Mobile.ViewModel
 
             Karta kGet = await GetKarta(searchKarta);
 
+           
+
             RezervacijaInsertRequest rezInsert = new RezervacijaInsertRequest()
             {
                 DatumKreiranja=DateTime.Now,
                 DatumIsteka=DateTime.Now.AddDays(7),
                 Otkazana=false,
+                Placeno=false,
                 Qrcode=getBrojKarte(),
                 PutnikId=p.PutnikId,
                 KartaId=kGet.KartaId,
-                RedVoznjeId=id            
+                RedVoznjeId=id
             };
+
+           
 
             await _Rezervacija.Insert<RezervacijaKarte>(rezInsert);
 

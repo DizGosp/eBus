@@ -15,7 +15,6 @@ namespace eBus.WebAPI.Database
         public int NotifikacijeId { get; set; }
         public string Naslov { get; set; }
         public DateTime? DatumSlanja { get; set; }
-        public bool? Procitano { get; set; }
         public int? NovostiId { get; set; }
 
         public virtual Novosti Novosti { get; set; }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class SistemPreporukeService:ISistemPreporuke
+    public class SistemPreporukeService : ISistemPreporuke
     {
 
         private readonly eBusContext _db;
@@ -25,7 +25,7 @@ namespace eBus.WebAPI.Services
             var listaAutobusaSaOcjenom = new List<int>(); // Lista autobusa sa ocjenom vecom od ispod određene
             var listaAutobusaBezOcjene = new List<int>(); // Lista autobusa sa ocjenom manjom od ispod određene
             var listaPolazista = new List<int>(); // Lista polazišta koje je korisnik ranije odabrao
-            var ratingList = _db.Ocjenas.Include(x => x.Putnik).Include(x=>x.Autobus).ToList(); //Sve ocjene za logovanog putnika
+            var ratingList = _db.Ocjenas.Include(x => x.Putnik).Include(x => x.RedVoznje).ToList(); //Sve ocjene za logovanog putnika
             var listRedova = new List<Model.RedVoznje>();  //Lista redova voznje za autobuse sa ocjenom
             var listRedoviVoznje = new List<Model.RedVoznje>();  //Lista redova voznje za autobuse sa ocjenom i zbirom grada polaska veci od 2
 
@@ -42,7 +42,7 @@ namespace eBus.WebAPI.Services
 
                 foreach (var r in ratingList)
                 {
-                    if (vozilo.AutobusId == r.AutobusId && r.PutnikId != putnik.PutnikId)
+                    if (vozilo.AutobusId == r.RedVoznjeId && r.PutnikId != putnik.PutnikId)
                     {
                         if (r.Ocjena1 >= 3)
                         {
@@ -60,17 +60,17 @@ namespace eBus.WebAPI.Services
                 {
 
                     listaAutobusaSaOcjenom.Add(vozilo.AutobusId); //Ako je prosjek ocjene veci od 4 dodaje id autobusa
-                 
+
                 }
                 else
                 {
                     listaAutobusaBezOcjene.Add(vozilo.AutobusId);
                 }
             }
-            
+
             foreach (var item in listaAutobusaSaOcjenom)
             {
-                var listRed=_db.RedVoznjes.Where(x=>x.AutobusId==item).ToList();
+                var listRed = _db.RedVoznjes.Where(x => x.AutobusId == item).ToList();
                 foreach (var x in listRed)
                 {
                     listRedova.Add(_mapper.Map<Model.RedVoznje>(x)); //Dodaje sve Redove voznji sa autobusima (ocjenom iznad prosjeka)
@@ -81,25 +81,25 @@ namespace eBus.WebAPI.Services
             foreach (var item in listRedova)
             {
                 var brojac = 0;
-                for (int i = 0; i <listaPolazista.Count; i++)
+                for (int i = 0; i < listaPolazista.Count; i++)
                 {
-                    if (item.GradPolaskaId == listaPolazista[i]) 
+                    if (item.GradPolaskaId == listaPolazista[i])
                     {
-                        brojac++; 
+                        brojac++;
                     }
                 }
-                if (brojac > 2) 
+                if (brojac > 2)
                 {
                     listRedoviVoznje.Add(item); //Dodaje redove voznje koji su imali isti grad polaska više od 2x
                 }
-                
+
             }
 
 
             foreach (var item in listRedoviVoznje)
             {
-                if(item.DatumVrijemePolaska>=DateTime.Today)
-                model.listaPreporuka.Add(item);
+                if (item.DatumVrijemePolaska >= DateTime.Today)
+                    model.listaPreporuka.Add(item);
             }
 
             model.listaPreporuka = model.listaPreporuka.OrderByDescending(r => r.Cijena).ToList();

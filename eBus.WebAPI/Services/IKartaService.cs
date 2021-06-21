@@ -16,7 +16,7 @@ namespace eBus.WebAPI.Services
         public override List<Model.Karta> Get(Model.Request.KartaSearchRequest search)
         {
             var query = _db.Set<Kartum>()
-                .Include(t=>t.RezervacijaSjedista)
+                .Include(t => t.RezervacijaSjedista)
                 .Include(t => t.RezervacijaSjedista.Autobus)
                 .AsQueryable();
 
