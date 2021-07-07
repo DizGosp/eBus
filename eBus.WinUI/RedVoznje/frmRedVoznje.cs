@@ -118,5 +118,10 @@ namespace eBus.WinUI.RedVoznje
             frmAutobus frm = new frmAutobus(_korId);
             frm.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

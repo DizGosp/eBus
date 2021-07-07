@@ -36,5 +36,10 @@ namespace eBus.WinUI.Vozilo_i_vozac
             frm.Show();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

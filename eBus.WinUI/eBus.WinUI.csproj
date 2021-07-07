@@ -172,6 +172,12 @@
     <Compile Include="Karta\frmDodajSjedista.Designer.cs">
       <DependentUpon>frmDodajSjedista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Karta\frmIndexPoziva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Karta\frmIndexPoziva.Designer.cs">
+      <DependentUpon>frmIndexPoziva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Karta\frmKartaPregled.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Karta\frmDodajSjedista.resx">
       <DependentUpon>frmDodajSjedista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Karta\frmIndexPoziva.resx">
+      <DependentUpon>frmIndexPoziva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Karta\frmKartaPregled.resx">
       <DependentUpon>frmKartaPregled.cs</DependentUpon>

@@ -67,6 +67,7 @@ namespace eBus.WinUI.Korisnici
                     else
                     {
                         await _service.Insert<Model.Korisnici>(request);
+                        
                     }
                     MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -162,6 +163,11 @@ namespace eBus.WinUI.Korisnici
                 Image image = Image.FromFile(fileName);
                 pbKorisnik.Image = image;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

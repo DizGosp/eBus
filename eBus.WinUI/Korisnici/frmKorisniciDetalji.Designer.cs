@@ -50,6 +50,7 @@
             this.btnAddImage = new System.Windows.Forms.Button();
             this.pbKorisnik = new System.Windows.Forms.PictureBox();
             this.cbKorisniciUloge = new System.Windows.Forms.CheckedListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbKorisnik)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +69,7 @@
             // lblIme
             // 
             this.lblIme.AutoSize = true;
+            this.lblIme.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblIme.Location = new System.Drawing.Point(63, 110);
             this.lblIme.Name = "lblIme";
             this.lblIme.Size = new System.Drawing.Size(24, 13);
@@ -93,6 +95,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.errorProvider.SetIconAlignment(this.label2, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.label2.Location = new System.Drawing.Point(63, 187);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
@@ -110,6 +114,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.errorProvider.SetIconAlignment(this.label3, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.label3.Location = new System.Drawing.Point(63, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
@@ -126,6 +132,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.errorProvider.SetIconAlignment(this.label4, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.label4.Location = new System.Drawing.Point(63, 230);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
@@ -142,6 +150,8 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.errorProvider.SetIconAlignment(this.label5, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.label5.Location = new System.Drawing.Point(67, 278);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
@@ -158,6 +168,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.errorProvider.SetIconAlignment(this.label6, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.label6.Location = new System.Drawing.Point(245, 278);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
@@ -182,6 +194,8 @@
             // cbAktivan
             // 
             this.cbAktivan.AutoSize = true;
+            this.cbAktivan.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.errorProvider.SetIconAlignment(this.cbAktivan, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
             this.cbAktivan.Location = new System.Drawing.Point(295, 301);
             this.cbAktivan.Name = "cbAktivan";
             this.cbAktivan.Size = new System.Drawing.Size(62, 17);
@@ -198,7 +212,7 @@
             this.txtImage.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.txtImage.Location = new System.Drawing.Point(484, 298);
-            this.txtImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtImage.Margin = new System.Windows.Forms.Padding(2);
             this.txtImage.Name = "txtImage";
             this.txtImage.Size = new System.Drawing.Size(197, 23);
             this.txtImage.TabIndex = 39;
@@ -207,7 +221,7 @@
             // 
             this.btnAddImage.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAddImage.Location = new System.Drawing.Point(524, 343);
-            this.btnAddImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddImage.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddImage.Name = "btnAddImage";
             this.btnAddImage.Size = new System.Drawing.Size(120, 30);
             this.btnAddImage.TabIndex = 38;
@@ -231,11 +245,29 @@
             this.cbKorisniciUloge.Size = new System.Drawing.Size(125, 64);
             this.cbKorisniciUloge.TabIndex = 41;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.errorProvider.SetIconAlignment(this.button1, System.Windows.Forms.ErrorIconAlignment.TopRight);
+            this.button1.Location = new System.Drawing.Point(692, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(26, 27);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmKorisniciDetalji
             // 
+            this.AcceptButton = this.txtSnimiKor;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 450);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.ClientSize = new System.Drawing.Size(717, 438);
+            this.ControlBox = false;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbKorisniciUloge);
             this.Controls.Add(this.pbKorisnik);
             this.Controls.Add(this.txtImage);
@@ -255,9 +287,11 @@
             this.Controls.Add(this.txtIme);
             this.Controls.Add(this.lblIme);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmKorisniciDetalji";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmKorisniciDetalji";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmKorisniciDetalji_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbKorisnik)).EndInit();
@@ -289,5 +323,6 @@
         private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.PictureBox pbKorisnik;
         private System.Windows.Forms.CheckedListBox cbKorisniciUloge;
+        private System.Windows.Forms.Button button1;
     }
 }

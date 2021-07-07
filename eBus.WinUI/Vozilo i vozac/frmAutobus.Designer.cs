@@ -40,6 +40,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtBr = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -47,7 +48,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label1.Location = new System.Drawing.Point(53, 9);
+            this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(213, 37);
@@ -57,6 +58,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label2.Location = new System.Drawing.Point(25, 72);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
@@ -67,7 +69,7 @@
             // txtVozilo
             // 
             this.txtVozilo.Location = new System.Drawing.Point(110, 70);
-            this.txtVozilo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVozilo.Margin = new System.Windows.Forms.Padding(2);
             this.txtVozilo.Name = "txtVozilo";
             this.txtVozilo.Size = new System.Drawing.Size(156, 20);
             this.txtVozilo.TabIndex = 2;
@@ -75,7 +77,7 @@
             // txtKlasa
             // 
             this.txtKlasa.Location = new System.Drawing.Point(110, 101);
-            this.txtKlasa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtKlasa.Margin = new System.Windows.Forms.Padding(2);
             this.txtKlasa.Name = "txtKlasa";
             this.txtKlasa.Size = new System.Drawing.Size(156, 20);
             this.txtKlasa.TabIndex = 4;
@@ -83,6 +85,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label3.Location = new System.Drawing.Point(25, 103);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
@@ -93,6 +96,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label4.Location = new System.Drawing.Point(25, 136);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
@@ -112,7 +116,7 @@
             // 
             this.btnVoz.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnVoz.Location = new System.Drawing.Point(269, 133);
-            this.btnVoz.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVoz.Margin = new System.Windows.Forms.Padding(2);
             this.btnVoz.Name = "btnVoz";
             this.btnVoz.Size = new System.Drawing.Size(22, 19);
             this.btnVoz.TabIndex = 23;
@@ -123,8 +127,9 @@
             // cbStatus
             // 
             this.cbStatus.AutoSize = true;
+            this.cbStatus.ForeColor = System.Drawing.Color.RoyalBlue;
             this.cbStatus.Location = new System.Drawing.Point(114, 210);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(59, 17);
             this.cbStatus.TabIndex = 24;
@@ -135,7 +140,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnSave.Location = new System.Drawing.Point(202, 204);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 27);
             this.btnSave.TabIndex = 25;
@@ -154,6 +159,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label5.Location = new System.Drawing.Point(107, 173);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
@@ -161,11 +167,25 @@
             this.label5.TabIndex = 42;
             this.label5.Text = "Broj sjedišta:";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(281, -1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 28);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "x";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmAutobus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(303, 264);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBr);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
@@ -178,8 +198,10 @@
             this.Controls.Add(this.txtVozilo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmAutobus";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAutobus";
             this.Load += new System.EventHandler(this.frmAutobus_Load);
             this.ResumeLayout(false);
@@ -201,5 +223,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtBr;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
     }
 }
