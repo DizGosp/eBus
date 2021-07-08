@@ -1,4 +1,5 @@
-﻿using eBus.WinUI.Karta;
+﻿using eBus.WinUI.Izvještaji;
+using eBus.WinUI.Karta;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,7 +51,7 @@ namespace eBus.WinUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            textBox1.Text = APIService.Username;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -74,6 +75,14 @@ namespace eBus.WinUI
             pnlNav.Top = btnKorisnici.Top;
             pnlNav.Left = btnKorisnici.Left;
             btnKorisnici.BackColor = Color.FromArgb(46, 51, 73);
+
+
+            lblNaziv.Text = "Zarada po korisniku";
+            this.PnlFormLoader.Controls.Clear();
+            frmZaradaKorisnik frm = new frmZaradaKorisnik() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frm.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frm);
+            frm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -82,6 +91,16 @@ namespace eBus.WinUI
             pnlNav.Top = btnRedVoznje.Top;
             pnlNav.Left = btnRedVoznje.Left;
             btnRedVoznje.BackColor = Color.FromArgb(46, 51, 73);
+
+
+            lblNaziv.Text = "Redovi voznje za korisnika";
+            this.PnlFormLoader.Controls.Clear();
+            frmRedVoznjeKorisnik frm = new frmRedVoznjeKorisnik() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frm.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frm);
+            frm.Show();
+
+
         }
 
         private void btnKarta_Click(object sender, EventArgs e)
@@ -90,6 +109,14 @@ namespace eBus.WinUI
             pnlNav.Top = btnKarta.Top;
             pnlNav.Left = btnKarta.Left;
             btnKarta.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblNaziv.Text = "Ukupna zarada";
+            this.PnlFormLoader.Controls.Clear();
+            frmUkupnaZarada frm = new frmUkupnaZarada() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frm.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frm);
+            frm.Show();
+
         }
 
         private void btnHome_Leave(object sender, EventArgs e)

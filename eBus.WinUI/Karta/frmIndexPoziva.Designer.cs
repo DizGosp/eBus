@@ -61,12 +61,13 @@ namespace eBus.WinUI.Karta
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(441, 187);
+            this.button2.Location = new System.Drawing.Point(441, 248);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 43);
             this.button2.TabIndex = 3;
             this.button2.Text = "Pregled korisnika";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
             this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover);
             // 
@@ -94,6 +95,7 @@ namespace eBus.WinUI.Karta
             this.button4.TabIndex = 5;
             this.button4.Text = "Pregled reda vožnje";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
             this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
             // 
@@ -107,6 +109,7 @@ namespace eBus.WinUI.Karta
             this.button5.TabIndex = 6;
             this.button5.Text = "Pregled karti";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             this.button5.MouseLeave += new System.EventHandler(this.button5_MouseLeave);
             this.button5.MouseHover += new System.EventHandler(this.button5_MouseHover);
             // 
@@ -192,12 +195,13 @@ namespace eBus.WinUI.Karta
             // 
             this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(441, 248);
+            this.button10.Location = new System.Drawing.Point(441, 187);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(139, 43);
             this.button10.TabIndex = 13;
             this.button10.Text = "Pregled ocjena";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // frmIndexPoziva
             // 

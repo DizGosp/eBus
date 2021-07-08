@@ -28,7 +28,7 @@ namespace eBus.WinUI
             try
             {          
                 await _serviceR.Get<dynamic>(null);
-                Form1 frm = new Form1(/*APIService.Username*/);
+                Form1 frm = new Form1();
                 frm.Show();
                 this.Hide();
             }

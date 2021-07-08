@@ -1,6 +1,7 @@
 ﻿using eBus.Model.Request;
 using eBus.WinUI.Gradovi;
 using eBus.WinUI.Korisnici;
+using eBus.WinUI.Ocjene;
 using eBus.WinUI.RedVoznje;
 using eBus.WinUI.Vozilo_i_vozac;
 using System;
@@ -174,5 +175,32 @@ namespace eBus.WinUI.Karta
             frm.Show();
         }
 
+        private async void button5_Click(object sender, EventArgs e)
+        {
+            int id = await getId(_korIme);
+            frmKartaPregled frm = new frmKartaPregled(id);
+            frm.Show();
+        }
+
+        private async void button4_Click(object sender, EventArgs e)
+        {
+            int id = await getId(_korIme);
+            frmPretraga frm = new frmPretraga(id);
+            frm.Show();
+        }
+
+        private  void button10_Click(object sender, EventArgs e)
+        {
+           
+            PregledOcjena frm = new PregledOcjena();
+            frm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+         
+            frmKorisnici frm = new frmKorisnici();
+            frm.Show();
+        }
     }
 }

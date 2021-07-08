@@ -52,8 +52,8 @@
             this.btnFiltriraj = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgrRedPretraga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,7 @@
             this.cmbDo.Name = "cmbDo";
             this.cmbDo.Size = new System.Drawing.Size(167, 21);
             this.cmbDo.TabIndex = 32;
+            this.cmbDo.Text = "Odaberite odredište";
             // 
             // cmbOD
             // 
@@ -73,6 +74,7 @@
             this.cmbOD.Name = "cmbOD";
             this.cmbOD.Size = new System.Drawing.Size(167, 21);
             this.cmbOD.TabIndex = 31;
+            this.cmbOD.Text = "Odaberite grad polaska";
             // 
             // cmbBus
             // 
@@ -81,10 +83,12 @@
             this.cmbBus.Name = "cmbBus";
             this.cmbBus.Size = new System.Drawing.Size(167, 21);
             this.cmbBus.TabIndex = 30;
+            this.cmbBus.Text = "Odaberite vozilo";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label8.Location = new System.Drawing.Point(35, 166);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
@@ -94,6 +98,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label7.Location = new System.Drawing.Point(35, 140);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 13);
@@ -103,6 +108,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label6.Location = new System.Drawing.Point(35, 114);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 13);
@@ -130,6 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label5.Location = new System.Drawing.Point(35, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
@@ -139,6 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label4.Location = new System.Drawing.Point(35, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
@@ -148,6 +156,7 @@
             // dgrRedPretraga
             // 
             this.dgrRedPretraga.AllowUserToDeleteRows = false;
+            this.dgrRedPretraga.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(51)))));
             this.dgrRedPretraga.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrRedPretraga.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RedVoznjeId,
@@ -159,10 +168,10 @@
             this.GradDolaskaNavigation,
             this.Korisnik,
             this.Autobus});
-            this.dgrRedPretraga.Location = new System.Drawing.Point(37, 189);
+            this.dgrRedPretraga.Location = new System.Drawing.Point(3, 189);
             this.dgrRedPretraga.Name = "dgrRedPretraga";
             this.dgrRedPretraga.ReadOnly = true;
-            this.dgrRedPretraga.Size = new System.Drawing.Size(753, 218);
+            this.dgrRedPretraga.Size = new System.Drawing.Size(787, 218);
             this.dgrRedPretraga.TabIndex = 33;
             // 
             // RedVoznjeId
@@ -239,6 +248,7 @@
             // btnFiltriraj
             // 
             this.btnFiltriraj.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnFiltriraj.ForeColor = System.Drawing.Color.Black;
             this.btnFiltriraj.Location = new System.Drawing.Point(398, 161);
             this.btnFiltriraj.Name = "btnFiltriraj";
             this.btnFiltriraj.Size = new System.Drawing.Size(75, 23);
@@ -252,7 +262,7 @@
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(512, 26);
+            this.pictureBox1.Location = new System.Drawing.Point(534, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(191, 158);
@@ -271,37 +281,40 @@
             this.label1.TabIndex = 36;
             this.label1.Text = "Detalji reda vožnje:";
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.Location = new System.Drawing.Point(37, 413);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 28);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Nazad";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button2.Location = new System.Drawing.Point(714, 413);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(588, 412);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 28);
+            this.button2.Size = new System.Drawing.Size(201, 28);
             this.button2.TabIndex = 38;
-            this.button2.Text = "Dodaj ";
+            this.button2.Text = "Dodaj  red vožnje";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Red;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(775, -3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(25, 24);
+            this.button3.TabIndex = 39;
+            this.button3.Text = "X";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmPretraga
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFiltriraj);
@@ -316,7 +329,10 @@
             this.Controls.Add(this.dtpOD);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPretraga";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPretraga";
             this.Load += new System.EventHandler(this.frmPretraga_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrRedPretraga)).EndInit();
@@ -342,7 +358,6 @@
         public System.Windows.Forms.Button btnFiltriraj;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn RedVoznjeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
@@ -353,5 +368,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GradDolaskaNavigation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Korisnik;
         private System.Windows.Forms.DataGridViewTextBoxColumn Autobus;
+        private System.Windows.Forms.Button button3;
     }
 }

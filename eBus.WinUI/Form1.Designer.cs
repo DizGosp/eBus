@@ -74,7 +74,7 @@
             this.btnKarta.FlatAppearance.BorderSize = 0;
             this.btnKarta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnKarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKarta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKarta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKarta.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnKarta.Image = ((System.Drawing.Image)(resources.GetObject("btnKarta.Image")));
             this.btnKarta.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -82,7 +82,7 @@
             this.btnKarta.Name = "btnKarta";
             this.btnKarta.Size = new System.Drawing.Size(186, 48);
             this.btnKarta.TabIndex = 4;
-            this.btnKarta.Text = "Karta";
+            this.btnKarta.Text = "Ukupna zarada";
             this.btnKarta.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnKarta.UseVisualStyleBackColor = true;
             this.btnKarta.Click += new System.EventHandler(this.btnKarta_Click);
@@ -94,7 +94,7 @@
             this.btnRedVoznje.FlatAppearance.BorderSize = 0;
             this.btnRedVoznje.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnRedVoznje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRedVoznje.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRedVoznje.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRedVoznje.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnRedVoznje.Image = ((System.Drawing.Image)(resources.GetObject("btnRedVoznje.Image")));
             this.btnRedVoznje.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -114,7 +114,7 @@
             this.btnKorisnici.FlatAppearance.BorderSize = 0;
             this.btnKorisnici.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnKorisnici.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKorisnici.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKorisnici.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKorisnici.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnKorisnici.Image = ((System.Drawing.Image)(resources.GetObject("btnKorisnici.Image")));
             this.btnKorisnici.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -122,7 +122,7 @@
             this.btnKorisnici.Name = "btnKorisnici";
             this.btnKorisnici.Size = new System.Drawing.Size(186, 44);
             this.btnKorisnici.TabIndex = 2;
-            this.btnKorisnici.Text = "Korisnici";
+            this.btnKorisnici.Text = "Zarada po korisniku";
             this.btnKorisnici.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnKorisnici.UseVisualStyleBackColor = true;
             this.btnKorisnici.Click += new System.EventHandler(this.button1_Click);
@@ -134,7 +134,7 @@
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,8 +166,10 @@
             this.textBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.textBox1.Location = new System.Drawing.Point(12, 104);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(163, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 

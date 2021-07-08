@@ -39,5 +39,10 @@ namespace eBus.WinUI.Karta
             dgrKaraPregled.DataSource = result; 
             dgrKaraPregled.MaximumSize = MaximumSize;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

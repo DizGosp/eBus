@@ -166,6 +166,24 @@
     <Compile Include="Gradovi\frmGradovi.Designer.cs">
       <DependentUpon>frmGradovi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Izvještaji\frmRedVoznjeKorisnik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvještaji\frmRedVoznjeKorisnik.Designer.cs">
+      <DependentUpon>frmRedVoznjeKorisnik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvještaji\frmUkupnaZarada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvještaji\frmUkupnaZarada.Designer.cs">
+      <DependentUpon>frmUkupnaZarada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvještaji\frmZaradaKorisnik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvještaji\frmZaradaKorisnik.Designer.cs">
+      <DependentUpon>frmZaradaKorisnik.cs</DependentUpon>
+    </Compile>
     <Compile Include="Karta\frmDodajSjedista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +219,12 @@
     </Compile>
     <Compile Include="Korisnici\frmKorisniciDetalji.Designer.cs">
       <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ocjene\PregledOcjena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ocjene\PregledOcjena.Designer.cs">
+      <DependentUpon>PregledOcjena.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +267,15 @@
     <EmbeddedResource Include="Gradovi\frmGradovi.resx">
       <DependentUpon>frmGradovi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\frmRedVoznjeKorisnik.resx">
+      <DependentUpon>frmRedVoznjeKorisnik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\frmUkupnaZarada.resx">
+      <DependentUpon>frmUkupnaZarada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvještaji\frmZaradaKorisnik.resx">
+      <DependentUpon>frmZaradaKorisnik.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Karta\frmDodajSjedista.resx">
       <DependentUpon>frmDodajSjedista.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici\frmKorisniciDetalji.resx">
       <DependentUpon>frmKorisniciDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ocjene\PregledOcjena.resx">
+      <DependentUpon>PregledOcjena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

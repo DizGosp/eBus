@@ -42,6 +42,14 @@ namespace eBus.WinUI.Korisnici
             frm.Show();
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void grpKorisnici_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
