@@ -280,14 +280,6 @@ namespace eBus.Mobile.ViewModel
                 }
             }
 
-
-      
-
-
-
-
-
-
         }
         public async Task ButtonInit(int id)
         {

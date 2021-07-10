@@ -36,11 +36,11 @@ namespace eBus.WebAPI.Services
                 countOcjene = 0;
                 brojacOcjena = 0;
 
-                if (item.GradPolaskaNavigation.NazivGrada == "Maglaj")
+                if (item.GradPolaskaId==2)
                 {
                     foreach (var x in ocjeneList)
                     {
-                        if (item.RedVoznjeId == x.RedVoznjeId && item.KorisnikId == x.PutnikId)
+                        if (item.RedVoznjeId == x.RedVoznjeId)
                         {
                             if (x.Ocjena1 >= 2)
                             {
