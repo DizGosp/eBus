@@ -47,7 +47,7 @@ namespace eBus.WinUI.Karta
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(96, 62);
+            this.button1.Location = new System.Drawing.Point(96, 372);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 43);
             this.button1.TabIndex = 2;
@@ -75,7 +75,7 @@ namespace eBus.WinUI.Karta
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(96, 123);
+            this.button3.Location = new System.Drawing.Point(96, 62);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(139, 43);
             this.button3.TabIndex = 4;
@@ -167,7 +167,7 @@ namespace eBus.WinUI.Karta
             // 
             this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(96, 309);
+            this.button8.Location = new System.Drawing.Point(96, 123);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(139, 43);
             this.button8.TabIndex = 11;
@@ -181,7 +181,7 @@ namespace eBus.WinUI.Karta
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(96, 377);
+            this.button9.Location = new System.Drawing.Point(96, 311);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(139, 43);
             this.button9.TabIndex = 12;

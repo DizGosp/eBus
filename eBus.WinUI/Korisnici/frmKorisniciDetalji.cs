@@ -17,6 +17,7 @@ namespace eBus.WinUI.Korisnici
     {
         private readonly APIService _service = new APIService("Korisnici");
         private readonly APIService _uloge = new APIService("Uloge");
+        private readonly APIService _serviceUlogeKorisnici = new APIService("KorisniciUloge");
         private int? _id = null;
         KorisniciInsertRequest request = new KorisniciInsertRequest();
         public frmKorisniciDetalji(int? korisnikID = null)
@@ -67,7 +68,18 @@ namespace eBus.WinUI.Korisnici
                     else
                     {
                         await _service.Insert<Model.Korisnici>(request);
-                        
+
+                        //var last = await _service.Get<Model.Korisnici>(new KorisniciSearchRequest() { userName = request.KorisnickoIme });
+
+                        //for (int i = 0; i < roleList.Count; i++)
+                        //{
+                        //    await _service.Insert<Model.KorisniciUloge>(new Model.KorisniciUloge()
+                        //    {
+                        //        UlogaId = roleList[i],
+                        //        KorisnikId=last.KorisnikId
+                        //    });
+                        //}
+
                     }
                     MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

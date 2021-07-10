@@ -35,8 +35,11 @@ namespace eBus.WinUI.Izvještaji
             this.cmbPutnik = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvKorisnikRedVoznje = new System.Windows.Forms.DataGridView();
-            this.Putnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RedVoznje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qrcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumKreiranja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatumIsteka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Otkazana = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Placeno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnikRedVoznje)).BeginInit();
             this.SuspendLayout();
@@ -93,29 +96,56 @@ namespace eBus.WinUI.Izvještaji
             this.dgvKorisnikRedVoznje.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(51)))));
             this.dgvKorisnikRedVoznje.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKorisnikRedVoznje.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Putnik,
-            this.RedVoznje});
+            this.Qrcode,
+            this.DatumKreiranja,
+            this.DatumIsteka,
+            this.Otkazana,
+            this.Placeno});
             this.dgvKorisnikRedVoznje.Location = new System.Drawing.Point(3, 218);
             this.dgvKorisnikRedVoznje.Name = "dgvKorisnikRedVoznje";
             this.dgvKorisnikRedVoznje.ReadOnly = true;
             this.dgvKorisnikRedVoznje.Size = new System.Drawing.Size(726, 257);
             this.dgvKorisnikRedVoznje.TabIndex = 42;
             // 
-            // Putnik
+            // Qrcode
             // 
-            this.Putnik.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Putnik.DataPropertyName = "Putnik";
-            this.Putnik.HeaderText = "Putnik";
-            this.Putnik.Name = "Putnik";
-            this.Putnik.ReadOnly = true;
+            this.Qrcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Qrcode.DataPropertyName = "Qrcode";
+            this.Qrcode.HeaderText = "Code";
+            this.Qrcode.Name = "Qrcode";
+            this.Qrcode.ReadOnly = true;
             // 
-            // RedVoznje
+            // DatumKreiranja
             // 
-            this.RedVoznje.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RedVoznje.DataPropertyName = "RedVoznje";
-            this.RedVoznje.HeaderText = "Red vožnje";
-            this.RedVoznje.Name = "RedVoznje";
-            this.RedVoznje.ReadOnly = true;
+            this.DatumKreiranja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DatumKreiranja.DataPropertyName = "DatumKreiranja";
+            this.DatumKreiranja.HeaderText = "Datum kreiranja";
+            this.DatumKreiranja.Name = "DatumKreiranja";
+            this.DatumKreiranja.ReadOnly = true;
+            // 
+            // DatumIsteka
+            // 
+            this.DatumIsteka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DatumIsteka.DataPropertyName = "DatumIsteka";
+            this.DatumIsteka.HeaderText = "Datum isteka";
+            this.DatumIsteka.Name = "DatumIsteka";
+            this.DatumIsteka.ReadOnly = true;
+            // 
+            // Otkazana
+            // 
+            this.Otkazana.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Otkazana.DataPropertyName = "Otkazana";
+            this.Otkazana.HeaderText = "Otkazana";
+            this.Otkazana.Name = "Otkazana";
+            this.Otkazana.ReadOnly = true;
+            // 
+            // Placeno
+            // 
+            this.Placeno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Placeno.DataPropertyName = "Placeno";
+            this.Placeno.HeaderText = "Placena";
+            this.Placeno.Name = "Placeno";
+            this.Placeno.ReadOnly = true;
             // 
             // frmRedVoznjeKorisnik
             // 
@@ -147,7 +177,10 @@ namespace eBus.WinUI.Izvještaji
         private System.Windows.Forms.ComboBox cmbPutnik;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvKorisnikRedVoznje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Putnik;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RedVoznje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qrcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumKreiranja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatumIsteka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Otkazana;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Placeno;
     }
 }

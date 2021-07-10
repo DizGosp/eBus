@@ -41,13 +41,13 @@ namespace eBus.WebAPI.Services
 
         public List<Model.Korisnici> Get()
         {
-            var list = _db.Korisnicis.ToList();
+            var list = _db.Korisnicis.Include(x=>x.KorisniciUloges).ToList();
             return _mapper.Map<List<Model.Korisnici>>(list);
         }
 
         public List<Model.Korisnici> Get(KorisniciSearchRequest request)
         {
-            var query = _db.Korisnicis.AsQueryable();
+            var query = _db.Korisnicis.Include(x=>x.KorisniciUloges).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.ime))
             {

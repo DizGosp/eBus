@@ -19,13 +19,35 @@ namespace eBus.WinUI.Karta
     public partial class frmIndexPoziva : Form
     {
         APIService _service = new APIService("Korisnici");
+        APIService _serviceUloge = new APIService("KorisniciUloge");
         private string _korIme = "";
         public frmIndexPoziva()
         {
             InitializeComponent();
+            Provjeri();
         }
 
+        private async void Provjeri() 
+        {
+            var x = await _service.Get<List<Model.Korisnici>>(null);
+            List<Model.KorisniciUloge> ulogeKorisnici = await _serviceUloge.Get<List<Model.KorisniciUloge>>(null);
+            for (int i = 0; i < x.Count; i++)
+            {
+                if (x[i].KorisnickoIme == APIService.Username)
+                {
+                    for (int j = 0; j < ulogeKorisnici.Count; j++)
+                    {
 
+                        if (ulogeKorisnici[j].UlogaId != 1 && x[i].KorisnikId==ulogeKorisnici[j].KorisnikId)
+                        {
+                            this.button1.Hide();
+                            this.button2.Hide();
+                        }
+                    }
+                    return;
+                }
+            }
+        }
         private async Task<int> getId(string user)
         {
             KorisniciSearchRequest search = new KorisniciSearchRequest()
@@ -133,9 +155,8 @@ namespace eBus.WinUI.Karta
             button3.BackColor = Color.FromArgb(24, 30, 54);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            
             frmKorisniciDetalji frm = new frmKorisniciDetalji();
             frm.Show();
         }

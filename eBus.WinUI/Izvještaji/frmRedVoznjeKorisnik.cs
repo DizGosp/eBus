@@ -1,4 +1,5 @@
-﻿using eBus.Model.Request;
+﻿using eBus.Model;
+using eBus.Model.Request;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,8 +43,7 @@ namespace eBus.WinUI.Izvještaji
             };
 
 
-            var ListaRedovaVoznji = await _rezKarte.Get<List<RedVoznjeSearchRequest>>(red);
-
+            var ListaRedovaVoznji = await _rezKarte.Get<List<RezervacijaKarte>>(red);
             dgvKorisnikRedVoznje.AutoGenerateColumns = false;
             dgvKorisnikRedVoznje.DataSource = ListaRedovaVoznji;
 
