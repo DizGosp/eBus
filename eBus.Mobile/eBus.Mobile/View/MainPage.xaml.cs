@@ -11,31 +11,32 @@ using Xamarin.Forms.Xaml;
 
 namespace eBus.Mobile.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     [DesignTimeVisible(false)]
+    [Obsolete]
     public partial class MainPage : MasterDetailPage
     {
 
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
-        private readonly APIService _putnici = new APIService("Putnik");
         public MainPage()
         {
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
 
-            //MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
-            MenuPages.Add((int)MenuItemType.Notifikacija, (NavigationPage)Detail);
+          
+            MenuPages.Add((int)MenuItemType.Novosti, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
         {
+            Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
             if (!MenuPages.ContainsKey(id))
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                    case (int)MenuItemType.Novosti:
+                        MenuPages.Add(id, new NavigationPage(new NovostiPage()));
                         break;
                     case (int)MenuItemType.RedVoznje:
                         MenuPages.Add(id, new NavigationPage(new RedVoznjePage()));
@@ -43,14 +44,13 @@ namespace eBus.Mobile.View
                     case (int)MenuItemType.Rezervacije:
                         MenuPages.Add(id, new NavigationPage(new RezervacijePage()));
                         break;
+                    case (int)MenuItemType.OcijeniRezervacija:
+                        MenuPages.Add(id, new NavigationPage(new OcijeniteRezervacijaPage()));
+                        break;
                     case (int)MenuItemType.Karte:
                         MenuPages.Add(id, new NavigationPage(new KartePage()));
                         break;
-                    case (int)MenuItemType.Novosti:
-                        MenuPages.Add(id, new NavigationPage(new NovostiPage()));
-                        break;
-
-
+                    
 
                 }
 

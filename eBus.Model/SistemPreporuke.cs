@@ -6,6 +6,6 @@ namespace eBus.Model
 {
     public class SistemPreporuke
     {
-        public List<Model.RedVoznje> listaPreporuka { get; set; }
+        public List<Model.Autobus> listaPreporuka { get; set; }
     }
 }

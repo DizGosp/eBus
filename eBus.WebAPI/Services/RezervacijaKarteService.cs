@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eBus.WebAPI.Services
 {
-    public class RezervacijaKarteService : BaseCrudeService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, RezervacijaKarte, Model.Request.RezervacijaInsertRequest, Model.RezervacijaKarte>
+    public class RezervacijaKarteService : BaseCrudeService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, RezervacijaKarte, Model.Request.RezervacijaInsertRequest, Model.Request.RezervacijaKarteUpdateRequest>
     {
         public RezervacijaKarteService(eBusContext _db, IMapper mapper) : base(_db, mapper)
         {
@@ -18,7 +18,9 @@ namespace eBus.WebAPI.Services
             var query = _db.Set<RezervacijaKarte>()
                 .Include(x => x.Putnik)
                 .Include(x => x.RedVoznje)
-                  .Include(x => x.RedVoznje.Autobus)
+                 .Include(x => x.RedVoznje.Autobus)
+                  .Include(x => x.RedVoznje.GradDolaskaNavigation)
+                    .Include(x => x.RedVoznje.GradPolaskaNavigation)
                 .Include(x => x.Karta)
                 .AsQueryable();
 

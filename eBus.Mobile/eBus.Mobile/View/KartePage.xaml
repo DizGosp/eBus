@@ -32,9 +32,7 @@
                 <Label TextColor="White" FontSize="Micro"  Text="Datum kreiranja karte" Grid.Column="2"></Label>
                 <Label TextColor="White" FontSize="Micro"  Text="Datum isteka karte" Grid.Column="3"></Label>
                 <Label TextColor="White" FontSize="Micro" Text="Datum i vrijeme polaska" Grid.Column="4"></Label>
-                <Label TextColor="White" FontSize="Micro" Text="Datum i vrijeme Dolaska" Grid.Column="5"></Label>
-                <Label TextColor="White" FontSize="Micro"  Text="Broj autobusa" Grid.Column="6"></Label>
-                <Label TextColor="White" FontSize="Micro"  Text="      " Grid.Column="7"></Label>
+                <Label TextColor="White" FontSize="Micro"  Text="Broj autobusa" Grid.Column="5"></Label>
 
             </Grid>
 
@@ -60,10 +58,9 @@
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding Qrcode}" Grid.Column="1"></Label>
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding DatumKreiranja}" Grid.Column="2"></Label>
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding DatumIsteka}" Grid.Column="3"></Label>
-                                <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.DatumVrijemePolaska}" Grid.Column="4"></Label>
-                                <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.DatumVrijemeDolaska}" Grid.Column="5"></Label>
-                                <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.Autobus.NazivAutobusa}" Grid.Column="6"></Label>
-                                <Button Text="Rezerviši" Grid.Column="5" Clicked="Button_Clicked" CommandParameter="{Binding RedVoznjeId}" BackgroundColor="Green" TextColor="White" ></Button>
+                                <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.DatumVrijemePolaska.TimeOfDay}" Grid.Column="4"></Label>
+                                <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.Autobus.NazivAutobusa}" Grid.Column="5"></Label>
+                               
 
                             </Grid>
                         </ViewCell>

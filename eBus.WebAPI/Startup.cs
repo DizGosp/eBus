@@ -94,7 +94,7 @@ namespace eBus.WebAPI
             services.AddScoped<ICRUDService<Model.Notifikacije, Model.Request.NotifikacijeSearchRequest, Model.Request.NotifikacijeUpsertRequest, Model.Request.NotifikacijeUpsertRequest>, NotifikacijaService>();
             services.AddScoped<ICRUDService<Model.PutnikNotifikacije, Model.Request.PutnikNotifikacijeSearchRequest, Model.Request.PutnikNotifikacijeUpsertRequest, Model.Request.PutnikNotifikacijeUpsertRequest>, PutnikNotifikacijeService>();
             services.AddScoped<ICRUDService<Model.RezervacijaSjedista, Model.RezervacijaSjedista, Model.Request.SjedisteInsertRequest, Model.RezervacijaSjedista>, RezervacijaSjedistaService>();
-            services.AddScoped<ICRUDService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, Model.Request.RezervacijaInsertRequest, Model.RezervacijaKarte>, RezervacijaKarteService>();
+            services.AddScoped<ICRUDService<Model.RezervacijaKarte, Model.Request.RezervacijaSearchRequest, Model.Request.RezervacijaInsertRequest, Model.Request.RezervacijaKarteUpdateRequest>, RezervacijaKarteService>();
             services.AddScoped<ICRUDService<Model.RedVoznje, RedVoznjeSearchRequest, RedVoznjeUpsertRequest, RedVoznjeUpsertRequest>, RedVoznjeService>();
             services.AddScoped<ISistemPreporuke, SistemPreporukeService>();
 

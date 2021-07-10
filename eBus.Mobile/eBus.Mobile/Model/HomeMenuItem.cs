@@ -7,12 +7,13 @@ namespace eBus.Mobile.Model
     public enum MenuItemType
     {
 
-        Notifikacija,
+        Novosti,
         About,
         RedVoznje,
         Rezervacije,
-        Karte,
-        Novosti
+        OcijeniRezervacija,
+        Karte
+        
     }
     public class HomeMenuItem
     {

@@ -51,6 +51,7 @@ namespace eBus.WebAPI.Mappers
 
             CreateMap<Database.RezervacijaKarte, Model.RezervacijaKarte>().ReverseMap();
             CreateMap<Database.RezervacijaKarte, Model.Request.RezervacijaInsertRequest>().ReverseMap();
+            CreateMap<Model.Request.RezervacijaKarteUpdateRequest, Database.RezervacijaKarte>().ReverseMap();
             CreateMap<Model.RezervacijaKarte, Model.Request.RezervacijaInsertRequest>().ReverseMap();//RezervacijaKarte
 
             CreateMap<Database.Notifikacije, Model.Notifikacije>();

@@ -20,6 +20,7 @@ namespace eBus.Mobile.ViewModel.Placanje
     {
         private readonly APIService _putnikService = new APIService("Putnik");
         private readonly APIService _redVoznjeService = new APIService("RedVoznje");
+        private readonly APIService _rezervacija = new APIService("RezervacijaKarte");
 
 
         private CreditCardModel _creditCardModel;
@@ -40,8 +41,8 @@ namespace eBus.Mobile.ViewModel.Placanje
         private string KorisnickoIme; 
         private double UkupnaCijena;
        
-        private string StripeTestApiKey = "pk_test_51IMuU7CP6LihDKIviwlPBWsNnipxFEug9St2x1PVvYDdJJMIeuNJGpR8Zvt3crBu0W98MID8fkZeiVbIijR0HO7y00ylGSP7uH";
-        private string StripeSecreatApiKey = "sk_test_51IMuU7CP6LihDKIvDqfhREWBv1qKSZBU4SA3sP9VhyB3dZouWOCB9XDgy18ko9rpQ69IDMpUA9tK8oPDFnVfvFo100ME5E3wdf";
+        private string StripeTestApiKey = "pk_test_51JBK7OK1zFg7YeWyuHoZs0G0WnAdBL5gDtLLq4oJFD3puc8bJr6o0w2HBkrdOuR3E5yPSpkjYo2O28R7Sq1uM3lR00uZ5TFmU1";
+        private string StripeSecreatApiKey = "sk_test_51JBK7OK1zFg7YeWy4kZGfTCHR5cHtFfsUqSYwC4leGjGNO9xwseekKQFS1PsPg8Z91nhtg9ENjJ9ijBjFJMsyL9e00EZlrj1br";
         public string ExpMonth
         {
             get { return _expMonth; }
@@ -84,6 +85,7 @@ namespace eBus.Mobile.ViewModel.Placanje
             Title = "Card Details";
             redVoznjeID = id;
             SubmitCommand = new Command(async () => await DelegateCommand());
+            GetPutnik();
         }
 
         public ICommand SubmitCommand { get; set; }
@@ -95,6 +97,13 @@ namespace eBus.Mobile.ViewModel.Placanje
             CancellationToken token = tokenSource.Token;
             try
             {
+
+                var rezervacija = await _rezervacija.GetById<RezervacijaKarte>(redVoznjeID);
+                if (rezervacija.Placeno == true) 
+                {
+                    throw new Exception("Vec ste uplatili iznos!");
+                }
+
                 UserDialogs.Instance.ShowLoading("Payment processing..");
                 await Task.Run(async () =>
                 {
@@ -121,6 +130,12 @@ namespace eBus.Mobile.ViewModel.Placanje
             {
                 if (IsTransectionSuccess)
                 {
+                    //Izmujena placenog
+
+                    RezervacijaKarteUpdateRequest update = new RezervacijaKarteUpdateRequest() { placeno = true };
+                    await _rezervacija.Update<RezervacijaKarteUpdateRequest>(redVoznjeID,update);
+
+                   
                     Console.Write("Payment Gateway" + "Payment Successful ");
                     UserDialogs.Instance.HideLoading();
                     UserDialogs.Instance.Alert("Uplata je uspješno izvršena!", "Notifikacija", "OK");
@@ -139,17 +154,18 @@ namespace eBus.Mobile.ViewModel.Placanje
 
         public async Task GetPutnik()
         {
-            var putnik = await _putnikService.Get<Putnici>(new PutnikSearchRequest() { userName = APIService.Username });
-            var _redVoznje = await _redVoznjeService.GetById<RedVoznje>(redVoznjeID);
-            Ime = putnik.Ime;
-            Prezime = putnik.Prezime;
-            Email = putnik.Email;
-            KorisnickoIme = putnik.KorisnickoIme;
+            var rezervacija = await _rezervacija.GetById<RezervacijaKarte>(redVoznjeID);
+            var _redVoznje = await _redVoznjeService.GetById<RedVoznje>(rezervacija.RedVoznjeId);
+
+            Ime = APIService.Username;
+            Prezime = APIService.Username;
+            Email = APIService.Username+"@gmail.com";
+            KorisnickoIme = APIService.Username;
             UkupnaCijena = (double)_redVoznje.Cijena;
         }
 
 
-        private string CreateToken()
+        private  string CreateToken()
         {
             try
             {
@@ -157,6 +173,7 @@ namespace eBus.Mobile.ViewModel.Placanje
                 var service = new ChargeService();
                 var Tokenoptions = new TokenCreateOptions
                 {
+                    
                     Card = new TokenCardOptions
                     {
                         Number = CreditCardModel.Number,
@@ -170,13 +187,13 @@ namespace eBus.Mobile.ViewModel.Placanje
                         AddressZip = "74250",
                         AddressState = "BiH",
                         AddressCountry = "Bosna i Hercegovina",
-                        Currency = "bam",
+                        Currency = "inr",
                     }
                 };
 
                 Tokenservice = new TokenService();
                 stripeToken = Tokenservice.Create(Tokenoptions);
-                return stripeToken.Id;
+                return  stripeToken.Id;
             }
             catch (Exception ex)
             {
@@ -215,8 +232,9 @@ namespace eBus.Mobile.ViewModel.Placanje
         {
             if (CreditCardModel.Number.Length == 16 && ExpMonth.Length == 2 && ExpYear.Length == 2 && CreditCardModel.Cvc.Length == 3)
             {
+                return true;
             }
-            return true;
+            return false;
         }
 
 

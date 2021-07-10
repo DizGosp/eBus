@@ -8,7 +8,7 @@ namespace eBus.Model
     {
         public int OcjenaId { get; set; }
         public int? RedVoznjeId { get; set; }
-        public int? AutobusId { get; set; }
+        public int? PutnikID { get; set; }
         public int? Ocjena1 { get; set; }
         public string Komentar { get; set; }
 

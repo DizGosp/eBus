@@ -1,5 +1,4 @@
 ﻿using eBus.Mobile.ViewModel;
-using eBus.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace eBus.Mobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RezervacijePage : ContentPage
+    public partial class OcijeniteRezervacijaPage : ContentPage
     {
-
-        private RezervacijeViewModel model = null;
-        public RezervacijePage()
+        private OcjeniRezervacijaViewModel model = null;
+        public OcijeniteRezervacijaPage()
         {
             InitializeComponent();
-            BindingContext = model = new RezervacijeViewModel();
+            BindingContext = model = new OcjeniRezervacijaViewModel();
+           
         }
+
 
         protected async override void OnAppearing()
         {
@@ -30,9 +30,10 @@ namespace eBus.Mobile.View
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+
             Button button = (Button)sender;
             int id = int.Parse(button.CommandParameter.ToString());
-            await Navigation.PushAsync(new StripePaymentGatwayPage(id));
+            await Navigation.PushAsync(new NavigationPage(new Ocjena(id)));
         }
 
 

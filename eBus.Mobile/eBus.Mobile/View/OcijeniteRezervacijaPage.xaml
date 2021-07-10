@@ -2,15 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:ViewModels="clr-namespace:eBus.Mobile.ViewModel"
-             x:Class="eBus.Mobile.View.RezervacijePage">
+             x:Class="eBus.Mobile.View.OcijeniteRezervacijaPage">
+
 
     <ContentPage.BindingContext>
-        <ViewModels:RezervacijeViewModel></ViewModels:RezervacijeViewModel>
+        <ViewModels:OcjeniRezervacijaViewModel></ViewModels:OcjeniRezervacijaViewModel>
     </ContentPage.BindingContext>
+
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Registracije!"
+            <Label Text="Ocijenite!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
@@ -33,7 +35,7 @@
                 <Label TextColor="White" FontSize="Micro" Text="Cijena" Grid.Column="4"></Label>
                 <Label TextColor="White" FontSize="Micro"  Text="Autobus" Grid.Column="5"></Label>
                 <Label TextColor="White" FontSize="Micro"  Text="      " Grid.Column="6"></Label>
-              
+
             </Grid>
 
             <ListView ItemsSource="{Binding Rezervacije}"  VerticalScrollBarVisibility="Always">
@@ -58,7 +60,7 @@
                                 <Label TextColor="White" FontSize="Micro"  Text="{Binding RedVoznje.DatumVrijemePolaska}" Grid.Column="3"></Label>
                                 <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.Cijena}" Grid.Column="4"></Label>
                                 <Label TextColor="White" FontSize="Micro" Text="{Binding RedVoznje.Autobus.NazivAutobusa}" Grid.Column="5"></Label>
-                                <Button Text="Plati" Grid.Column="6" Clicked="Button_Clicked" CommandParameter="{Binding RezervacijaKarteId}" BackgroundColor="Green" TextColor="White" ></Button>
+                                <Button Text="Ocijenite" Grid.Column="6" Clicked="Button_Clicked" CommandParameter="{Binding RezervacijaKarteId}" BackgroundColor="Green" TextColor="White" ></Button>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

@@ -13,7 +13,7 @@ namespace eBus.Mobile.ViewModel
     public class OcjenaViewModel: BaseViewModel
     {
         private readonly APIService _putnik = new APIService("Putnik");
-        private readonly APIService _bus = new APIService("Autobus");
+        private readonly APIService _rezervacija = new APIService("RezervacijaKarte");
         private readonly APIService _Ocjena = new APIService("Ocjena");
         public int id;
         public async Task<Putnici> GetPutnik()
@@ -33,16 +33,7 @@ namespace eBus.Mobile.ViewModel
             }
             return putn;
         }
-        public async Task<Autobus> GetAutobus(int id)
-        {
-            Autobus busSearch = new Autobus()
-            {
-                AutobusId = id
-            };
-            List<Autobus> bus = await _bus.Get<List<eBus.Model.Autobus>>(busSearch);
-
-            return bus[0];
-        }
+      
         public OcjenaViewModel()
         {
             InitCommand = new Command(async () => await Init());
@@ -106,17 +97,30 @@ namespace eBus.Mobile.ViewModel
         {
   
             Putnici p = await GetPutnik();
-            Autobus a = await GetAutobus(id);
+            RezervacijaKarte rez = await _rezervacija.GetById<RezervacijaKarte>(id);
+
+            List<Ocjena> ocjene = await _Ocjena.Get<List<Ocjena>>(null);
+
+            foreach (var item in ocjene)
+            {
+                if(item.RedVoznjeId==rez.RedVoznjeId && item.PutnikID==p.PutnikId) 
+                {
+                    await Application.Current.MainPage.DisplayAlert(" ", "Več ste ocijenili ovaj red vožnje!", "OK");
+                    Application.Current.MainPage = new eBus.Mobile.View.MainPage();
+                    return;
+                }
+            }
 
             if (_selectedOcjena ==null || _komentar==null )
             {
                 await Application.Current.MainPage.DisplayAlert(" ", "Molimo unesite ocjenu i komentar!", "OK");
             }
+           
             else
             {
                 OcjenaInsertRequest o = new OcjenaInsertRequest()
                 {
-                    RedVoznjeId = id,
+                    RedVoznjeId = rez.RedVoznjeId,
                     PutnikId = p.PutnikId,
                     Ocjena1 = _selectedOcjena.ocjena,
                     Komentar = _komentar

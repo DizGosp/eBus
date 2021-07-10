@@ -10,10 +10,20 @@ using Xamarin.Forms;
 
 namespace eBus.Mobile.ViewModel
 {
-    public class KarteViewModel : BaseViewModel
+    public class OcjeniRezervacijaViewModel : BaseViewModel
     {
+
+        private readonly APIService _rezervacija = new APIService("RezervacijaKarte");
         private readonly APIService _putnik = new APIService("Putnik");
-        private readonly APIService _Rezervacija = new APIService("RezervacijaKarte");
+        public OcjeniRezervacijaViewModel()
+        {
+            InitCommand = new Command(async () => await Init());
+        }
+
+
+        public ObservableCollection<RezervacijaKarte> Rezervacije { get; set; } = new ObservableCollection<RezervacijaKarte>();
+        public ICommand InitCommand { get; set; }
+
 
         public async Task<Putnici> GetPutnik()
         {
@@ -32,14 +42,8 @@ namespace eBus.Mobile.ViewModel
             }
             return putn;
         }
-        public KarteViewModel()
-        {
-            InitCommand = new Command(async () => await Init());
-        }
 
-        public ObservableCollection<RezervacijaKarte> Rezervacije { get; set; } = new ObservableCollection<RezervacijaKarte>();
 
-        public ICommand InitCommand { get; set; }
         public async Task Init()
         {
 
@@ -49,14 +53,20 @@ namespace eBus.Mobile.ViewModel
             {
                 PutnikId = p.PutnikId
             };
-            var list = await _Rezervacija.Get<List<RezervacijaKarte>>(searchRez);
+            var list = await _rezervacija.Get<List<RezervacijaKarte>>(searchRez);
+
             Rezervacije.Clear();
             foreach (var item in list)
             {
-                    Rezervacije.Add(item);  
+                if (item.RedVoznje.DatumVrijemeDolaska < DateTime.Now && item.Placeno == true && item.Otkazana == false)
+                {
+                    Rezervacije.Add(item);
+                }
             }
 
         }
 
     }
+
 }
+

@@ -47,21 +47,18 @@ namespace eBus.Mobile.ViewModel
         public async Task Init() 
         {
 
-
-
             Putnici p = await GetPutnik();
 
             RezervacijaSearchRequest searchRez = new RezervacijaSearchRequest()
             {
-                PutnikId = p.PutnikId,
-                Platio=false
+                PutnikId = p.PutnikId
             };
             var list = await _rezervacija.Get<List<RezervacijaKarte>>(searchRez);
 
             Rezervacije.Clear();
             foreach (var item in list)
             {
-                if (item.RedVoznje.DatumVrijemeDolaska > DateTime.Now)
+                if (item.RedVoznje.DatumVrijemeDolaska > DateTime.Now && item.Placeno==false && item.Otkazana==false)
                 {
                     Rezervacije.Add(item);
                 }

@@ -38,7 +38,7 @@ namespace eBus.Mobile.View
             {
                 ErrorLabel_CardNumber.IsVisible = true;
                 CardNumber.Text = RemoveLastCharacter(CardNumber.Text);
-                ErrorLabel_CardNumber.Text = "Invalid Card number";
+                ErrorLabel_CardNumber.Text = "Invalid Card number ";
             }
             else if (CardNumber.Text.Length < 1)
             {
@@ -58,7 +58,7 @@ namespace eBus.Mobile.View
             if (CardNumber.Text.Length > 16 || CardNumber.Text.Length < 12)
             {
                 ErrorLabel_CardNumber.IsVisible = true;
-                ErrorLabel_CardNumber.Text = "Invalid Card number";
+                ErrorLabel_CardNumber.Text = "Invalid Card number ";
                 EnableSubmitButton();
             }
             else

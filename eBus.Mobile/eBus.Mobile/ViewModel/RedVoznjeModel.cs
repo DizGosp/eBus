@@ -239,13 +239,6 @@ namespace eBus.Mobile.ViewModel
 
         public async Task InitPreporuka()
         {
-            Putnici p = await GetPutnik();
-
-            SistemPreporukeRequest searchS = new SistemPreporukeRequest()
-            {
-                PutnikId = p.PutnikId
-            };
-            var preporuka =await _preporuka.Get<SistemPreporuke>(searchS);
 
             if (VrstaKarteList.Count == 0)
             {
@@ -256,46 +249,43 @@ namespace eBus.Mobile.ViewModel
                 }
             }
 
-                if (SelectedVrstaKarte == null || SelectedVrstaKarte.VrstaKarteId == 1)
-                {
+            Putnici p = await GetPutnik();
 
-                   RedVoznjeList.Clear();
-                foreach (var item in preporuka.listaPreporuka)
-                {
-                    if (item.DatumVrijemePolaska > DateTime.Now)
-                    {
-                        RedVoznjeList.Add(item);
-                    }
-                }
-                }
-                else if (SelectedVrstaKarte.VrstaKarteId == 2)
-                {
-                    popust = (decimal?)0.15;
+            SistemPreporukeRequest searchS = new SistemPreporukeRequest()
+            {
+                PutnikId = p.PutnikId
+            };
+            var preporuka =await _preporuka.Get<SistemPreporuke>(searchS);
 
-                RedVoznjeList.Clear();
-                foreach (var item in preporuka.listaPreporuka)
+            var listaRedovaVoznji = await _RedVoznje.Get<List<RedVoznje>>(null);
+            var ListaUpdateVoznji = new List<RedVoznje> ();
+            foreach (var item in listaRedovaVoznji)
+            {
+                if(item.DatumVrijemeDolaska>DateTime.Now && item.DatumVrijemePolaska > DateTime.Now) 
                 {
-                    item.Cijena = item.Cijena - (item.Cijena * popust);
-                    if (item.DatumVrijemePolaska > DateTime.Now)
+                    ListaUpdateVoznji.Add(item);
+                }
+            }
+
+            RedVoznjeList.Clear();
+
+            foreach (var item in ListaUpdateVoznji)
+            {
+                foreach (var x in preporuka.listaPreporuka)
+                {
+                    if (item.AutobusId == x.AutobusId) 
                     {
                         RedVoznjeList.Add(item);
                     }
                 }
             }
-                else if (SelectedVrstaKarte.VrstaKarteId == 3)
-                {
-                    popust = (decimal?)0.10;
-                RedVoznjeList.Clear();
-                foreach (var item in preporuka.listaPreporuka)
-                {
-                    item.Cijena = item.Cijena - (item.Cijena * popust);
-                    if (item.DatumVrijemePolaska > DateTime.Now)
-                    {
-                        RedVoznjeList.Add(item);
-                    }
-                }
-            }
-            
+
+
+      
+
+
+
+
 
 
         }
