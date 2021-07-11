@@ -69,16 +69,24 @@ namespace eBus.WinUI.Korisnici
                     {
                         await _service.Insert<Model.Korisnici>(request);
 
-                        //var last = await _service.Get<Model.Korisnici>(new KorisniciSearchRequest() { userName = request.KorisnickoIme });
+                        //List<Model.Korisnici> listaKorisnika = await _service.Get<List<Model.Korisnici>>(null);
 
-                        //for (int i = 0; i < roleList.Count; i++)
+                        //for (int i = 0; i <listaKorisnika.Count; i++)
                         //{
-                        //    await _service.Insert<Model.KorisniciUloge>(new Model.KorisniciUloge()
+                        //    if (listaKorisnika[i].KorisnickoIme == request.KorisnickoIme) 
                         //    {
-                        //        UlogaId = roleList[i],
-                        //        KorisnikId=last.KorisnikId
-                        //    });
+                        //        for (int j= 0; j < roleList.Count; j++)
+                        //        {
+                        //            await _service.Insert<Model.KorisniciUloge>(new Model.KorisniciUloge()
+                        //            {
+                        //                UlogaId = roleList[j],
+                        //                KorisnikId = listaKorisnika[i].KorisnikId
+                        //            });
+                        //        }
+                        //    }
                         //}
+
+                        
 
                     }
                     MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

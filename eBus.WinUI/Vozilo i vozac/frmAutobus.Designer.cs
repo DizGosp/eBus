@@ -38,8 +38,6 @@
             this.btnVoz = new System.Windows.Forms.Button();
             this.cbStatus = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtBr = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -128,7 +126,7 @@
             // 
             this.cbStatus.AutoSize = true;
             this.cbStatus.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.cbStatus.Location = new System.Drawing.Point(114, 210);
+            this.cbStatus.Location = new System.Drawing.Point(110, 176);
             this.cbStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(59, 17);
@@ -139,7 +137,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnSave.Location = new System.Drawing.Point(202, 204);
+            this.btnSave.Location = new System.Drawing.Point(198, 170);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(64, 27);
@@ -147,25 +145,6 @@
             this.btnSave.Text = "Snimi";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtBr
-            // 
-            this.txtBr.Location = new System.Drawing.Point(190, 170);
-            this.txtBr.Margin = new System.Windows.Forms.Padding(2);
-            this.txtBr.Name = "txtBr";
-            this.txtBr.Size = new System.Drawing.Size(76, 20);
-            this.txtBr.TabIndex = 43;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(107, 173);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Broj sjedišta:";
             // 
             // button1
             // 
@@ -184,10 +163,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.ClientSize = new System.Drawing.Size(303, 264);
+            this.ClientSize = new System.Drawing.Size(304, 230);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtBr);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.btnVoz);
@@ -221,8 +198,6 @@
         private System.Windows.Forms.Button btnVoz;
         private System.Windows.Forms.CheckBox cbStatus;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtBr;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
     }
 }

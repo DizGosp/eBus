@@ -45,8 +45,7 @@ namespace eBus.WinUI.Vozilo_i_vozac
             {
                 NazivAutobusa=txtVozilo.Text,
                 Klasa=txtKlasa.Text,
-                Status=cbStatus.Checked,
-                BrojSjedista=int.Parse(txtBr.Text)
+                Status=cbStatus.Checked
             };
             var idOD = cmbVoz.SelectedValue;
             if (int.TryParse(idOD.ToString(), out int id))
@@ -65,7 +64,7 @@ namespace eBus.WinUI.Vozilo_i_vozac
 
             List<Model.Autobus> bus = await _autobus.Get<List<Model.Autobus>>(null); 
 
-            for (int i = 1; i <= ((a.BrojSjedista - 5) / 2) + 1; i++)
+            for (int i = 1; i <= ((55 - 5) / 2) + 1; i++)
             {
                 if (i < 25)
                 {
