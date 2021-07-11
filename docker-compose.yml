@@ -20,7 +20,7 @@ services:
     environment:
       - ConnectionStrings:eBus=Server=ebus-sql,1433;Database=eBusDocker;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
-      - 5000:80
+      - 44331:80
     networks:
       - ebusnet      
     links:

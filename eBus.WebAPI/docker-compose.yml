@@ -20,4 +20,4 @@ services:
       environment:
         - ConnectionStrings:eBus=Server=ms-sql-server,1433;Database=eBusDocker;User=sa;Password=Pa55w0rd2020;MultipleActiveResultSets=true;ConnectRetryCount=200;TrustServerCertificate=true;
       ports: 
-        - "5000:80"
+        - "44331:80"
