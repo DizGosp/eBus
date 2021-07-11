@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  ms-sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Pa55w0rd2020"
+      MSSQL_PID: Express
+    ports:
+        - "1433:1433"
+
+  ebus-api:
+      build: ../
+      depends_on:
+        - ms-sql-server
+      volumes:
+        - './Data/Images/Products:/app/Data/Images/Products'
+        - './Data/ServiceAttachments:/app/Data/ServiceAttachments'
+      environment:
+        - ConnectionStrings:eBus=Server=ms-sql-server,1433;Database=eBusDocker;User=sa;Password=Pa55w0rd2020;MultipleActiveResultSets=true;ConnectRetryCount=200;TrustServerCertificate=true;
+      ports: 
+        - "5000:80"
