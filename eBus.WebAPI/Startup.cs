@@ -68,7 +68,7 @@ namespace eBus.WebAPI
                 });
             });
 
-            var connection = @"Server=.;Database=eBus;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = Configuration.GetConnectionString("db");
             services.AddDbContext<eBusContext>(options => options.UseSqlServer(connection));
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

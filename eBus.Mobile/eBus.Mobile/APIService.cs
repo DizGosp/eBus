@@ -16,7 +16,7 @@ namespace eBus.Mobile
         private readonly string _route;
 
 #if DEBUG
-        string _apiUrl = "http://localhost:44331/api";
+        string _apiUrl = "http://localhost:5000/api";
 #endif
 #if RELEASE
 string _apiUrl = "https://WebSite/api";

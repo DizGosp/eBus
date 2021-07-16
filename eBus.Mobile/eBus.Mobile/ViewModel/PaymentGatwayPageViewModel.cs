@@ -2,7 +2,7 @@
 using eBus.Model;
 using eBus.Model.Placanje;
 using eBus.Model.Request;
-using Microsoft.VisualStudio.PlatformUI;
+//using Microsoft.VisualStudio.PlatformUI;
 using Prism.Commands;
 using Prism.Mvvm;
 using Stripe;
