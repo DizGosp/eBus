@@ -163,11 +163,23 @@
     <Compile Include="Gradovi\frmDrzava.Designer.cs">
       <DependentUpon>frmDrzava.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gradovi\frmDrzavaPretraga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gradovi\frmDrzavaPretraga.Designer.cs">
+      <DependentUpon>frmDrzavaPretraga.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gradovi\frmGradovi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gradovi\frmGradovi.Designer.cs">
       <DependentUpon>frmGradovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gradovi\frmGradoviPretraga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gradovi\frmGradoviPretraga.Designer.cs">
+      <DependentUpon>frmGradoviPretraga.cs</DependentUpon>
     </Compile>
     <Compile Include="Izvještaji\frmRedVoznjeKorisnik.cs">
       <SubType>Form</SubType>
@@ -267,8 +279,14 @@
     <EmbeddedResource Include="Gradovi\frmDrzava.resx">
       <DependentUpon>frmDrzava.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gradovi\frmDrzavaPretraga.resx">
+      <DependentUpon>frmDrzavaPretraga.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gradovi\frmGradovi.resx">
       <DependentUpon>frmGradovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gradovi\frmGradoviPretraga.resx">
+      <DependentUpon>frmGradoviPretraga.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Izvještaji\frmRedVoznjeKorisnik.resx">
       <DependentUpon>frmRedVoznjeKorisnik.cs</DependentUpon>

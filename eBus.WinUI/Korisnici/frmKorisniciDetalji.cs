@@ -189,5 +189,31 @@ namespace eBus.WinUI.Korisnici
         {
             this.Close();
         }
+
+        private void txtKorIme_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtKorIme.Text))
+            {
+                errorProvider.SetError(txtKorIme, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtKorIme, null);
+            }
+        }
+
+        private void txtPass_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPass.Text))
+            {
+                errorProvider.SetError(txtPass, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtPass, null);
+            }
+        }
     }
 }

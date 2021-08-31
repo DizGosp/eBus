@@ -31,6 +31,7 @@ namespace eBus.WinUI.Ocjene
             var result = await _ocjene.Get<List<Ocjena>>(null);
             dtgOcjene.AutoGenerateColumns = false;
             dtgOcjene.DataSource = result;
+            dtgOcjene.MaximumSize = MaximumSize;
         }
     }
 }

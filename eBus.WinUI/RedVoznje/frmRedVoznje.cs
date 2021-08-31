@@ -65,40 +65,47 @@ namespace eBus.WinUI.RedVoznje
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-   
-            RedVoznjeUpsertRequest req = new RedVoznjeUpsertRequest
-            {
-                Cijena = numCijena.Value,
-                Naziv = txtKomp.Text,
-                DatumVrijemePolaska = dtpOD.Value,
-                DatumVrijemeDolaska = dtpDO.Value,
-                KorisnikId =  _korId      
-            };
 
-            var idOD = cmbOD.SelectedValue;
-            if(int.TryParse(idOD.ToString(), out int id)) 
+            if (this.ValidateChildren()) 
             {
-                req.GradPolaskaId = id;
-            }
-            var idDO = cmbDo.SelectedValue;
-            if (int.TryParse(idDO.ToString(), out int idD))
-            {
-                req.GradDolaskaId = idD;
-            }
-            var idBs = cmbBus.SelectedValue;
-            if (int.TryParse(idBs.ToString(), out int idB))
-            {
-                req.AutobusId = idB;
-            }
-         
-            Model.Autobus v = await _autobus.GetById<Model.Autobus>(req.AutobusId);
-            v.Status = true;
-            await _autobus.Update<Model.Autobus>(req.AutobusId, v);
-        
 
-            await _red.Insert<Model.RedVoznje>(req);
-            MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+                RedVoznjeUpsertRequest req = new RedVoznjeUpsertRequest
+                {
+                    Cijena = numCijena.Value,
+                    Naziv = txtKomp.Text,
+                    DatumVrijemePolaska = dtpOD.Value,
+                    DatumVrijemeDolaska = dtpDO.Value,
+                    KorisnikId = _korId
+                };
+
+                var idOD = cmbOD.SelectedValue;
+                if (int.TryParse(idOD.ToString(), out int id))
+                {
+                    req.GradPolaskaId = id;
+                }
+                var idDO = cmbDo.SelectedValue;
+                if (int.TryParse(idDO.ToString(), out int idD))
+                {
+                    req.GradDolaskaId = idD;
+                }
+                var idBs = cmbBus.SelectedValue;
+                if (int.TryParse(idBs.ToString(), out int idB))
+                {
+                    req.AutobusId = idB;
+                }
+
+                Model.Autobus v = await _autobus.GetById<Model.Autobus>(req.AutobusId);
+                v.Status = true;
+                await _autobus.Update<Model.Autobus>(req.AutobusId, v);
+
+
+                await _red.Insert<Model.RedVoznje>(req);
+                MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+
+            }
+
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -122,6 +129,58 @@ namespace eBus.WinUI.RedVoznje
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtKomp_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtKomp.Text))
+            {
+                errorProvider1.SetError(txtKomp, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtKomp, null);
+            }
+        }
+
+        private void cmbOD_Validating(object sender, CancelEventArgs e)
+        {
+            if(cmbOD.SelectedValue==null)
+            {
+                errorProvider1.SetError(cmbOD, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbOD, null);
+            }
+        }
+
+        private void cmbDo_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbDo.SelectedValue == null)
+            {
+                errorProvider1.SetError(cmbDo, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbDo, null);
+            }
+        }
+
+        private void cmbBus_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbBus.SelectedValue == null)
+            {
+                errorProvider1.SetError(cmbBus, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbBus, null);
+            }
         }
     }
 }

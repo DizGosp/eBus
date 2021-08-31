@@ -13,6 +13,6 @@ namespace eBus.Model
         public string Komentar { get; set; }
 
         public virtual Putnici Putnik { get; set; }
-        public virtual Autobus Autobus { get; set; }
+        public virtual RedVoznje RedVoznje { get; set; }
     }
 }

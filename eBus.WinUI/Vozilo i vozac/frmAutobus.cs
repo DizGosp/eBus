@@ -41,62 +41,68 @@ namespace eBus.WinUI.Vozilo_i_vozac
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            Model.Autobus a = new Model.Autobus()
+
+            if (this.ValidateChildren()) 
             {
-                NazivAutobusa=txtVozilo.Text,
-                Klasa=txtKlasa.Text,
-                Status=cbStatus.Checked
-            };
-            var idOD = cmbVoz.SelectedValue;
-            if (int.TryParse(idOD.ToString(), out int id))
-            {
-                a.VozacId = id;
-            }
-
-            Model.Vozaci v = await _vozac.GetById<Model.Vozaci>(a.VozacId);
-
-            v.Status = true;
-            await _vozac.Update<Model.Vozaci>(a.VozacId,v);
-
-
-
-            await _autobus.Insert<Model.Autobus>(a);
-
-            List<Model.Autobus> bus = await _autobus.Get<List<Model.Autobus>>(null); 
-
-            for (int i = 1; i <= ((55 - 5) / 2) + 1; i++)
-            {
-                if (i < 25)
+                Model.Autobus a = new Model.Autobus()
                 {
-                    for (int j = 1; j <= 4; j++)
+                    NazivAutobusa = txtVozilo.Text,
+                    Klasa = txtKlasa.Text,
+                    Status = cbStatus.Checked
+                };
+                var idOD = cmbVoz.SelectedValue;
+                if (int.TryParse(idOD.ToString(), out int id))
+                {
+                    a.VozacId = id;
+                }
+
+                Model.Vozaci v = await _vozac.GetById<Model.Vozaci>(a.VozacId);
+
+                v.Status = true;
+                await _vozac.Update<Model.Vozaci>(a.VozacId, v);
+
+
+
+                await _autobus.Insert<Model.Autobus>(a);
+
+                List<Model.Autobus> bus = await _autobus.Get<List<Model.Autobus>>(null);
+
+                for (int i = 1; i <= ((55 - 5) / 2) + 1; i++)
+                {
+                    if (i < 25)
                     {
-                        SjedisteInsertRequest s = new SjedisteInsertRequest();
-                        s.Red = i;
-                        s.Kolona = j;
-                        s.AutobusId = bus.Count;
-                        s.Status = false;
-                        await _sjediste.Insert<SjedisteInsertRequest>(s);
+                        for (int j = 1; j <= 4; j++)
+                        {
+                            SjedisteInsertRequest s = new SjedisteInsertRequest();
+                            s.Red = i;
+                            s.Kolona = j;
+                            s.AutobusId = bus.Count;
+                            s.Status = false;
+                            await _sjediste.Insert<SjedisteInsertRequest>(s);
+                        }
+                    }
+                    else if (i == 26)
+                    {
+                        for (int j = 1; j <= 5; j++)
+                        {
+                            SjedisteInsertRequest s = new SjedisteInsertRequest();
+                            s.Red = i;
+                            s.Kolona = j;
+                            s.AutobusId = bus.Count;
+                            s.Status = false;
+                            await _sjediste.Insert<SjedisteInsertRequest>(s);
+                        }
                     }
                 }
-                else if (i == 26) 
-                {
-                    for (int j = 1; j <= 5; j++)
-                    {
-                        SjedisteInsertRequest s = new SjedisteInsertRequest();
-                        s.Red = i;
-                        s.Kolona = j;
-                        s.AutobusId = bus.Count;
-                        s.Status = false;
-                        await _sjediste.Insert<SjedisteInsertRequest>(s);
-                    }
-                }
+
+
+                MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmRedVoznje frm = new frmRedVoznje(_id);
+                frm.Show();
+                this.Close();
             }
 
-
-            MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmRedVoznje frm = new frmRedVoznje(_id);
-            frm.Show();
-            this.Close();
+            
         }
 
         private void btnVoz_Click(object sender, EventArgs e)
@@ -109,6 +115,45 @@ namespace eBus.WinUI.Vozilo_i_vozac
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtVozilo_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtVozilo.Text))
+            {
+                errorProvider1.SetError(txtVozilo, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtVozilo, null);
+            }
+        }
+
+        private void txtKlasa_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtKlasa.Text))
+            {
+                errorProvider1.SetError(txtKlasa, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtKlasa, null);
+            }
+        }
+
+        private void cmbVoz_Validating(object sender, CancelEventArgs e)
+        {
+            if (cmbVoz.SelectedValue==null)
+            {
+                errorProvider1.SetError(cmbVoz, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(cmbVoz, null);
+            }
         }
     }
 }

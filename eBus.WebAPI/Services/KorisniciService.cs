@@ -10,7 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eBus.WebAPI.Services
+namespace eBus.WebAPI.Services   
 {
     public class KorisniciService : KorisniciServiceInterface
     {
@@ -44,7 +44,7 @@ namespace eBus.WebAPI.Services
             var list = _db.Korisnicis.Include(x=>x.KorisniciUloges).ToList();
             return _mapper.Map<List<Model.Korisnici>>(list);
         }
-
+       
         public List<Model.Korisnici> Get(KorisniciSearchRequest request)
         {
             var query = _db.Korisnicis.Include(x=>x.KorisniciUloges).AsQueryable();

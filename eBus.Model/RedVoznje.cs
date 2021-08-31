@@ -25,7 +25,7 @@ namespace eBus.Model
 
         public override string ToString()
         {
-            return GradPolaskaNavigation + "-" + GradDolaskaNavigation + "/ Datum polaska:" + DatumVrijemePolaska.Date.ToString("dd.MM.yyyy")+"Vrijeme polaska: "+ DatumVrijemePolaska.TimeOfDay.ToString("dd.MM.yyyy")+ "/ Očekivani datum dolaska:" + DatumVrijemeDolaska.Date.ToString("dd.MM.yyyy") + "Vrijeme dolaska: " + DatumVrijemePolaska.TimeOfDay.ToString("dd.MM.yyyy");
+            return Naziv + " /Datum polaska->"+DatumVrijemeDolaska.Date.ToString();
         }
 
     }

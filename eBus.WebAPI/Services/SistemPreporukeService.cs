@@ -36,7 +36,7 @@ namespace eBus.WebAPI.Services
                 countOcjene = 0;
                 brojacOcjena = 0;
 
-                if (item.GradPolaskaId==2)
+                if (item.GradPolaskaNavigation.NazivGrada=="Mostar")
                 {
                     foreach (var x in ocjeneList)
                     {

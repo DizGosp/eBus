@@ -223,5 +223,17 @@ namespace eBus.WinUI.Karta
             frmKorisnici frm = new frmKorisnici();
             frm.Show();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            frmDrzavaPretraga frm = new frmDrzavaPretraga();
+            frm.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            frmGradoviPretraga frm = new frmGradoviPretraga();
+            frm.Show();
+        }
     }
 }

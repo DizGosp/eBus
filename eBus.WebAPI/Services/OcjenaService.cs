@@ -18,6 +18,7 @@ namespace eBus.WebAPI.Services
         {
             var query = _db.Set<Ocjena>()
                 .Include(x => x.RedVoznje)
+                .Include(x => x.Putnik)
                 .AsQueryable();
 
 

@@ -23,23 +23,43 @@ namespace eBus.WinUI.Gradovi
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            DrzInsRequst d = new DrzInsRequst()
+
+            if (this.ValidateChildren()) 
             {
-                NazivDrzave = txtNaziv.Text
-            };
+                DrzInsRequst d = new DrzInsRequst()
+                {
+                    NazivDrzave = txtNaziv.Text
+                };
 
-            await _drzava.Insert<DrzInsRequst>(d);
+                await _drzava.Insert<DrzInsRequst>(d);
 
 
-            MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            frmGradovi frm = new frmGradovi(_korId);
-            frm.Show();
-            this.Close();
+                MessageBox.Show("Operacija uspješno izvršena!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmGradovi frm = new frmGradovi(_korId);
+                frm.Show();
+                this.Close();
+
+            }
+
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtNaziv_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text)) 
+            {
+                erroDrzava.SetError(txtNaziv, "Obavezno polje!");
+                e.Cancel = true;
+            }
+            else 
+            {
+                erroDrzava.SetError(txtNaziv, null);
+            }
         }
     }
 }
